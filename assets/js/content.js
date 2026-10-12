@@ -18,8 +18,8 @@ const SHOW = [
   /* ------------------------------------------------------------- 1. de stem */
   {
     type: "audio",
-    kop: "Luister even mee",
-    bestand: "uitspraken.mp3",
+    kop: "Zeg eens, wat zeg je?",
+    bestand: "zeg-eens-wat-zeg-je.mp3",
     regels: [
       "Wat zeg je?",
       "Ik denk gewoon hardop na hé.",
@@ -29,9 +29,8 @@ const SHOW = [
     ],
     spreker: "Mathias",
     script:
-      "Niets zeggen. Start het fragment en laat de zaal raden wie er praat. " +
-      "Elke klik zet er een zin bij, telkens net nadat je ze hoort.",
-    nazien: "Audiofragment met de AI-stem van Lena nog opnemen en opslaan als assets/audio/uitspraken.mp3.",
+      "Niets zeggen. Het fragment start vanzelf zodra je op dit scherm komt en duurt een halve minuut. " +
+      "Laat de zaal raden wie er praat. Elke klik zet er een zin bij, telkens net nadat je ze hoort.",
   },
 
   /* ----------------------------------------------------------- 2. intro Britt */
