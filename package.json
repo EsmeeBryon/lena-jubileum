@@ -1,0 +1,15 @@
+{
+  "name": "afas-lena-jubileum",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jubileumshow voor Lena - 12,5 jaar AFAS",
+  "scripts": {
+    "verklein": "node verklein.js",
+    "overzicht": "node overzicht.js",
+    "bouw": "node bouw.js",
+    "spiek": "node spiek.js"
+  },
+  "dependencies": {
+    "sharp": "^0.34.2"
+  }
+}

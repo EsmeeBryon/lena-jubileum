@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lena &middot; 12,5 jaar AFAS</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="korrel" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<main id="podium"></main>
+
+<div id="zwart" class="zwart" aria-hidden="true"></div>
+
+<div id="voortgang" class="voortgang"><span id="voortgangBalk"></span></div>
+<div id="klok" class="klok"></div>
+
+<div id="hulp" class="hulp">
+  <h2>Besturing</h2>
+  <dl>
+    <dt>&rarr; &nbsp; spatie &nbsp; klikker</dt><dd>volgende stap</dd>
+    <dt>&larr; &nbsp; backspace</dt><dd>een stap terug</dd>
+    <dt>B</dt><dd>zwart scherm</dd>
+    <dt>F</dt><dd>volledig scherm</dd>
+    <dt>T</dt><dd>klok tonen of verbergen</dd>
+    <dt>G</dt><dd>ga naar scherm&hellip;</dd>
+    <dt>?</dt><dd>deze hulp</dd>
+  </dl>
+  <p>Druk op een toets om verder te gaan.</p>
+</div>
+
+<div id="spring" class="spring">
+  <label for="springNaar">Naar scherm</label>
+  <input id="springNaar" type="number" min="1" inputmode="numeric">
+</div>
+
+<script src="assets/js/content.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
