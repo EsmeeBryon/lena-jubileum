@@ -7,6 +7,7 @@ const { execFileSync } = require("child_process");
 const sharp = require("sharp");
 
 const BRON = path.join(__dirname, "_bron", "Lena");
+const MATHIAS = path.join(__dirname, "_bron", "mathias");
 const UIT_FOTO = path.join(__dirname, "assets", "foto");
 const UIT_VIDEO = path.join(__dirname, "assets", "video");
 
@@ -38,6 +39,17 @@ function viaFfmpeg(bron) {
   const buffer = fs.readFileSync(tijdelijk);
   fs.unlinkSync(tijdelijk);
   return buffer;
+}
+
+// Langste zijde max 1280, zowel voor liggende als staande filmpjes
+function herschaal(bron, doel) {
+  execFileSync("ffmpeg", [
+    "-y", "-v", "error", "-i", bron,
+    "-vf", "scale='if(gt(iw,ih),min(1280,iw),-2)':'if(gt(iw,ih),-2,min(1280,ih))'",
+    "-c:v", "libx264", "-crf", "25", "-preset", "medium",
+    "-c:a", "aac", "-b:a", "128k",
+    "-movflags", "+faststart", doel,
+  ]);
 }
 
 async function main() {
@@ -85,13 +97,7 @@ async function main() {
           fs.copyFileSync(bron, doel);
         } else {
           // .mov speelt niet overal af en grote bestanden maken de show traag
-          execFileSync("ffmpeg", [
-            "-y", "-v", "error", "-i", bron,
-            "-vf", "scale='min(1280,iw)':-2",
-            "-c:v", "libx264", "-crf", "24", "-preset", "medium",
-            "-c:a", "aac", "-b:a", "128k",
-            "-movflags", "+faststart", doel,
-          ]);
+          herschaal(bron, doel);
         }
         index[sleutel].videos.push(naam);
       }
@@ -100,6 +106,16 @@ async function main() {
       `${sleutel.padEnd(10)} ${String(index[sleutel].fotos.length).padStart(2)} foto's, ` +
       `${index[sleutel].videos.length} filmpje(s)`
     );
+  }
+
+  // Fragmenten van Mathias: a-Wat-zeg-je.mp4 -> lena-a.mp4
+  if (fs.existsSync(MATHIAS)) {
+    const clips = fs.readdirSync(MATHIAS).filter((f) => f.toLowerCase().endsWith(".mp4")).sort();
+    for (const clip of clips) {
+      const naam = `lena-${clip[0].toLowerCase()}.mp4`;
+      herschaal(path.join(MATHIAS, clip), path.join(UIT_VIDEO, naam));
+    }
+    console.log(`mathias    ${clips.length} fragment(en)`);
   }
 
   fs.writeFileSync(
