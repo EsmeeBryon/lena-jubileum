@@ -210,21 +210,30 @@ em { font-style: italic; color: var(--terra); }
 
 .collage {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1.6vw;
+  gap: 2.2vh;
   max-width: 90vw;
 }
 
-.collage .lijst {
-  height: clamp(140px, 30vh, 34vh);
-  transform-origin: center;
+.collage .rij {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6vw;
 }
 
-.collage .lijst:nth-child(odd) { rotate: -2.2deg; }
-.collage .lijst:nth-child(even) { rotate: 1.8deg; }
-.collage .lijst img { height: clamp(140px, 30vh, 34vh); width: auto; }
+.collage .lijst { transform-origin: center; }
+
+.collage .lijst:nth-child(odd) { rotate: -2deg; }
+.collage .lijst:nth-child(even) { rotate: 1.6deg; }
+
+.collage .lijst img {
+  height: var(--h, 30vh);
+  width: auto;
+  max-width: calc(86vw / var(--per-rij, 3) - 1.6vw);
+  object-fit: cover;
+}
 
 .collage ~ .bijschrift { max-width: 52ch; }
 

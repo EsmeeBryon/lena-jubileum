@@ -346,27 +346,6 @@ const SHOW = [
     nazien: "De interviewfilmpjes van Mathias opslaan als assets/video/interviews.mp4.",
   },
   {
-    type: "collage",
-    kop: "Thuis",
-    fotos: ["familie-02.jpg", "familie-08.jpg", "familie-11.jpg", "familie-14.jpg"],
-    bijschrift: "Mama van Billie Rose. Een hele goede.",
-    spreker: "Esmee",
-    script: "Elke klik zet er een foto bij. Hier mag het even stil zijn.",
-  },
-  {
-    type: "verhaal",
-    foto: "familie-02.jpg",
-    kicker: "Thuis",
-    kop: "Christophe en Billie Rose",
-    tekst: [
-      "Billie Rose is haar dochter. Haar grootste trots.",
-      "Met Christophe is ze al meer dan tien jaar verloofd.",
-    ],
-    clou: "Lena organiseert de mooiste events. Haar eigen trouw? Daar denkt ze nog hardop over na.",
-    spreker: "Esmee",
-    script: "Met een glimlach brengen. Kijk naar Christophe als hij in de zaal zit.",
-  },
-  {
     type: "vraag",
     kicker: "Uit betrouwbare bron",
     vraag: "Wat zegt Lena thuis als ze moe is?",

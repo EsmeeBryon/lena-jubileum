@@ -259,11 +259,17 @@
     collage(s) {
       const v = el("section", "scherm s-foto");
       if (s.kop) v.appendChild(stapEl("h2", null, s.kop, 0));
+      const aantalRijen = s.fotos.length > 3 ? 2 : 1;
+      const perRij = Math.ceil(s.fotos.length / aantalRijen);
       const muur = el("div", "collage");
+      muur.style.setProperty("--per-rij", perRij);
+      muur.style.setProperty("--h", aantalRijen === 2 ? "29vh" : "50vh");
+      let rij = null;
       s.fotos.forEach((b, i) => {
+        if (i % perRij === 0) rij = muur.appendChild(el("div", "rij"));
         const f = fotolijst(b);
         f.dataset.stap = i + 1;
-        muur.appendChild(f);
+        rij.appendChild(f);
       });
       v.appendChild(muur);
       if (s.bijschrift) v.appendChild(stapEl("p", "bijschrift", s.bijschrift, s.fotos.length + 1));
