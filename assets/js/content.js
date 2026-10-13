@@ -18,12 +18,12 @@ const SHOW = [
   },
   {
     type: "audio",
-    kop: "Zeg eens, wat zeg je?",
-    bestand: "zeg-eens-wat-zeg-je.mp3",
+    kop: "Herken je deze stem?",
+    bestand: "stemmen-mix.mp3",
     spreker: "Mathias",
     script:
-      "Niets zeggen. Het fragment start vanzelf zodra je op dit scherm komt en duurt een halve minuut. " +
-      "Wie Lena kent, herkent haar meteen.",
+      "Niets zeggen. De stemmen starten vanzelf zodra je op dit scherm komt. Eerst een voor een, dan allemaal door elkaar. " +
+      "Het duurt ongeveer twintig seconden. Wie Lena kent, herkent haar meteen.",
   },
   {
     type: "citaat",
@@ -61,6 +61,13 @@ const SHOW = [
     antwoord: "Zeg het nog eens wat luider. Ze heeft het niet gehoord.",
     spreker: "Esmee",
     script: "Vraag het aan de hele zaal en laat de handen even in de lucht. Klik pas als het gelach gaat liggen.",
+  },
+  {
+    type: "audio",
+    kop: "Zeg eens, wat zeg je?",
+    bestand: "zeg-eens-wat-zeg-je.mp3",
+    spreker: "Esmee",
+    script: "Het liedje start vanzelf en duurt een halve minuut. Laat het volledig uitspelen.",
   },
   {
     type: "citaat",
