@@ -152,6 +152,8 @@ em { font-style: italic; color: var(--terra); }
   color: var(--klei);
 }
 
+.s-titel .onder { max-width: none; white-space: nowrap; }
+
 /* ---------- deelkaart ---------- */
 
 .s-deel { gap: 2.4vh; }
