@@ -6,6 +6,7 @@
   const podium = document.getElementById("podium");
   const balk = document.getElementById("voortgangBalk");
   const klokEl = document.getElementById("klok");
+  const nummerEl = document.getElementById("nummer");
   const zwartEl = document.getElementById("zwart");
   const hulpEl = document.getElementById("hulp");
   const springEl = document.getElementById("spring");
@@ -423,6 +424,7 @@
 
     index = nieuwIndex;
     stap = beginStap === "eind" ? huidig.max : 0;
+    document.body.classList.toggle("donker", s.type === "hoofdstuk" || (s.type === "foto" && !!s.vol));
 
     requestAnimationFrame(() => {
       huidig.v.classList.add("op");
@@ -449,6 +451,7 @@
 
   function pasVoortgangAan() {
     balk.style.width = ((index + 1) / SHOW.length) * 100 + "%";
+    nummerEl.textContent = index + 1 + " / " + SHOW.length;
   }
 
   function vooruit() {
@@ -525,6 +528,8 @@
       klokEl.classList.toggle("op", klokAan);
       if (!gestart) gestart = Date.now();
       tikTak();
+    } else if (e.key === "n" || e.key === "N") {
+      nummerEl.classList.toggle("uit");
     } else if (e.key === "g" || e.key === "G") {
       springIn.value = index + 1;
       springEl.classList.add("op");
