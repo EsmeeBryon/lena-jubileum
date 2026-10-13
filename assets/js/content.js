@@ -85,8 +85,24 @@ const SHOW = [
     spreker: "Esmee",
     script:
       "Elke klik legt een foto op de stapel. Lees de onderschriften gerust luidop mee. " +
-      "Bij de laatste foto even wachten.\n\n" +
-      "Tot ze uiteindelijk deed waar ze het best in is. Eventmanager.",
+      "Bij de laatste foto even wachten.",
+  },
+  {
+    type: "collage",
+    kop: "Tot ze eventmanager werd",
+    fotos: ["events-01.jpg", "events-02.jpg", "events-03.jpg", "events-04.jpg"],
+    bijschrift: "De AFAS Open.",
+    spreker: "Esmee",
+    script: "Elke klik zet er een foto bij.",
+  },
+  {
+    type: "verhaal",
+    foto: "events-06.jpg",
+    kicker: "Haar hart",
+    kop: "De inspiratiediners",
+    tekst: ["Met chefs zoals Seppe Nobels."],
+    spreker: "Esmee",
+    script: "De AFAS Open is het grootste. Maar haar hart ligt bij de inspiratiediners.",
   },
   {
     type: "reeks",
@@ -107,59 +123,24 @@ const SHOW = [
     nummer: 2,
     clip: "lena-b.mp4",
     titel: "Ik denk gewoon hardop na hé",
-    onder: "De eventqueen",
+    onder: "Lena aan het woord",
     spreker: "Gaëlle",
-    script:
-      "Wie al eens met Lena een event voorbereid heeft, kent deze zin. " +
-      "Daarna volgen meestal tien ideeën. Waarvan er elf doorgaan.",
-  },
-  {
-    type: "collage",
-    kop: "De AFAS Open",
-    fotos: ["events-01.jpg", "events-02.jpg", "events-03.jpg", "events-04.jpg"],
-    bijschrift: "Haar grootste event van het jaar. Klanten ontdekken wat er nieuw is in de software. Lena zorgt dat al de rest klopt.",
-    spreker: "Gaëlle",
-    script:
-      "Elke klik zet er een foto bij.\n\n" +
-      "Voor wie AFAS minder goed kent: de AFAS Open is ons grote klantenevent. " +
-      "Klanten komen ontdekken wat er nieuw is. En Lena zorgt ervoor dat ze zich er de hele dag welkom voelen.",
-  },
-  {
-    type: "lijst",
-    kop: "Een event volgens Lena",
-    regels: [
-      { tekst: "Stap één. Een idee." },
-      { tekst: "Stap twee. Hardop nadenken." },
-      { tekst: "Stap drie. Nog wat hardop nadenken." },
-      { tekst: "Stap vier. Iemand anders de naamkaartjes laten maken." },
-      { tekst: "Stap vijf. Het staat er. Alles klopt.", nadruk: true },
-    ],
-    spreker: "Gaëlle",
-    script: "Elke klik is een stap. Laat de zaal zelf lezen.",
-  },
-  {
-    type: "verhaal",
-    foto: "events-06.jpg",
-    kicker: "Haar hart",
-    kop: "De inspiratiediners",
-    tekst: [
-      "Samen met chefs zoals Seppe Nobels.",
-      "Lekker eten, mooie verhalen en chefs met een missie.",
-    ],
-    clou: "Hier haalt Lena het meeste uit. Dat zie je aan elke tafel.",
-    spreker: "Gaëlle",
-    script:
-      "De AFAS Open is het grootste. Maar als je Lena vraagt waar haar hart ligt, " +
-      "dan zijn het de inspiratiediners.",
+    script: "Lena zegt het altijd. Ook als er op dat moment niets na te denken valt.",
   },
   {
     type: "vraag",
     kicker: "Handen omhoog",
-    vraag: "Wie stond ooit naast Lena terwijl ze hardop aan het nadenken was?",
-    antwoord: "Dan weet je het. Onderweg klinkt het als chaos. Aan het eind klopt alles.",
-    foto: "events-12.jpg",
+    vraag: "Wie kreeg ooit een voice-message van Lena van meer dan vijf minuten?",
+    antwoord: "En wie heeft hem helemaal uitgeluisterd?",
     spreker: "Gaëlle",
-    script: "Laat de handen even in de lucht. Daarna het antwoord.",
+    script: "Laat de handen even in de lucht. Bij het antwoord zakken de meeste handen weer.",
+  },
+  {
+    type: "collage",
+    kop: "Geen voice-message? Dan een selfie.",
+    fotos: ["selfies-01.jpg", "selfies-02.jpg", "selfies-03.jpg", "selfies-04.jpg"],
+    spreker: "Gaëlle",
+    script: "Elke klik zet er een selfie bij.",
   },
 
   /* ============================================================ hoofdstuk 3 */

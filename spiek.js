@@ -114,6 +114,7 @@ const html = `<!DOCTYPE html>
     <dt>B</dt><dd>scherm op zwart, elke toets haalt het terug</dd>
     <dt>F</dt><dd>volledig scherm aan of uit</dd>
     <dt>T</dt><dd>klok tonen, wordt rood na vijftien minuten</dd>
+    <dt>N</dt><dd>schermnummer linksonder tonen of verbergen</dd>
     <dt>G</dt><dd>springen naar een schermnummer</dd>
   </dl>
 </div>

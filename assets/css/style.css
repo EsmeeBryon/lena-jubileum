@@ -521,6 +521,22 @@ em { font-style: italic; color: var(--terra); }
 .klok.op { opacity: 1; }
 .klok.over { color: #fff; background: var(--terra); }
 
+.nummer {
+  position: fixed;
+  left: 1.4rem;
+  bottom: 1.1rem;
+  z-index: 51;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--inkt-zacht);
+  opacity: 0.55;
+}
+
+.nummer.uit { display: none; }
+body.donker .nummer { color: var(--papier-licht); }
+
 .zwart {
   position: fixed;
   inset: 0;
