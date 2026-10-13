@@ -147,7 +147,7 @@
     citaat(s) {
       const v = el("section", "scherm s-citaat");
       v.appendChild(stapEl("blockquote", null, s.tekst, 0));
-      v.appendChild(stapEl("p", "bron", s.bron, 0));
+      if (s.bron) v.appendChild(stapEl("p", "bron", s.bron, 0));
       if (s.naklap) v.appendChild(stapEl("p", "groot", s.naklap, 1));
       return { v };
     },
@@ -168,10 +168,10 @@
       return { v };
     },
 
-    // Fragment van Lena zelf, daarna verschijnt haar zin als hoofdstuktitel.
+    // Fragment van Lena zelf, daarna een grap over wat ze net zei.
     hoofdstuk(s) {
       const v = el("section", "scherm s-hoofdstuk");
-      v.appendChild(stapEl("p", "kicker", "Hoofdstuk " + s.nummer, 0));
+      v.appendChild(stapEl("h2", "hoofdstuktitel", s.titel, 0));
 
       const lijst = el("div", "lijst clip");
       lijst.dataset.stap = 0;
@@ -182,8 +182,7 @@
       lijst.appendChild(film);
       v.appendChild(lijst);
 
-      v.appendChild(stapEl("h2", "citaattitel", "\u201C" + s.titel + "\u201D", 1));
-      if (s.onder) v.appendChild(stapEl("p", "onder", s.onder, 1));
+      if (s.grap) v.appendChild(stapEl("p", "hoofdstukgrap", s.grap, 1));
 
       film.addEventListener("ended", () => naarStap(v, 1));
       return {
@@ -292,7 +291,7 @@
       const regels = el("div", "uitspraken");
       (s.regels || []).forEach((r, i) => regels.appendChild(stapEl("p", null, "\u201C" + r + "\u201D", i + 1)));
       v.appendChild(regels);
-      if (s.onder) v.appendChild(stapEl("p", "onder", s.onder, 1));
+      if (s.onder) v.appendChild(stapEl("p", "onder", s.onder, 0));
 
       const waarschuwing = stapEl("p", "ontbreekt", "Audiofragment ontbreekt nog", 0);
       waarschuwing.hidden = true;

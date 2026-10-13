@@ -28,7 +28,6 @@ const SHOW = [
   {
     type: "citaat",
     tekst: "We zijn hier niet om vrienden te maken hé mannekes.",
-    bron: "Lena, in haar eerste jaren bij AFAS",
     naklap: "Jokes on you.",
     spreker: "Britt",
     script:
@@ -39,7 +38,7 @@ const SHOW = [
       "[KLIK]\n\n" +
       "Tja. Jokes on you. Twaalf en een half jaar, duizenden voice-messages, een shoppingverslaving " +
       "waar bol.com een standbeeld voor mag zetten en ontelbare rookpauzes later zijn we toch echte vrienden geworden.\n\n" +
-      "Vandaag vertellen we jouw verhaal. In vijf hoofdstukken. De titels heb je zelf geschreven.",
+      "Vandaag vertellen we jouw verhaal. Met jouw eigen woorden.",
   },
 
   /* ============================================================ hoofdstuk 1 */
@@ -47,11 +46,12 @@ const SHOW = [
     type: "hoofdstuk",
     nummer: 1,
     clip: "lena-a.mp4",
-    titel: "Wat zeg je?",
-    onder: "Waar het allemaal begon",
+    titel: "Waar het begon",
+    zin: "Wat zeg je?",
+    grap: "Want hè zeggen, dat doet een beleefde dame niet.",
     spreker: "Esmee",
     script:
-      "Het fragment speelt vanzelf. Daarna verschijnt de titel ook vanzelf.\n\n" +
+      "Het fragment speelt vanzelf. Daarna verschijnt de grap ook vanzelf.\n\n" +
       "Twee woorden die iedereen in deze zaal al van Lena gehoord heeft. Meestal meerdere keren per dag.",
   },
   {
@@ -65,9 +65,12 @@ const SHOW = [
   {
     type: "audio",
     kop: "Zeg eens, wat zeg je?",
+    onder: "Ze zegt het zo vaak dat we er een liedje van gemaakt hebben.",
     bestand: "zeg-eens-wat-zeg-je.mp3",
     spreker: "Esmee",
-    script: "Het liedje start vanzelf en duurt een halve minuut. Laat het volledig uitspelen.",
+    script:
+      "Lena zegt het zo vaak dat we er met AI een liedje van gemaakt hebben. " +
+      "Het start vanzelf en duurt een halve minuut. Laat het volledig uitspelen.",
   },
   {
     type: "citaat",
@@ -129,10 +132,11 @@ const SHOW = [
     type: "hoofdstuk",
     nummer: 2,
     clip: "lena-b.mp4",
-    titel: "Ik denk gewoon hardop na hé",
-    onder: "Lena aan het woord",
+    titel: "Lena aan het woord",
+    zin: "Ik denk gewoon hardop na hé",
+    grap: "Ook als er niets na te denken valt.",
     spreker: "Gaëlle",
-    script: "Lena zegt het altijd. Ook als er op dat moment niets na te denken valt.",
+    script: "Het fragment speelt vanzelf, de grap volgt vanzelf. Niets zeggen tot de grap er staat.",
   },
   {
     type: "vraag",
@@ -155,10 +159,11 @@ const SHOW = [
     type: "hoofdstuk",
     nummer: 3,
     clip: "lena-c.mp4",
-    titel: "Ik had dat toch al gezegd?",
-    onder: "Over agenda's en administratie",
+    titel: "Agenda's en administratie",
+    zin: "Ik had dat toch al gezegd?",
+    grap: "Ja Lena. Alleen niet tegen ons.",
     spreker: "Esmee",
-    script: "Ja Lena. Dat had je gezegd. Alleen niet tegen ons.",
+    script: "Het fragment speelt vanzelf, de grap volgt vanzelf.",
   },
   {
     type: "vraag",
@@ -221,10 +226,11 @@ const SHOW = [
     type: "hoofdstuk",
     nummer: 4,
     clip: "lena-e.mp4",
-    titel: "Ik heb daar geen headspace voor",
-    onder: "Mommy on the loose",
+    titel: "Mommy on the loose",
+    zin: "Ik heb daar geen headspace voor",
+    grap: "Voor administratie niet. Voor een feestje altijd.",
     spreker: "Gaëlle",
-    script: "Na de titel klik je door naar het lachfragment. Niets zeggen.",
+    script: "Het fragment speelt vanzelf, de grap volgt vanzelf. Daarna klik je door naar het lachfragment.",
   },
   {
     type: "video",
@@ -313,10 +319,13 @@ const SHOW = [
     type: "hoofdstuk",
     nummer: 5,
     clip: "lena-d.mp4",
-    titel: "We zijn hier niet om vrienden te maken",
-    onder: "Jokes on you",
+    titel: "Echte vrienden",
+    zin: "We zijn hier niet om vrienden te maken",
+    grap: "Jokes on you.",
     spreker: "Esmee",
-    script: "De toon verandert hier. Rustiger praten, trager klikken.",
+    script:
+      "Dezelfde zin als bij het begin van Britt, nu uit Lena's eigen mond. " +
+      "De toon verandert hier. Rustiger praten, trager klikken.",
   },
   {
     type: "collage",
