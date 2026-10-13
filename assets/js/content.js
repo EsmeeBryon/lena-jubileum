@@ -10,7 +10,7 @@ const SHOW = [
     kicker: "29 oktober 2026",
     titel: "Lena",
     jaren: "twaalf en een half jaar AFAS",
-    onder: "Welkom \u00B7 Bienvenue \u00B7 Benvenuti",
+    onder: "Welkom \u00B7 Welcome \u00B7 Bienvenue \u00B7 Benvenuti",
     spreker: "—",
     script:
       "Dit scherm staat op terwijl iedereen binnenkomt. Zorg dat Lena vooraan zit, met goed zicht op het scherm. " +
