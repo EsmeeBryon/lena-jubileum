@@ -151,40 +151,91 @@
       return { v };
     },
 
+    // Een open vraag aan de hele zaal. Geen keuzes, geen winnaar.
     vraag(s) {
-      const v = el("section", "scherm s-vraag");
+      const v = el("section", "scherm s-vraag" + (s.foto ? " met-foto" : ""));
       if (s.foto) {
         const f = fotolijst(s.foto);
         f.dataset.stap = 0;
         v.appendChild(f);
       }
-      v.appendChild(stapEl("h2", "vraagtekst", s.vraag, 0));
+      const tekst = el("div", "vraagkolom");
+      tekst.appendChild(stapEl("p", "kicker", s.kicker || "Vraag aan de zaal", 0));
+      tekst.appendChild(stapEl("h2", "vraagtekst", s.vraag, 0));
+      if (s.antwoord) tekst.appendChild(stapEl("p", "antwoord", s.antwoord, 1));
+      v.appendChild(tekst);
+      return { v };
+    },
 
-      const lijst = el("div", "keuzes");
-      const knoppen = s.keuzes.map((tekst, i) => {
-        const k = el("div", "keuze");
-        k.dataset.stap = 1;
-        k.appendChild(el("span", "letter", "ABC"[i]));
-        k.appendChild(el("span", null, tekst));
-        lijst.appendChild(k);
-        return k;
-      });
+    // Fragment van Lena zelf, daarna verschijnt haar zin als hoofdstuktitel.
+    hoofdstuk(s) {
+      const v = el("section", "scherm s-hoofdstuk");
+      v.appendChild(stapEl("p", "kicker", "Hoofdstuk " + s.nummer, 0));
+
+      const lijst = el("div", "lijst clip");
+      lijst.dataset.stap = 0;
+      const film = document.createElement("video");
+      film.src = VIDEOPAD + s.clip;
+      film.playsInline = true;
+      film.preload = "auto";
+      lijst.appendChild(film);
       v.appendChild(lijst);
-      v.appendChild(stapEl("p", "antwoord", s.antwoord, 2));
 
+      v.appendChild(stapEl("h2", "citaattitel", "\u201C" + s.titel + "\u201D", 1));
+      if (s.onder) v.appendChild(stapEl("p", "onder", s.onder, 1));
+
+      film.addEventListener("ended", () => naarStap(v, 1));
       return {
         v,
         bijStap(n) {
-          knoppen.forEach((k, i) => {
-            k.classList.toggle("juist", n >= 2 && i === s.juist);
-            k.classList.toggle("mis", n >= 2 && i !== s.juist);
-          });
-          if (n === 2) {
-            const r = knoppen[s.juist].getBoundingClientRect();
-            confetti(26, r.left + r.width / 2, r.top + r.height / 2, 0.8);
-          }
+          if (n === 0) { film.currentTime = 0; film.play().catch(() => {}); }
         },
+        weg() { film.pause(); },
       };
+    },
+
+    // Foto's die een voor een op een stapel vallen, elk met een eigen onderschrift.
+    reeks(s) {
+      const v = el("section", "scherm s-reeks");
+      if (s.kop) v.appendChild(stapEl("h2", "reekskop", s.kop, 0));
+      const stapel = el("div", "stapel");
+      const onder = el("div", "reeksonder");
+      const draai = [-3.5, 2.8, -1.6, 3.6, -2.6, 1.4, -3, 2.2];
+      s.items.forEach((item, i) => {
+        const p = el("div", "polaroid");
+        p.dataset.stap = i + 1;
+        p.style.setProperty("--draai", draai[i % draai.length] + "deg");
+        p.style.setProperty("--schuif", (i % 2 ? 1 : -1) * Math.min(i, 3) * 1.2 + "vw");
+        const img = el("img");
+        img.src = fotoPad(item.foto);
+        img.alt = "";
+        p.appendChild(img);
+        stapel.appendChild(p);
+        if (item.tekst) {
+          const t = el("p", "reekstekst", item.tekst);
+          t.dataset.stap = i + 1;
+          t.dataset.alleen = "";
+          onder.appendChild(t);
+        }
+      });
+      v.appendChild(stapel);
+      v.appendChild(onder);
+      return { v };
+    },
+
+    // Foto links, verhaal rechts.
+    verhaal(s) {
+      const v = el("section", "scherm s-verhaal");
+      const f = fotolijst(s.foto);
+      f.dataset.stap = 0;
+      v.appendChild(f);
+      const kolom = el("div", "verhaalkolom");
+      if (s.kicker) kolom.appendChild(stapEl("p", "kicker", s.kicker, 0));
+      if (s.kop) kolom.appendChild(stapEl("h2", null, s.kop, 0));
+      (s.tekst || []).forEach((t, i) => kolom.appendChild(stapEl("p", "verhaaltekst", t, i + 1)));
+      if (s.clou) kolom.appendChild(stapEl("p", "antwoord", s.clou, (s.tekst || []).length + 1));
+      v.appendChild(kolom);
+      return { v };
     },
 
     foto(s) {
@@ -238,8 +289,9 @@
       let beweging = null;
 
       const regels = el("div", "uitspraken");
-      s.regels.forEach((r, i) => regels.appendChild(stapEl("p", null, "\u201C" + r + "\u201D", i + 1)));
+      (s.regels || []).forEach((r, i) => regels.appendChild(stapEl("p", null, "\u201C" + r + "\u201D", i + 1)));
       v.appendChild(regels);
+      if (s.onder) v.appendChild(stapEl("p", "onder", s.onder, 1));
 
       const waarschuwing = stapEl("p", "ontbreekt", "Audiofragment ontbreekt nog", 0);
       waarschuwing.hidden = true;
@@ -280,7 +332,7 @@
     },
 
     video(s) {
-      const v = el("section", "scherm s-video");
+      const v = el("section", "scherm s-video" + (s.kop ? " met-kop" : ""));
       if (s.kop) v.appendChild(stapEl("h2", null, s.kop, 0));
       const lijst = el("div", "lijst");
       lijst.dataset.stap = 0;
@@ -291,6 +343,16 @@
       film.preload = "auto";
       lijst.appendChild(film);
       v.appendChild(lijst);
+      if (s.onder) v.appendChild(stapEl("p", "bijschrift", s.onder, 1));
+
+      const waarschuwing = stapEl("p", "ontbreekt", "Filmpje ontbreekt nog", 0);
+      waarschuwing.hidden = true;
+      v.appendChild(waarschuwing);
+      film.addEventListener("error", () => {
+        waarschuwing.hidden = false;
+        lijst.hidden = true;
+      });
+
       return {
         v,
         bijStap(n) { if (n === 0) film.play().catch(() => {}); },
@@ -306,6 +368,15 @@
         const p = stapEl("p", "regel" + (r.refrein ? " refrein" : ""), r.tekst, i + 1);
         v.appendChild(p);
       });
+      return { v };
+    },
+
+    // Zinnen die een voor een verschijnen, onder een grote titel.
+    lijst(s) {
+      const v = el("section", "scherm s-liedje");
+      if (s.kicker) v.appendChild(stapEl("p", "kicker", s.kicker, 0));
+      v.appendChild(stapEl("h2", "lijstkop", s.kop, 0));
+      s.regels.forEach((r, i) => v.appendChild(stapEl("p", "regel" + (r.nadruk ? " refrein" : ""), r.tekst, i + 1)));
       return { v };
     },
 
@@ -362,9 +433,18 @@
 
   function pasStapToe() {
     huidig.v.querySelectorAll("[data-stap]").forEach((n) => {
-      n.classList.toggle("zichtbaar", Number(n.dataset.stap) <= stap);
+      const nr = Number(n.dataset.stap);
+      const aan = n.dataset.alleen != null ? nr === stap : nr <= stap;
+      n.classList.toggle("zichtbaar", aan);
     });
     if (huidig.bijStap) huidig.bijStap(stap);
+  }
+
+  // Laat een scherm zelf doorschuiven, bv. wanneer een fragment gedaan is.
+  function naarStap(scherm, n) {
+    if (!huidig || huidig.v !== scherm || stap >= n) return;
+    stap = n;
+    pasStapToe();
   }
 
   function pasVoortgangAan() {

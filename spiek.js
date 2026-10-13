@@ -20,28 +20,30 @@ function opScherm(s) {
     case "titel": return `Titelbeeld: ${s.titel} &middot; ${s.jaren}`;
     case "deel": return `Rondekaart ${s.nummer}: ${s.titel}`;
     case "citaat": return `Citaat: &ldquo;${s.tekst}&rdquo;` + (s.naklap ? ` &rarr; ${s.naklap}` : "");
-    case "vraag": return `Vraag: ${s.vraag}`;
+    case "vraag": return `Vraag aan de zaal: ${s.vraag}`;
+    case "hoofdstuk": return `Hoofdstuk ${s.nummer}: fragment ${s.clip}, daarna &ldquo;${s.titel}&rdquo;`;
+    case "reeks": return `Fotostapel${s.kop ? ` &ldquo;${s.kop}&rdquo;` : ""}, ${s.items.length} foto's`;
+    case "verhaal": return `Foto ${s.foto} met het verhaal &ldquo;${s.kop}&rdquo;`;
     case "foto": return `Foto ${s.foto}` + (s.kop ? ` met de tekst &ldquo;${s.kop}&rdquo;` : "");
     case "collage": return `Collage van ${s.fotos.length} foto's`;
-    case "audio": return `Audiofragment ${s.bestand}, met ${s.regels.length} uitspraken`;
+    case "audio": return `Audiofragment ${s.bestand}` + (s.regels ? `, met ${s.regels.length} uitspraken` : "");
     case "video": return `Filmpje ${s.bestand}`;
     case "liedje": return `Songtekst, ${s.regels.length} regels`;
+    case "lijst": return `Titel &ldquo;${s.kop}&rdquo; met ${s.regels.length} zinnen`;
     case "slot": return `Slotbeeld: ${s.kop}`;
     default: return s.type;
   }
 }
 
 function stappen(s) {
-  if (s.type === "vraag") {
-    return [
-      "foto en vraag staan op het scherm",
-      "de drie antwoorden verschijnen",
-      `het juiste antwoord licht groen op: ${s.keuzes[s.juist]}`,
-    ];
-  }
+  if (s.type === "vraag") return s.antwoord ? ["vraag staat op het scherm", `antwoord: ${s.antwoord}`] : null;
+  if (s.type === "hoofdstuk") return ["fragment speelt", `titel verschijnt vanzelf: ${s.titel}`];
+  if (s.type === "reeks") return s.items.map((x) => `${x.foto}: ${x.tekst || ""}`);
+  if (s.type === "verhaal") return ["foto en titel"].concat(s.tekst || [], s.clou ? [`clou: ${s.clou}`] : []);
+  if (s.type === "video" && s.onder) return ["filmpje speelt", `onderschrift: ${s.onder}`];
   if (s.type === "collage") return s.fotos.map((f, i) => `foto ${i + 1} erbij (${f})`).concat("bijschrift");
-  if (s.type === "liedje") return s.regels.map((r) => `regel: ${r.tekst}`);
-  if (s.type === "audio") return ["fragment start"].concat(s.regels.map((r) => `zin erbij: ${r}`));
+  if (s.type === "liedje" || s.type === "lijst") return s.regels.map((r) => `regel: ${r.tekst}`);
+  if (s.type === "audio") return ["fragment start"].concat((s.regels || []).map((r) => `zin erbij: ${r}`));
   if (s.type === "citaat") return ["citaat staat er", s.naklap ? `naklap: ${s.naklap}` : null].filter(Boolean);
   return null;
 }

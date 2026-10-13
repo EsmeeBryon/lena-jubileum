@@ -226,74 +226,124 @@ em { font-style: italic; color: var(--terra); }
 
 .collage ~ .bijschrift { max-width: 52ch; }
 
-/* ---------- vraag ---------- */
+/* ---------- vraag aan de zaal ---------- */
 
-.s-vraag { gap: 3vh; justify-content: center; }
+.s-vraag { gap: 5vw; flex-direction: row; }
+.s-vraag .vraagkolom { display: flex; flex-direction: column; align-items: center; gap: 3vh; }
+.s-vraag.met-foto .vraagkolom { align-items: flex-start; text-align: left; flex: 1 1 0; }
 
 .s-vraag .vraagtekst {
   font-family: var(--serif);
   font-weight: 600;
-  font-size: clamp(1.5rem, 3.8vw, 3.4rem);
-  line-height: 1.12;
-  max-width: 24ch;
+  font-size: clamp(1.7rem, 4.4vw, 4.2rem);
+  line-height: 1.08;
+  max-width: 20ch;
   text-wrap: balance;
 }
 
-.s-vraag .lijst { max-height: 34vh; }
-.s-vraag .lijst img { max-height: 34vh; }
-
-.keuzes {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1vh;
-  width: min(880px, 78vw);
-}
-
-.keuze {
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  padding: 1.1vh 1.6rem;
-  border: 2px solid rgba(42, 37, 32, 0.14);
-  border-radius: 999px;
-  background: var(--papier-licht);
-  font-size: clamp(0.95rem, 1.8vw, 1.6rem);
-  text-align: left;
-  transition: background 320ms var(--soepel), border-color 320ms var(--soepel),
-              transform 320ms var(--soepel), opacity 320ms var(--soepel);
-}
-
-.keuze .letter {
-  flex: 0 0 auto;
-  width: 2.1em;
-  height: 2.1em;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: rgba(196, 97, 60, 0.12);
-  color: var(--terra);
-  font-family: var(--serif);
-  font-weight: 700;
-}
-
-.keuze.juist {
-  background: var(--salie);
-  border-color: var(--salie);
-  color: #fff;
-  transform: scale(1.035);
-}
-
-.keuze.juist .letter { background: rgba(255, 255, 255, 0.25); color: #fff; }
-.keuze.mis { opacity: 0.32; }
+.s-vraag .lijst { flex: 0 1 auto; max-height: 72vh; max-width: 42vw; rotate: -1.5deg; }
+.s-vraag .lijst img { max-height: 72vh; }
 
 .antwoord {
   font-family: var(--serif);
   font-weight: 600;
+  font-style: italic;
   font-size: clamp(1.2rem, 2.8vw, 2.6rem);
+  line-height: 1.2;
   color: var(--terra);
-  max-width: 28ch;
+  max-width: 26ch;
   text-wrap: balance;
 }
+
+/* ---------- hoofdstuk ---------- */
+
+.s-hoofdstuk {
+  gap: 2.6vh;
+  background: var(--terra);
+  color: var(--papier-licht);
+}
+
+.s-hoofdstuk .kicker { color: rgba(251, 246, 239, 0.8); }
+.s-hoofdstuk .onder { color: rgba(251, 246, 239, 0.85); }
+
+.s-hoofdstuk .clip {
+  width: min(60vw, 100vh);
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  box-shadow: 0 2vh 6vh rgba(40, 16, 6, 0.35);
+}
+
+.s-hoofdstuk .clip video { width: 100%; height: 100%; object-fit: cover; max-height: none; }
+
+.citaattitel {
+  font-style: italic;
+  font-size: clamp(2rem, 5.2vw, 5rem);
+}
+
+/* ---------- reeks ---------- */
+
+.s-reeks { gap: 2.4vh; justify-content: center; }
+.reekskop { font-size: clamp(1.6rem, 3.6vw, 3.2rem); }
+
+.stapel {
+  position: relative;
+  width: 80vw;
+  height: 60vh;
+}
+
+.polaroid {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 1.1vh 1.1vh 3.6vh;
+  background: #fffdf9;
+  border-radius: 3px;
+  box-shadow: 0 1.4vh 4vh rgba(42, 37, 32, 0.28);
+  translate: calc(-50% + var(--schuif, 0)) -50%;
+  rotate: var(--draai, 0deg);
+}
+
+.polaroid img { display: block; max-height: 52vh; max-width: 54vw; }
+
+.polaroid[data-stap] { transform: translateY(-6vh) scale(1.08); }
+.polaroid[data-stap].zichtbaar { transform: none; }
+
+.reeksonder { position: relative; height: 8vh; width: 80vw; }
+
+.reekstekst {
+  position: absolute;
+  inset: 0;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 2.8vw, 2.6rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* ---------- verhaal ---------- */
+
+.s-verhaal { flex-direction: row; gap: 5vw; text-align: left; }
+.s-verhaal .lijst { flex: 0 1 auto; max-height: 76vh; max-width: 44vw; rotate: 1.2deg; }
+.s-verhaal .lijst img { max-height: 76vh; }
+
+.verhaalkolom {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.4vh;
+  max-width: 42vw;
+}
+
+.verhaalkolom h2 { font-size: clamp(1.8rem, 4.2vw, 4rem); }
+
+.verhaaltekst {
+  font-size: clamp(1rem, 1.9vw, 1.7rem);
+  line-height: 1.45;
+  color: var(--inkt-zacht);
+  max-width: 34ch;
+}
+
 
 /* ---------- citaat ---------- */
 
@@ -366,9 +416,11 @@ em { font-style: italic; color: var(--terra); }
 
 /* ---------- video ---------- */
 
-.s-video { padding: 0; }
-.s-video .lijst { max-height: 88vh; max-width: 92vw; border-radius: 4px; }
-.s-video video { max-height: 88vh; }
+.s-video { padding: 3vh 4vw; gap: 2vh; }
+.s-video .lijst { max-height: 80vh; max-width: 92vw; border-radius: 4px; }
+.s-video video { max-height: 80vh; }
+.s-video.met-kop h2 { font-size: clamp(1.4rem, 3.2vw, 3rem); }
+.s-video.met-kop .lijst, .s-video.met-kop video { max-height: 72vh; }
 
 /* ---------- liedje ---------- */
 
@@ -384,6 +436,7 @@ em { font-style: italic; color: var(--terra); }
 }
 
 .s-liedje .regel.refrein { color: var(--terra); font-style: italic; }
+.s-liedje .lijstkop { margin-bottom: 2vh; }
 
 /* ---------- slot ---------- */
 

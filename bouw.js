@@ -15,11 +15,17 @@ async function main() {
   fs.rmSync(UIT, { recursive: true, force: true });
   fs.mkdirSync(MEDIA, { recursive: true });
 
-  /* ---- foto's: nog eens terugschalen, anders wordt het bestand te zwaar ---- */
+  const SHOW = new Function(lees("assets/js/content.js") + "\nreturn SHOW;")();
+
+  /* ---- foto's: enkel de gebruikte, nog eens teruggeschaald ---- */
   const fotoMap = path.join(__dirname, "assets", "foto");
+  const gebruikt = new Set(
+    SHOW.flatMap((s) => [s.foto, ...(s.fotos || []), ...(s.items || []).map((x) => x.foto)]).filter(Boolean)
+  );
   const fotos = {};
   let fotoBytes = 0;
-  for (const bestand of fs.readdirSync(fotoMap).sort()) {
+  for (const bestand of [...gebruikt].sort()) {
+    if (!fs.existsSync(path.join(fotoMap, bestand))) { console.log(`! foto bestaat niet: ${bestand}`); continue; }
     const buffer = await sharp(path.join(fotoMap, bestand))
       .resize(1280, 1280, { fit: "inside", withoutEnlargement: true })
       .jpeg({ quality: 74, mozjpeg: true })
@@ -40,11 +46,14 @@ async function main() {
   }
 
   /* ---- filmpjes blijven los, anders opent het bestand veel te traag ---- */
+  const nodig = new Set(SHOW.map((s) => s.clip || (s.type === "video" && s.bestand)).filter(Boolean));
   const videoMap = path.join(__dirname, "assets", "video");
   let videoBytes = 0;
-  for (const bestand of fs.readdirSync(videoMap)) {
-    fs.copyFileSync(path.join(videoMap, bestand), path.join(MEDIA, bestand));
-    videoBytes += fs.statSync(path.join(videoMap, bestand)).size;
+  for (const bestand of nodig) {
+    const bron = path.join(videoMap, bestand);
+    if (!fs.existsSync(bron)) { console.log(`! filmpje ontbreekt nog: ${bestand}`); continue; }
+    fs.copyFileSync(bron, path.join(MEDIA, bestand));
+    videoBytes += fs.statSync(bron).size;
   }
 
   /* ---- lettertypes in de stijl bakken ---- */
