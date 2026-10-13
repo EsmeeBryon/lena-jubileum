@@ -21,7 +21,7 @@ function opScherm(s) {
     case "deel": return `Rondekaart ${s.nummer}: ${s.titel}`;
     case "citaat": return `Citaat: &ldquo;${s.tekst}&rdquo;` + (s.naklap ? ` &rarr; ${s.naklap}` : "");
     case "vraag": return `Vraag aan de zaal: ${s.vraag}`;
-    case "hoofdstuk": return `Hoofdstuk ${s.nummer}: fragment ${s.clip}, daarna &ldquo;${s.titel}&rdquo;`;
+    case "hoofdstuk": return `${s.titel}: fragment ${s.clip} (&ldquo;${s.zin}&rdquo;), daarna &ldquo;${s.grap}&rdquo;`;
     case "reeks": return `Fotostapel${s.kop ? ` &ldquo;${s.kop}&rdquo;` : ""}, ${s.items.length} foto's`;
     case "verhaal": return `Foto ${s.foto} met het verhaal &ldquo;${s.kop}&rdquo;`;
     case "foto": return `Foto ${s.foto}` + (s.kop ? ` met de tekst &ldquo;${s.kop}&rdquo;` : "");
@@ -37,7 +37,7 @@ function opScherm(s) {
 
 function stappen(s) {
   if (s.type === "vraag") return s.antwoord ? ["vraag staat op het scherm", `antwoord: ${s.antwoord}`] : null;
-  if (s.type === "hoofdstuk") return ["fragment speelt", `titel verschijnt vanzelf: ${s.titel}`];
+  if (s.type === "hoofdstuk") return ["titel staat er, fragment speelt", `grap verschijnt vanzelf: ${s.grap}`];
   if (s.type === "reeks") return s.items.map((x) => `${x.foto}: ${x.tekst || ""}`);
   if (s.type === "verhaal") return ["foto en titel"].concat(s.tekst || [], s.clou ? [`clou: ${s.clou}`] : []);
   if (s.type === "video" && s.onder) return ["filmpje speelt", `onderschrift: ${s.onder}`];
