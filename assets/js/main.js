@@ -263,7 +263,7 @@
       const perRij = Math.ceil(s.fotos.length / aantalRijen);
       const muur = el("div", "collage");
       muur.style.setProperty("--per-rij", perRij);
-      muur.style.setProperty("--h", aantalRijen === 2 ? "29vh" : "50vh");
+      muur.style.setProperty("--h", aantalRijen === 1 ? "50vh" : perRij >= 4 ? "27vh" : "29vh");
       let rij = null;
       s.fotos.forEach((b, i) => {
         if (i % perRij === 0) rij = muur.appendChild(el("div", "rij"));
