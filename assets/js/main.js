@@ -152,6 +152,16 @@
       return { v };
     },
 
+    // Grote tekst, optioneel met een regel die er pas na een klik bij komt.
+    kaart(s) {
+      const v = el("section", "scherm s-kaart");
+      if (s.kicker) v.appendChild(stapEl("p", "kicker", s.kicker, 0));
+      v.appendChild(stapEl("h2", "kaartkop", s.kop, 0));
+      if (s.onder) v.appendChild(stapEl("p", "onder", s.onder, 0));
+      if (s.clou) v.appendChild(stapEl("p", "antwoord", s.clou, 1));
+      return { v };
+    },
+
     // Een open vraag aan de hele zaal. Geen keuzes, geen winnaar.
     vraag(s) {
       const v = el("section", "scherm s-vraag" + (s.foto ? " met-foto" : ""));
@@ -168,10 +178,11 @@
       return { v };
     },
 
-    // Fragment van Lena zelf, daarna een grap over wat ze net zei.
+    // Fragment van Lena zelf. Met 'wacht' start het pas na een klik. Daarna optioneel een grap.
     hoofdstuk(s) {
       const v = el("section", "scherm s-hoofdstuk");
-      v.appendChild(stapEl("h2", "hoofdstuktitel", s.titel, 0));
+      if (s.titel) v.appendChild(stapEl("h2", "hoofdstuktitel", s.titel, 0));
+      const speelStap = s.wacht ? 1 : 0;
 
       const lijst = el("div", "lijst clip");
       lijst.dataset.stap = 0;
@@ -182,13 +193,14 @@
       lijst.appendChild(film);
       v.appendChild(lijst);
 
-      if (s.grap) v.appendChild(stapEl("p", "hoofdstukgrap", s.grap, 1));
-
-      film.addEventListener("ended", () => naarStap(v, 1));
+      if (s.grap) {
+        v.appendChild(stapEl("p", "hoofdstukgrap", s.grap, speelStap + 1));
+        film.addEventListener("ended", () => naarStap(v, speelStap + 1));
+      }
       return {
         v,
         bijStap(n) {
-          if (n === 0) { film.currentTime = 0; film.play().catch(() => {}); }
+          if (n === speelStap) { film.currentTime = 0; film.play().catch(() => {}); }
         },
         weg() { film.pause(); },
       };
@@ -256,23 +268,31 @@
       return { v };
     },
 
+    // fotos: ["a.jpg"] of items: [{ foto, tekst }]. auto: "meteen" of "klik" laat alles vanzelf na elkaar verschijnen.
     collage(s) {
       const v = el("section", "scherm s-foto");
       if (s.kop) v.appendChild(stapEl("h2", null, s.kop, 0));
-      const aantalRijen = s.fotos.length > 3 ? 2 : 1;
-      const perRij = Math.ceil(s.fotos.length / aantalRijen);
-      const muur = el("div", "collage");
+      const items = s.items || s.fotos.map((foto) => ({ foto }));
+      const aantalRijen = items.length > 3 ? 2 : 1;
+      const perRij = Math.ceil(items.length / aantalRijen);
+      const muur = el("div", "collage" + (s.items ? " met-tekst" : ""));
       muur.style.setProperty("--per-rij", perRij);
-      muur.style.setProperty("--h", aantalRijen === 1 ? "50vh" : perRij >= 4 ? "27vh" : "29vh");
+      const h = aantalRijen === 1 ? 50 : perRij >= 4 ? 27 : 29;
+      muur.style.setProperty("--h", (s.items ? h - 5 : h) + "vh");
+      const autoStap = s.auto === "klik" ? 1 : 0;
       let rij = null;
-      s.fotos.forEach((b, i) => {
+      items.forEach((item, i) => {
         if (i % perRij === 0) rij = muur.appendChild(el("div", "rij"));
-        const f = fotolijst(b);
-        f.dataset.stap = i + 1;
-        rij.appendChild(f);
+        const blok = el("figure", "figuur");
+        blok.appendChild(fotolijst(item.foto));
+        if (item.tekst) blok.appendChild(el("figcaption", "fototekst", item.tekst));
+        blok.dataset.stap = s.auto ? autoStap : i + 1;
+        if (s.auto) blok.style.transitionDelay = i * 0.55 + "s";
+        rij.appendChild(blok);
       });
       v.appendChild(muur);
-      if (s.bijschrift) v.appendChild(stapEl("p", "bijschrift", s.bijschrift, s.fotos.length + 1));
+      const naFoto = s.auto ? autoStap + 1 : items.length + 1;
+      if (s.bijschrift) v.appendChild(stapEl("p", "bijschrift", s.bijschrift, naFoto));
       return { v };
     },
 
