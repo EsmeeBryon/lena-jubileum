@@ -111,8 +111,7 @@ const SHOW = [
   {
     type: "collage",
     kop: "Tot ze eventmanager werd",
-    fotos: ["events-01.jpg", "events-02.jpg", "events-03.jpg", "events-04.jpg"],
-    bijschrift: "De AFAS Open.",
+    fotos: ["events-01.jpg", "events-02.jpg", "events-03.jpg", "events-09.jpg", "events-10.jpg", "events-15.jpg", "events-16.jpg", "events-18.jpg"],
     spreker: "Esmee",
     script: "Elke klik zet er een foto bij.",
   },
@@ -160,7 +159,7 @@ const SHOW = [
   {
     type: "collage",
     kop: "Geen voice-message? Dan een selfie.",
-    fotos: ["selfies-01.jpg", "selfies-02.jpg", "selfies-03.jpg", "selfies-04.jpg"],
+    fotos: ["selfies-01.jpg", "selfies-02.jpg", "selfies-03.jpg", "selfies-04.jpg", "events-14.jpg"],
     spreker: "Gaëlle",
     script: "Elke klik zet er een selfie bij.",
   },
@@ -258,7 +257,7 @@ const SHOW = [
   },
   {
     type: "collage",
-    fotos: ["mommy-03.jpg", "mommy-04.jpg", "mommy-08.jpg", "mommy-10.jpg", "mommy-07.jpg", "stijl-03.jpg"],
+    fotos: ["mommy-03.jpg", "mommy-04.jpg", "mommy-08.jpg", "mommy-05.jpg", "mommy-07.jpg", "mommy-09.jpg", "mommy-11.jpg", "mommy-02.jpg"],
     bijschrift: "Wie Lena alleen van overdag kent, kent maar de helft.",
     spreker: "Gaëlle",
     script: "Elke klik zet er een foto bij. Even laten lachen.",
@@ -276,7 +275,7 @@ const SHOW = [
   {
     type: "collage",
     kop: "Altijd goed gekleed",
-    fotos: ["stijl-01.jpg", "stijl-02.jpg", "stijl-05.jpg", "events-09.jpg", "stijl-04.jpg"],
+    fotos: ["stijl-01.jpg", "stijl-02.jpg", "stijl-03.jpg", "stijl-04.jpg", "stijl-06.jpg", "stijl-07.jpg"],
     bijschrift: "Mede mogelijk gemaakt door de koerier. Die heeft intussen een vaste parkeerplaats.",
     spreker: "Gaëlle",
     script: "Lena is altijd mooi en altijd goed gekleed. Elke outfit klopt, net als haar events.",
@@ -340,7 +339,7 @@ const SHOW = [
   },
   {
     type: "collage",
-    fotos: ["familie-15.jpg", "familie-03.jpg", "familie-12.jpg", "events-17.jpg", "selfies-02.jpg", "familie-01.jpg"],
+    fotos: ["familie-15.jpg", "familie-03.jpg", "familie-12.jpg", "events-17.jpg", "events-20.jpg", "familie-01.jpg", "events-05.jpg", "familie-04.jpg"],
     bijschrift: "Twaalf en een half jaar later. We hebben even geteld.",
     spreker: "Esmee",
     script: "Elke klik zet er een foto bij. Laat de laatste even staan.",
