@@ -2,6 +2,17 @@
    Elk scherm heeft 'spreker' en 'script': dat komt op het spiekbriefje terecht.
    'nazien' markeert iets dat jullie nog moeten checken of aanleveren. */
 
+// Een reeks filmpjes van dezelfde persoon. Knippen kan met { bestand, van, tot } in seconden.
+function filmpjes(naam, lijst) {
+  return lijst.map((x, i) => ({
+    type: "video",
+    ...(typeof x === "string" ? { bestand: x } : x),
+    kop: naam,
+    spreker: "Mathias",
+    script: i === 0 ? `${naam}. Het filmpje start vanzelf.` : "Volgend filmpje.",
+  }));
+}
+
 const SHOW = [
 
   /* ================================================================ opening */
@@ -335,24 +346,24 @@ const SHOW = [
     script: "Elke klik zet er een foto bij. Laat de laatste even staan.",
   },
   {
-    type: "video",
-    bestand: "interviews.mp4",
-    kop: "Is Lena overal dezelfde?",
+    type: "vraag",
+    kicker: "Thuis en op het werk",
+    vraag: "Is Lena overal dezelfde?",
     spreker: "Mathias",
     script:
-      "We vroegen het aan vriendinnen, ex-collega's en collega's. " +
-      "Welke zin hoor je meteen in haar stem? Wat kan alleen Lena overkomen? " +
-      "En welke eigenschap zou iedereen wat meer mogen hebben?",
-    nazien: "De interviewfilmpjes van Mathias opslaan als assets/video/interviews.mp4.",
+      "We vroegen het aan wie haar het best kent. Eerst thuis, dan op het werk.\n\n" +
+      "Vanaf hier speelt elk filmpje vanzelf zodra je klikt. Wacht telkens tot het gedaan is.",
   },
+  ...filmpjes("Christophe", ["fam-christophe-1.mp4", "fam-christophe-2.mp4", "fam-christophe-3.mp4", "fam-christophe-4.mp4"]),
+  ...filmpjes("Chloé", ["fam-chloe-1.mp4", "fam-chloe-2.mp4", "fam-chloe-3.mp4"]),
+  ...filmpjes("Billie-Rose", ["fam-billie-rose-1.mp4", "fam-billie-rose-2.mp4", "fam-billie-rose-3.mp4", "fam-billie-rose-4.mp4", "fam-billie-rose-5.mp4"]),
   {
-    type: "vraag",
-    kicker: "Uit betrouwbare bron",
-    vraag: "Wat zegt Lena thuis als ze moe is?",
-    antwoord: "[komt nog van de familie]",
-    spreker: "Esmee",
-    script: "Laat de zaal raden. Dan het antwoord.",
-    nazien: "Antwoord van de familie invullen. Eventueel nog een tweede vraag over Lena thuis toevoegen.",
+    type: "video",
+    bestand: "interviews.mp4",
+    kop: "En op het werk?",
+    spreker: "Mathias",
+    script: "Nu de collega's, vriendinnen en ex-collega's.",
+    nazien: "Komen de interviewfilmpjes van de collega's nog? Opslaan als assets/video/interviews.mp4. Anders dit scherm schrappen.",
   },
   {
     type: "vraag",
@@ -394,6 +405,13 @@ const SHOW = [
   },
 
   /* ================================================================= toast */
+  {
+    type: "video",
+    bestand: "fam-christophe-aparte-boodschap.mp4",
+    kop: "Nog één boodschap",
+    spreker: "Britt",
+    script: "Niets aankondigen. Klik en laat de boodschap van Christophe volledig uitspelen. Daarna even stilte.",
+  },
   {
     type: "foto",
     foto: "stijl-05.jpg",
