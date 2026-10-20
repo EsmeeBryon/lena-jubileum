@@ -8,7 +8,7 @@ function filmpjes(naam, lijst) {
     type: "video",
     ...(typeof x === "string" ? { bestand: x } : x),
     kop: naam,
-    spreker: "Mathias",
+    spreker: "Gaëlle",
     script: i === 0 ? `${naam}. Het filmpje start vanzelf.` : "Volgend filmpje.",
   }));
 }
@@ -264,12 +264,12 @@ const SHOW = [
     foto: "grappig-09.jpg",
     kicker: "Waargebeurd",
     kop: "Een avondje film",
-    spreker: "Mathias",
+    spreker: "Gaëlle",
     script:
-      "Dit verhaal vertel jij, Mathias. Jij was erbij.\n\n" +
-      "Lena wil niet voor alles een abonnement nemen. Ik geef haar een link om films te kijken. " +
-      "En ik zeg er duidelijk bij: ik doe dat niet op mijn werklaptop. Lena wel.\n\n" +
-      "Op een avond klikt ze op een link die niet zo veilig is. Wat er dan verschijnt, is geen romantische komedie.",
+      "Lena wil niet voor alles een abonnement nemen. Mathias geeft haar een link om films te kijken. " +
+      "En hij zegt er duidelijk bij: ik doe dat niet op mijn werklaptop. Lena wel.\n\n" +
+      "Op een avond klikt ze op een link die niet zo veilig is. Wat er dan verschijnt, is geen romantische komedie.\n\n" +
+      "Mathias zit in de zaal. Kijk gerust even naar hem.",
   },
   {
     type: "lijst",
@@ -281,7 +281,7 @@ const SHOW = [
       { tekst: "Lena: Ik keek geen stoute dingen hoor." },
       { tekst: "Lena: Alleen een film.", nadruk: true },
     ],
-    spreker: "Mathias",
+    spreker: "Gaëlle",
     script:
       "De werklaptop had alles netjes doorgestuurd naar Fisnik van IT. Maandag belt hij haar op. " +
       "En Lena maakt het alleen maar verdachter.\n\n" +
@@ -322,7 +322,7 @@ const SHOW = [
     type: "vraag",
     kicker: "Thuis en op het werk",
     vraag: "Is Lena overal dezelfde?",
-    spreker: "Mathias",
+    spreker: "Gaëlle",
     script:
       "We vroegen het aan wie haar het best kent. Eerst thuis, dan op het werk.\n\n" +
       "Vanaf hier speelt elk filmpje vanzelf zodra je klikt. Wacht telkens tot het gedaan is.",
@@ -331,7 +331,7 @@ const SHOW = [
     type: "video",
     bestand: "interviews.mp4",
     kop: "En op het werk?",
-    spreker: "Mathias",
+    spreker: "Gaëlle",
     script: "Nu de collega's, vriendinnen en ex-collega's.",
     nazien: "Komen de interviewfilmpjes van de collega's nog? Opslaan als assets/video/interviews.mp4. Anders dit scherm schrappen.",
   },
