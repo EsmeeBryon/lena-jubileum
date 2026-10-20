@@ -46,7 +46,7 @@ async function main() {
   }
 
   /* ---- filmpjes blijven los, anders opent het bestand veel te traag ---- */
-  const nodig = new Set(SHOW.map((s) => s.clip || (s.type === "video" && s.bestand)).filter(Boolean));
+  const nodig = new Set(SHOW.flatMap((s) => [s.clip, s.type === "video" && s.bestand, ...(s.videos || [])]).filter(Boolean));
   const videoMap = path.join(__dirname, "assets", "video");
   let videoBytes = 0;
   for (const bestand of nodig) {

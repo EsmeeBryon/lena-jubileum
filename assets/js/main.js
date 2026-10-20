@@ -178,11 +178,10 @@
       return { v };
     },
 
-    // Fragment van Lena zelf. Met 'wacht' start het pas na een klik. Daarna optioneel een grap.
+    // Fragment van Lena zelf; speelt meteen. Na afloop verschijnt wat er nog komt (grap of stempel).
     hoofdstuk(s) {
       const v = el("section", "scherm s-hoofdstuk");
       if (s.titel) v.appendChild(stapEl("h2", "hoofdstuktitel", s.titel, 0));
-      const speelStap = s.wacht ? 1 : 0;
 
       const lijst = el("div", "lijst clip");
       lijst.dataset.stap = 0;
@@ -193,17 +192,81 @@
       lijst.appendChild(film);
       v.appendChild(lijst);
 
-      if (s.grap) {
-        v.appendChild(stapEl("p", "hoofdstukgrap", s.grap, speelStap + 1));
-        film.addEventListener("ended", () => naarStap(v, speelStap + 1));
-      }
+      if (s.grap) v.appendChild(stapEl("p", "hoofdstukgrap", s.grap, 1));
+      film.addEventListener("ended", () => naarStap(v, maxStap(v)));
       return {
         v,
         bijStap(n) {
-          if (n === speelStap) { film.currentTime = 0; film.play().catch(() => {}); }
+          if (n === 0) { film.currentTime = 0; film.play().catch(() => {}); }
         },
         weg() { film.pause(); },
       };
+    },
+
+    // Filmpjes zonder geluid die door elkaar blijven lopen, met een titel erover.
+    muur(s) {
+      const v = el("section", "scherm s-muur");
+      const raster = el("div", "videomuur");
+      raster.style.setProperty("--kolommen", Math.ceil(s.videos.length / 2));
+      const films = s.videos.map((b, i) => {
+        const vak = el("div", "vak");
+        vak.dataset.stap = 0;
+        vak.style.transitionDelay = i * 0.25 + "s";
+        const film = document.createElement("video");
+        film.src = VIDEOPAD + b;
+        film.muted = true;
+        film.loop = true;
+        film.playsInline = true;
+        film.preload = "auto";
+        vak.appendChild(film);
+        raster.appendChild(vak);
+        return film;
+      });
+      v.appendChild(raster);
+      v.appendChild(el("div", "muursluier"));
+      v.appendChild(stapEl("h1", "muurtitel", s.kop, 0));
+      return {
+        v,
+        bijStap(n) { if (n === 0) films.forEach((f) => f.play().catch(() => {})); },
+        weg() { films.forEach((f) => f.pause()); },
+      };
+    },
+
+    // Nieuwsflash met lopende band onderaan.
+    nieuws(s) {
+      const v = el("section", "scherm s-nieuws");
+      const balk = el("div", "nieuwsbalk");
+      balk.appendChild(el("span", "nieuwslabel", s.label || "Breaking news"));
+      balk.appendChild(el("span", "nieuwslive", "Live"));
+      v.appendChild(balk);
+      const midden = el("div", "nieuwsmidden");
+      const f = fotolijst(s.foto);
+      midden.appendChild(f);
+      const kolom = el("div", "nieuwskolom");
+      kolom.appendChild(stapEl("h2", "nieuwskop", s.kop, 0));
+      if (s.clou) kolom.appendChild(stapEl("p", "antwoord", s.clou, 1));
+      midden.appendChild(kolom);
+      v.appendChild(midden);
+      const band = el("div", "nieuwsband");
+      const tekst = el("div", "nieuwsbandtekst");
+      tekst.textContent = Array(6).fill(s.band.join("   +++   ")).join("   +++   ");
+      band.appendChild(tekst);
+      v.appendChild(band);
+      return { v };
+    },
+
+    // Filmaffiche, voor een waargebeurd verhaal.
+    film(s) {
+      const v = el("section", "scherm s-film");
+      const f = fotolijst(s.foto);
+      f.dataset.stap = 0;
+      v.appendChild(f);
+      const kolom = el("div", "filmkolom");
+      kolom.appendChild(stapEl("p", "filmkicker", s.kicker || "Gebaseerd op waargebeurde feiten", 0));
+      kolom.appendChild(stapEl("h1", "filmtitel", s.kop, 0));
+      if (s.rollen) kolom.appendChild(stapEl("p", "filmrollen", s.rollen, 0));
+      v.appendChild(kolom);
+      return { v };
     },
 
     // Foto's die een voor een op een stapel vallen, elk met een eigen onderschrift.
@@ -232,7 +295,16 @@
       });
       v.appendChild(stapel);
       v.appendChild(onder);
-      return { v };
+      // De stapel loopt vanzelf; klikken mag om sneller te gaan.
+      let wekker = null;
+      return {
+        v,
+        bijStap(n) {
+          clearTimeout(wekker);
+          if (n < s.items.length) wekker = setTimeout(() => naarStap(v, n + 1), n === 0 ? 700 : 2600);
+        },
+        weg() { clearTimeout(wekker); },
+      };
     },
 
     // Foto links, verhaal rechts.
@@ -280,19 +352,19 @@
       const h = aantalRijen === 1 ? 50 : perRij >= 4 ? 27 : 29;
       muur.style.setProperty("--h", (s.items ? h - 5 : h) + "vh");
       const autoStap = s.auto === "klik" ? 1 : 0;
+      const tussen = s.items ? 0.9 : 0.45;
       let rij = null;
       items.forEach((item, i) => {
         if (i % perRij === 0) rij = muur.appendChild(el("div", "rij"));
         const blok = el("figure", "figuur");
         blok.appendChild(fotolijst(item.foto));
         if (item.tekst) blok.appendChild(el("figcaption", "fototekst", item.tekst));
-        blok.dataset.stap = s.auto ? autoStap : i + 1;
-        if (s.auto) blok.style.transitionDelay = i * 0.55 + "s";
+        blok.dataset.stap = autoStap;
+        blok.style.transitionDelay = i * tussen + "s";
         rij.appendChild(blok);
       });
       v.appendChild(muur);
-      const naFoto = s.auto ? autoStap + 1 : items.length + 1;
-      if (s.bijschrift) v.appendChild(stapEl("p", "bijschrift", s.bijschrift, naFoto));
+      if (s.bijschrift) v.appendChild(stapEl("p", "bijschrift", s.bijschrift, autoStap + 1));
       return { v };
     },
 
@@ -447,11 +519,17 @@
 
     huidig = bouwer(s);
     huidig.max = maxStap(huidig.v);
+    // Terugkerende stempel, komt er na de rest van het scherm bij
+    if (s.stempel) {
+      huidig.max += 1;
+      const st = stapEl("div", "stempel", s.stempel, huidig.max);
+      huidig.v.appendChild(st);
+    }
     podium.appendChild(huidig.v);
 
     index = nieuwIndex;
     stap = beginStap === "eind" ? huidig.max : 0;
-    document.body.classList.toggle("donker", s.type === "hoofdstuk" || (s.type === "foto" && !!s.vol));
+    document.body.classList.toggle("donker", ["hoofdstuk", "muur", "film"].includes(s.type) || (s.type === "foto" && !!s.vol));
 
     requestAnimationFrame(() => {
       huidig.v.classList.add("op");

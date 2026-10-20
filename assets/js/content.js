@@ -58,12 +58,11 @@ const SHOW = [
     type: "hoofdstuk",
     clip: "lena-a.mp4",
     zin: "Wat zeg je?",
-    wacht: true,
     spreker: "Britt",
     script:
-      "Hè zeggen, dat doet een beleefde dame niet. " +
+      "Zeg dit voor je klikt: Hè zeggen, dat doet een beleefde dame niet. " +
       "Lena zegt altijd wat zeg je. Zoals je ze hier zelf hoort zeggen.\n\n" +
-      "[KLIK] Het fragment speelt.",
+      "[KLIK] Het fragment speelt meteen.",
   },
   {
     type: "vraag",
@@ -90,21 +89,20 @@ const SHOW = [
     ],
     spreker: "Esmee",
     script:
+      "De foto's verschijnen vanzelf na elkaar.\n\n" +
       "Laten we deze presentatie beginnen bij het begin. Ik was natuurlijk nog niet in het bedrijf toen. " +
       "Maar als ik haar over vroeger hoor praten, dan hoor ik maar één ding. Ik deed alles.\n\n" +
       "Ze is hier bij AFAS begonnen als commercieel medewerker in 2014. " +
       "Toen was ik vijftien jaar, om dat even in perspectief te zetten. " +
-      "En toen wou dat echt nog zeggen dat ze moest koud bellen, websitebeheer doen, mailings...\n\n" +
-      "Elke klik zet er een foto bij. Ze blijven allemaal staan.",
+      "En toen wou dat echt nog zeggen dat ze moest koud bellen, websitebeheer doen, mailings...",
   },
   {
     type: "collage",
     kop: "Eventmanager",
     fotos: ["events-01.jpg", "events-02.jpg", "events-03.jpg", "events-09.jpg", "events-10.jpg", "events-15.jpg", "events-16.jpg", "events-18.jpg"],
-    auto: "meteen",
     spreker: "Esmee",
     script:
-      "De foto's verschijnen vanzelf, je hoeft niet te klikken.\n\n" +
+      "De foto's verschijnen vanzelf.\n\n" +
       "Tot ze uiteindelijk eventmanager werd. Alé, zonder gsm en auto hé. " +
       "Gewoon manager met de functie van het gewone gepeupel.\n\n" +
       "Hier zie je een paar prachtige kiekjes van onze jaarlijkse AFAS Open. Dan is ze echt in haar element.",
@@ -113,12 +111,11 @@ const SHOW = [
     type: "collage",
     kop: "The voice and the face",
     fotos: ["stem-01.jpg", "stem-02.jpg"],
-    auto: "klik",
     spreker: "Esmee",
     script:
+      "De foto's verschijnen vanzelf.\n\n" +
       "Over de jaren heen is ze niet alleen de stem van AFAS geweest. " +
       "Voor wie het niet weet: zij spreekt ook ons antwoordapparaat in. Maar ook the face.\n\n" +
-      "[KLIK] De foto's verschijnen vanzelf na elkaar.\n\n" +
       "Op deze foto weet ik niet zeker van welke sector ze komt, maar ze staat bij den dokteur Thibault.",
     nazien: "Staat de foto met dokter Thibault hierbij? Anders die foto nog bezorgen.",
   },
@@ -131,6 +128,7 @@ const SHOW = [
     script:
       "Sorry Lena, ik moet u helaas meedelen dat u vervangen bent.\n\n" +
       "[KLIK] De foto's verschijnen vanzelf na elkaar.",
+    nazien: "De AFAS Direct-campagnebeelden van Esmee in Downloads zetten, dan komen ze er ook bij.",
   },
 
   /* ===================================================== da's Lena voor mij */
@@ -138,30 +136,47 @@ const SHOW = [
     type: "hoofdstuk",
     clip: "lena-b.mp4",
     zin: "Ik denk gewoon hardop na hé",
+    stempel: "Da's Lena voor mij",
     spreker: "Esmee",
-    script: "Het fragment speelt vanzelf. Daarna: da's Lena voor mij.",
+    script:
+      "Zouden we niet al haar catchphrases eens naast elkaar zetten?\n\n" +
+      "Het fragment speelt meteen. Daarna komt de stempel vanzelf. Zeg mee: da's Lena voor mij.",
   },
   {
     type: "vraag",
     kicker: "Handen omhoog",
     vraag: "Wie kreeg ooit een voice-message van Lena van meer dan vijf minuten?",
     antwoord: "En wie heeft hem helemaal uitgeluisterd?",
+    stempel: "Da's ook echt Lena",
     spreker: "Esmee",
-    script: "Die voice-messages, da's ook echt Lena. Laat de handen even in de lucht. [KLIK] Bij de tweede vraag zakken de meeste handen weer.",
+    script:
+      "Die voice-messages, da's ook echt Lena. Laat de handen even in de lucht.\n\n" +
+      "[KLIK] Bij de tweede vraag zakken de meeste handen weer.\n\n[KLIK] De stempel.",
   },
   {
     type: "collage",
     kop: "Selfies",
-    fotos: ["selfies-01.jpg", "selfies-02.jpg", "selfies-03.jpg", "selfies-04.jpg", "events-14.jpg"],
+    fotos: ["selfies-01.jpg", "selfies-02.jpg", "selfies-03.jpg", "selfies-04.jpg", "events-14.jpg", "vroeger-02.jpg", "vroeger-16.jpg", "grappig-01.jpg"],
+    stempel: "ZO Lena",
     spreker: "Esmee",
-    script: "Die selfies zijn ZO Lena. Elke klik zet er een selfie bij.",
+    script: "De selfies verschijnen vanzelf. Die selfies zijn ZO Lena. [KLIK] De stempel.",
+  },
+  {
+    type: "collage",
+    kop: "Altijd goed gekleed",
+    fotos: ["stijl-01.jpg", "stijl-02.jpg", "stijl-03.jpg", "stijl-04.jpg", "stijl-06.jpg", "stijl-07.jpg"],
+    stempel: "Da's Lena voor mij",
+    spreker: "Esmee",
+    script:
+      "De foto's verschijnen vanzelf. Lena is altijd mooi en altijd goed gekleed. " +
+      "Mede mogelijk gemaakt door de koerier. Die heeft intussen een vaste parkeerplaats.\n\n[KLIK] De stempel.",
   },
   {
     type: "hoofdstuk",
     clip: "lena-c.mp4",
     zin: "Ik had dat toch al gezegd?",
     spreker: "Esmee",
-    script: "Het fragment speelt vanzelf. Daarna: ja Lena, alleen niet tegen ons.",
+    script: "Het fragment speelt meteen. Daarna: ja Lena, alleen niet tegen ons.",
   },
   {
     type: "vraag",
@@ -169,12 +184,6 @@ const SHOW = [
     antwoord: "Haar eigen agenda. Die van jou? Nooit.",
     spreker: "Esmee",
     script: "Laat de zaal roepen. Wie ooit een uitnodiging kreeg op een moment dat al vol stond, weet het antwoord.",
-  },
-  {
-    type: "video",
-    bestand: "grappig-04.mp4",
-    spreker: "Esmee",
-    script: "Het filmpje is kort. De meeting is al bezig. Lena komt eraan.",
   },
   {
     type: "lijst",
@@ -191,79 +200,74 @@ const SHOW = [
     script: "Lena noemt zichzelf een postduif. Haar eigen woorden. Elke klik is een vraag die iemand in deze zaal ooit van haar kreeg.",
   },
   {
+    type: "verhaal",
+    foto: "extra-02.jpg",
+    kicker: "Bewijsstuk",
+    kop: "Op weg naar Gent",
+    spreker: "Esmee",
+    script: "En ja. Dat ben ik. In dat busje. Op weg naar Gent.",
+  },
+  {
+    type: "hoofdstuk",
+    clip: "lena-e.mp4",
+    zin: "Ik heb daar geen headspace voor",
+    spreker: "Esmee",
+    script: "En als er dan echt administratie moet gebeuren? [KLIK] Het fragment speelt meteen.",
+  },
+  {
     type: "reeks",
     kop: "Er moet administratie gebeuren",
     items: [
-      { foto: "grappig-12.jpg", tekst: "Lena hoort het woord administratie." },
+      { foto: "eten-03.jpg", tekst: "Lena hoort het woord administratie." },
       { foto: "grappig-11.jpg", tekst: "Plan A. Onder de kickertafel." },
       { foto: "grappig-13.jpg", tekst: "Plan B. Achter de plant." },
       { foto: "grappig-21.jpg", tekst: "Plan C. Achter een groot scherm." },
       { foto: "grappig-18.jpg", tekst: "Plan D. Onherkenbaar." },
     ],
     spreker: "Esmee",
-    script: "Elke klik is een nieuw plan. Laat de zaal lachen voor je verder klikt.",
+    script: "De foto's vallen vanzelf op de stapel. Laat de zaal lachen.",
   },
   {
     type: "vraag",
     kicker: "Handen omhoog",
     vraag: "Wie heeft ooit iets voor Lena ingestuurd, opgestuurd of opgehaald?",
+    stempel: "Da's allemaal Lena voor mij",
     spreker: "Esmee",
     script:
-      "De meeting inplannen, de postduif, de administratie doorschuiven. Da's allemaal Lena voor mij.\n\n" +
-      "Vraag wie ooit iets voor haar deed om recht te staan. Blijf even rechtstaan, dit applaus is voor jullie.",
+      "Vraag wie ooit iets voor haar deed om recht te staan. Blijf even rechtstaan, dit applaus is voor jullie.\n\n" +
+      "De meeting inplannen, de postduif, de administratie doorschuiven. [KLIK] Da's allemaal Lena voor mij.",
   },
 
-  /* ============================================================ hoofdstuk 4 */
+  /* ==================================================== mommy on the loose */
   {
-    type: "hoofdstuk",
-    nummer: 4,
-    clip: "lena-e.mp4",
-    titel: "Mommy on the loose",
-    zin: "Ik heb daar geen headspace voor",
+    type: "muur",
+    kop: "Mommy on the loose",
+    videos: ["mommy-01.mp4", "mommy-04.mp4", "grappig-01.mp4", "mommy-03.mp4", "grappig-03.mp4", "mommy-02.mp4"],
     spreker: "Gaëlle",
-    script: "Het fragment speelt vanzelf. Voor administratie niet, voor een feestje altijd. Klik door naar het lachfragment.",
-  },
-  {
-    type: "video",
-    bestand: "lena-f.mp4",
-    spreker: "Gaëlle",
-    script: "Het lachfragment. Laat het volledig uitspelen.",
-  },
-  {
-    type: "video",
-    bestand: "grappig-01.mp4",
-    kop: "Na vijf uur",
-    spreker: "Gaëlle",
-    script: "Geen headspace voor administratie. Wel hiervoor.",
+    script:
+      "Zes filmpjes tegelijk, zonder geluid. Ze blijven lopen zolang dit scherm openstaat. " +
+      "Laat de zaal even kijken. Overdag eventmanager. Daarna dit.",
   },
   {
     type: "collage",
     fotos: ["mommy-03.jpg", "mommy-04.jpg", "mommy-08.jpg", "mommy-05.jpg", "mommy-07.jpg", "mommy-09.jpg", "mommy-11.jpg", "mommy-02.jpg"],
     spreker: "Gaëlle",
-    script: "Elke klik zet er een foto bij. Wie Lena alleen van overdag kent, kent maar de helft.",
+    script: "De foto's verschijnen vanzelf. Wie Lena alleen van overdag kent, kent maar de helft.",
   },
   {
-    type: "verhaal",
+    type: "nieuws",
     foto: "grappig-20.jpg",
-    kicker: "Breaking news",
     kop: "Lena stopt met roken",
+    clou: "Deze foto is van haar laatste sigaret. Die van gisteren.",
+    band: ["Lena stopt met roken", "Ook deze week", "Bron: Lena zelf", "Meer nieuws na de rookpauze"],
     spreker: "Gaëlle",
-    script: "Ze wil het al heel lang. Elke week opnieuw. Deze foto is van haar laatste sigaret. Die van gisteren.",
+    script: "Breaking news. Lena stopt met roken. Ze wil het al heel lang. Elke week opnieuw.\n\n[KLIK] De clou.",
   },
   {
-    type: "collage",
-    kop: "Altijd goed gekleed",
-    fotos: ["stijl-01.jpg", "stijl-02.jpg", "stijl-03.jpg", "stijl-04.jpg", "stijl-06.jpg", "stijl-07.jpg"],
-    spreker: "Gaëlle",
-    script:
-      "Lena is altijd mooi en altijd goed gekleed. " +
-      "Mede mogelijk gemaakt door de koerier. Die heeft intussen een vaste parkeerplaats.",
-  },
-  {
-    type: "verhaal",
+    type: "film",
     foto: "grappig-09.jpg",
-    kicker: "Waargebeurd",
     kop: "Een avondje film",
+    rollen: "Met Lena \u00B7 Mathias \u00B7 Fisnik van IT",
     spreker: "Gaëlle",
     script:
       "Lena wil niet voor alles een abonnement nemen. Mathias geeft haar een link om films te kijken. " +
@@ -284,8 +288,13 @@ const SHOW = [
     spreker: "Gaëlle",
     script:
       "De werklaptop had alles netjes doorgestuurd naar Fisnik van IT. Maandag belt hij haar op. " +
-      "En Lena maakt het alleen maar verdachter.\n\n" +
-      "Is Fisnik in de zaal? Kijk naar hem bij de laatste klik.",
+      "En Lena maakt het alleen maar verdachter.",
+  },
+  {
+    type: "foto",
+    foto: "extra-01.jpg",
+    spreker: "Gaëlle",
+    script: "Niets zeggen. Laat de hond het werk doen. Is Fisnik in de zaal? Kijk naar hem.",
   },
   {
     type: "verhaal",
@@ -299,24 +308,15 @@ const SHOW = [
     nazien: "Staan de Beffers op deze foto? Anders een andere foto kiezen.",
   },
 
-  /* ============================================================ hoofdstuk 5 */
-  {
-    type: "hoofdstuk",
-    nummer: 5,
-    clip: "lena-d.mp4",
-    titel: "Echte vrienden",
-    zin: "We zijn hier niet om vrienden te maken",
-    grap: "Jokes on you.",
-    spreker: "Gaëlle",
-    script:
-      "Dezelfde zin als bij de intro van Britt, nu uit Lena's eigen mond. " +
-      "De toon verandert hier. Rustiger praten, trager klikken.",
-  },
+  /* ========================================================= echte vrienden */
   {
     type: "collage",
+    kop: "Echte vrienden",
     fotos: ["familie-15.jpg", "familie-03.jpg", "familie-12.jpg", "events-17.jpg", "events-20.jpg", "familie-01.jpg", "events-05.jpg", "familie-04.jpg"],
     spreker: "Gaëlle",
-    script: "Elke klik zet er een foto bij. Twaalf en een half jaar later. We hebben even geteld.",
+    script:
+      "De toon verandert hier. Rustiger praten.\n\n" +
+      "De foto's verschijnen vanzelf. Twaalf en een half jaar later. We hebben even geteld.",
   },
   {
     type: "vraag",
