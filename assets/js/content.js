@@ -15,181 +15,183 @@ function filmpjes(naam, lijst) {
 
 const SHOW = [
 
-  /* ================================================================ opening */
+  /* ================================================================ welkom */
   {
     type: "titel",
     kicker: "29 oktober 2026",
     titel: "Lena",
     jaren: "twaalf en een half jaar AFAS",
     onder: "Welkom \u00B7 Welcome \u00B7 Bienvenue \u00B7 Benvenuti",
-    spreker: "—",
+    spreker: "Britt",
     script:
-      "Dit scherm staat op terwijl iedereen binnenkomt. Zorg dat Lena vooraan zit, met goed zicht op het scherm. " +
-      "Pas klikken als het stil is.",
+      "Dit scherm staat op terwijl iedereen binnenkomt. Zorg dat Lena vooraan zit. " +
+      "Heet iedereen welkom. Pas klikken als het stil is.",
   },
   {
     type: "audio",
     kop: "Herken je deze stem?",
     bestand: "stemmen-mix.mp3",
-    spreker: "Mathias",
-    script:
-      "Niets zeggen. De stemmen starten vanzelf zodra je op dit scherm komt. Eerst een voor een, dan allemaal door elkaar. " +
-      "Het duurt ongeveer twintig seconden. Wie Lena kent, herkent haar meteen.",
+    spreker: "Britt",
+    script: "Niets zeggen. De stemmen starten vanzelf en duren ongeveer vijftien seconden.",
   },
   {
-    type: "citaat",
-    tekst: "We zijn hier niet om vrienden te maken hé mannekes.",
-    naklap: "Jokes on you.",
+    type: "kaart",
+    kop: "Lena, Lena, Lenaaa",
+    onder: "op Whenever, Wherever van Shakira",
     spreker: "Britt",
     script:
-      "Dag allemaal. Na onze eigen voice of AFAS is het aan mij om het woord over te nemen. " +
-      "Vandaag zetten we iemand in de bloemetjes die al twaalf en een half jaar trots onze kantoorboomer is. " +
-      "Buiten de uren gedraagt ze zich als een echte mommy on the loose.\n\n" +
-      "Lena, toen wij jou leerden kennen zei je altijd heel serieus: we zijn hier niet om vrienden te maken hé mannekes.\n\n" +
-      "[KLIK]\n\n" +
-      "Tja. Jokes on you. Twaalf en een half jaar, duizenden voice-messages, een shoppingverslaving " +
-      "waar bol.com een standbeeld voor mag zetten en ontelbare rookpauzes later zijn we toch echte vrienden geworden.\n\n" +
-      "Vandaag vertellen we jouw verhaal. Met jouw eigen woorden.",
-  },
-
-  /* ============================================================ hoofdstuk 1 */
-  {
-    type: "hoofdstuk",
-    nummer: 1,
-    clip: "lena-a.mp4",
-    titel: "Waar het begon",
-    zin: "Wat zeg je?",
-    grap: "Want hè zeggen, dat doet een beleefde dame niet.",
-    spreker: "Esmee",
-    script:
-      "Het fragment speelt vanzelf. Daarna verschijnt de grap ook vanzelf.\n\n" +
-      "Twee woorden die iedereen in deze zaal al van Lena gehoord heeft. Meestal meerdere keren per dag.",
-  },
-  {
-    type: "vraag",
-    kicker: "Handen omhoog",
-    vraag: "Wie moest vandaag al iets herhalen voor Lena?",
-    antwoord: "Zeg het nog eens wat luider. Ze heeft het niet gehoord.",
-    spreker: "Esmee",
-    script: "Vraag het aan de hele zaal en laat de handen even in de lucht. Klik pas als het gelach gaat liggen.",
+      "Beste mensen, we zijn hier vandaag om ons Lena'tje te vieren. " +
+      "En als ik aan Lena denk, dan start ik meestal met een liedje.\n\n" +
+      "[ZINGEN] Lena, Lena, Lenaaa.\n\n" +
+      "Maar ook met een liedje dat we zelf gemaakt hebben.",
   },
   {
     type: "audio",
     kop: "Zeg eens, wat zeg je?",
-    onder: "Ze zegt het zo vaak dat we er een liedje van gemaakt hebben.",
     bestand: "zeg-eens-wat-zeg-je.mp3",
-    spreker: "Esmee",
-    script:
-      "Lena zegt het zo vaak dat we er met AI een liedje van gemaakt hebben. " +
-      "Het start vanzelf en duurt een halve minuut. Laat het volledig uitspelen.",
+    spreker: "Britt",
+    script: "Het liedje start vanzelf en duurt een halve minuut. Laat het volledig uitspelen.",
   },
-  {
-    type: "citaat",
-    tekst: "Ik deed ALLES.",
-    bron: "Lena, over haar eerste jaren bij AFAS",
-    naklap: "En dat zegt ze nog altijd.",
-    spreker: "Esmee",
-    script:
-      "Twaalf en een half jaar geleden begon Lena bij AFAS als commercieel medewerker. " +
-      "En als je het haar vraagt, deed ze toen alles.\n\n[KLIK]\n\nEcht alles.",
-  },
-  {
-    type: "reeks",
-    kop: "Commercieel medewerker, 2014",
-    items: [
-      { foto: "vroeger-01.jpg", tekst: "Koud bellen." },
-      { foto: "vroeger-06.jpg", tekst: "De website." },
-      { foto: "vroeger-04.jpg", tekst: "Mailings." },
-      { foto: "vroeger-12.jpg", tekst: "Events." },
-      { foto: "vroeger-17.jpg", tekst: "En al de rest." },
-    ],
-    spreker: "Esmee",
-    script:
-      "Elke klik legt een foto op de stapel. Lees de onderschriften gerust luidop mee. " +
-      "Bij de laatste foto even wachten.",
-  },
-  {
-    type: "collage",
-    kop: "Tot ze eventmanager werd",
-    fotos: ["events-01.jpg", "events-02.jpg", "events-03.jpg", "events-09.jpg", "events-10.jpg", "events-15.jpg", "events-16.jpg", "events-18.jpg"],
-    spreker: "Esmee",
-    script: "Elke klik zet er een foto bij.",
-  },
-  {
-    type: "verhaal",
-    foto: "events-06.jpg",
-    kicker: "Haar hart",
-    kop: "De inspiratiediners",
-    tekst: ["Met chefs zoals Seppe Nobels."],
-    spreker: "Esmee",
-    script: "De AFAS Open is het grootste. Maar haar hart ligt bij de inspiratiediners.",
-  },
-  {
-    type: "reeks",
-    kop: "Het gezicht van AFAS",
-    items: [
-      { foto: "stem-01.jpg", tekst: "Levensgroot op de AFAS-banner." },
-      { foto: "stem-02.jpg", tekst: "Lena naast Lena." },
-    ],
-    spreker: "Esmee",
-    script:
-      "Lena stond niet alleen achter de schermen. Ze stond er gewoon op. Levensgroot.\n\n" +
-      "En haar stem? Die hoorde je daarnet al. De voice of AFAS.",
-  },
-
-  /* ============================================================ hoofdstuk 2 */
   {
     type: "hoofdstuk",
-    nummer: 2,
-    clip: "lena-b.mp4",
-    titel: "Lena aan het woord",
-    zin: "Ik denk gewoon hardop na hé",
-    grap: "Ook als er niets na te denken valt.",
-    spreker: "Gaëlle",
-    script: "Het fragment speelt vanzelf, de grap volgt vanzelf. Niets zeggen tot de grap er staat.",
+    titel: "Hè zeggen, dat doet een beleefde dame niet.",
+    clip: "lena-a.mp4",
+    zin: "Wat zeg je?",
+    wacht: true,
+    spreker: "Britt",
+    script:
+      "Hè zeggen, dat doet een beleefde dame niet. " +
+      "Lena zegt altijd wat zeg je. Zoals je ze hier zelf hoort zeggen.\n\n" +
+      "[KLIK] Het fragment speelt.",
   },
   {
     type: "vraag",
     kicker: "Handen omhoog",
-    vraag: "Wie kreeg ooit een voice-message van Lena van meer dan vijf minuten?",
-    antwoord: "En wie heeft hem helemaal uitgeluisterd?",
-    spreker: "Gaëlle",
-    script: "Laat de handen even in de lucht. Bij het antwoord zakken de meeste handen weer.",
+    vraag: "Moest vandaag al iemand iets herhalen voor Lena?",
+    antwoord: "Zeg het eens wat luider. Ze heeft het niet gehoord.",
+    spreker: "Britt",
+    script:
+      "Klinkt dit voor iedereen bekend? Of is it just me? " +
+      "Moest vandaag al iemand iets herhalen voor Lena? Biju? En wat moest je dan herhalen?\n\n" +
+      "[KLIK] Zeg het eens wat luider, want ze heeft het niet gehoord denk ik.\n\n" +
+      "Nee nee, mopje hé. Ik wou even de spanning wat wegnemen.",
+  },
+
+  /* ============================================================= het begin */
+  {
+    type: "citaat",
+    tekst: "Ik deed ALLES.",
+    spreker: "Britt",
+    script:
+      "Laten we deze presentatie beginnen bij het begin. Ik was natuurlijk nog niet in het bedrijf toen. " +
+      "Maar als ik haar over vroeger hoor praten, dan hoor ik maar één ding. Ik deed alles.",
   },
   {
     type: "collage",
-    kop: "Geen voice-message? Dan een selfie.",
-    fotos: ["selfies-01.jpg", "selfies-02.jpg", "selfies-03.jpg", "selfies-04.jpg", "events-14.jpg"],
-    spreker: "Gaëlle",
-    script: "Elke klik zet er een selfie bij.",
+    kop: "Commercieel medewerker, 2014",
+    items: [
+      { foto: "vroeger-01.jpg", tekst: "Koud bellen" },
+      { foto: "vroeger-06.jpg", tekst: "Websitebeheer" },
+      { foto: "vroeger-04.jpg", tekst: "Mailings" },
+      { foto: "vroeger-12.jpg", tekst: "Events" },
+      { foto: "vroeger-17.jpg", tekst: "En al de rest" },
+    ],
+    spreker: "Britt",
+    script:
+      "Ze is hier bij AFAS begonnen als commercieel medewerker in 2014. " +
+      "Toen was ik vijftien jaar, om dat even in perspectief te zetten. " +
+      "En toen wou dat echt nog zeggen dat ze moest koud bellen, websitebeheer doen, mailings...\n\n" +
+      "Elke klik zet er een foto bij. Ze blijven allemaal staan.",
+  },
+  {
+    type: "kaart",
+    kop: "Eventmanager",
+    clou: "Zonder gsm. Zonder auto.",
+    spreker: "Britt",
+    script:
+      "Tot ze uiteindelijk eventmanager werd.\n\n" +
+      "[KLIK] Alé, zonder gsm en auto hé. Gewoon manager met de functie van het gewone gepeupel.",
+  },
+  {
+    type: "collage",
+    kop: "In haar element",
+    fotos: ["events-01.jpg", "events-02.jpg", "events-03.jpg", "events-09.jpg", "events-10.jpg", "events-15.jpg", "events-16.jpg", "events-18.jpg"],
+    auto: "meteen",
+    spreker: "Britt",
+    script:
+      "De foto's verschijnen vanzelf, je hoeft niet te klikken.\n\n" +
+      "Hier zie je een paar prachtige kiekjes van onze jaarlijkse AFAS Open. Dan is ze echt in haar element.",
+  },
+  {
+    type: "collage",
+    kop: "The voice and the face",
+    fotos: ["stem-01.jpg", "stem-02.jpg"],
+    auto: "klik",
+    spreker: "Britt",
+    script:
+      "Over de jaren heen is ze niet alleen de stem van AFAS geweest. " +
+      "Voor wie het niet weet: zij spreekt ook ons antwoordapparaat in. Maar ook the face.\n\n" +
+      "[KLIK] De foto's verschijnen vanzelf na elkaar.\n\n" +
+      "Op deze foto weet ik niet zeker van welke sector ze komt, maar ze staat bij den dokteur Thibault.",
+    nazien: "Staat de foto met dokter Thibault hierbij? Anders die foto nog bezorgen.",
+  },
+  {
+    type: "collage",
+    kop: "Sorry Lena",
+    fotos: ["esmee-01.jpg", "esmee-02.jpg", "esmee-03.jpg"],
+    auto: "klik",
+    bijschrift: "Je bent vervangen.",
+    spreker: "Britt",
+    script:
+      "Sorry Lena, ik moet u helaas meedelen dat u vervangen bent.\n\n" +
+      "[KLIK] Het nieuwe gezicht. [KLIK] Het onderschrift.",
   },
 
-  /* ============================================================ hoofdstuk 3 */
+  /* ===================================================== da's Lena voor mij */
   {
     type: "hoofdstuk",
-    nummer: 3,
+    clip: "lena-b.mp4",
+    zin: "Ik denk gewoon hardop na hé",
+    grap: "Da's Lena voor mij.",
+    spreker: "Britt",
+    script: "Het fragment speelt vanzelf. Daarna verschijnt de tekst. Lees hem gerust luidop mee.",
+  },
+  {
+    type: "vraag",
+    kicker: "Da's ook echt Lena",
+    vraag: "Wie kreeg ooit een voice-message van Lena van meer dan vijf minuten?",
+    antwoord: "En wie heeft hem helemaal uitgeluisterd?",
+    spreker: "Britt",
+    script: "Die voice-messages, da's ook echt Lena. Laat de handen even in de lucht. Bij het antwoord zakken de meeste handen weer.",
+  },
+  {
+    type: "collage",
+    kop: "Die selfies zijn ZO Lena",
+    fotos: ["selfies-01.jpg", "selfies-02.jpg", "selfies-03.jpg", "selfies-04.jpg", "events-14.jpg"],
+    spreker: "Britt",
+    script: "Elke klik zet er een selfie bij.",
+  },
+  {
+    type: "hoofdstuk",
     clip: "lena-c.mp4",
-    titel: "Agenda's en administratie",
     zin: "Ik had dat toch al gezegd?",
     grap: "Ja Lena. Alleen niet tegen ons.",
-    spreker: "Esmee",
+    spreker: "Britt",
     script: "Het fragment speelt vanzelf, de grap volgt vanzelf.",
   },
   {
     type: "vraag",
     vraag: "Lena plant een meeting met jou. Wat checkt ze eerst?",
     antwoord: "Haar eigen agenda. Die van jou? Nooit.",
-    spreker: "Esmee",
+    spreker: "Britt",
     script: "Laat de zaal roepen. Wie ooit een uitnodiging kreeg op een moment dat al vol stond, weet het antwoord.",
   },
   {
     type: "video",
     bestand: "grappig-04.mp4",
     onder: "De meeting is al bezig. Lena komt eraan.",
-    spreker: "Esmee",
-    script:
-      "Het filmpje is kort. Klik daarna om het onderschrift te tonen.\n\n" +
-      "Meestal zit iedereen al klaar. En dan komt Lena binnen.",
+    spreker: "Britt",
+    script: "Het filmpje is kort. Klik daarna om het onderschrift te tonen.",
   },
   {
     type: "lijst",
@@ -202,10 +204,8 @@ const SHOW = [
       { tekst: "Wil jij de naamkaartjes maken?" },
       { tekst: "Wil jij de taxibusjes voor de AFAS Open gaan halen in Gent?", nadruk: true },
     ],
-    spreker: "Esmee",
-    script:
-      "Lena noemt zichzelf een postduif. Haar eigen woorden. " +
-      "Elke klik is een vraag die iemand in deze zaal ooit van haar kreeg. De laatste is echt gebeurd.",
+    spreker: "Britt",
+    script: "Lena noemt zichzelf een postduif. Haar eigen woorden. Elke klik is een vraag die iemand in deze zaal ooit van haar kreeg.",
   },
   {
     type: "reeks",
@@ -217,7 +217,7 @@ const SHOW = [
       { foto: "grappig-21.jpg", tekst: "Plan C. Achter een groot scherm." },
       { foto: "grappig-18.jpg", tekst: "Plan D. Onherkenbaar." },
     ],
-    spreker: "Esmee",
+    spreker: "Britt",
     script: "Elke klik is een nieuw plan. Laat de zaal lachen voor je verder klikt.",
   },
   {
@@ -225,10 +225,10 @@ const SHOW = [
     kicker: "Handen omhoog",
     vraag: "Wie heeft ooit iets voor Lena ingestuurd, opgestuurd of opgehaald?",
     antwoord: "Blijf even rechtstaan. Dit applaus is voor jullie.",
-    spreker: "Esmee",
+    spreker: "Britt",
     script:
-      "Vraag die mensen om recht te staan. Dat wordt de halve zaal. Klik dan en vraag een applaus. " +
-      "Lena mag mee applaudisseren. Het is wel het minste.",
+      "De meeting inplannen, de postduif, de administratie doorschuiven. Da's allemaal Lena voor mij.\n\n" +
+      "Vraag wie ooit iets voor haar deed om recht te staan. Klik dan en vraag een applaus.",
   },
 
   /* ============================================================ hoofdstuk 4 */
@@ -353,9 +353,6 @@ const SHOW = [
       "We vroegen het aan wie haar het best kent. Eerst thuis, dan op het werk.\n\n" +
       "Vanaf hier speelt elk filmpje vanzelf zodra je klikt. Wacht telkens tot het gedaan is.",
   },
-  ...filmpjes("Christophe", ["fam-christophe-1.mp4", "fam-christophe-2.mp4", "fam-christophe-3.mp4", "fam-christophe-4.mp4"]),
-  ...filmpjes("Chloé", ["fam-chloe-1.mp4", "fam-chloe-2.mp4", "fam-chloe-3.mp4"]),
-  ...filmpjes("Billie-Rose", ["fam-billie-rose-1.mp4", "fam-billie-rose-2.mp4", "fam-billie-rose-3.mp4", "fam-billie-rose-4.mp4", "fam-billie-rose-5.mp4"]),
   {
     type: "video",
     bestand: "interviews.mp4",
