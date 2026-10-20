@@ -8,6 +8,7 @@ const sharp = require("sharp");
 
 const BRON = path.join(__dirname, "_bron", "Lena");
 const MATHIAS = path.join(__dirname, "_bron", "mathias");
+const FAMILIE = path.join(__dirname, "_bron", "familie");
 const UIT_FOTO = path.join(__dirname, "assets", "foto");
 const UIT_VIDEO = path.join(__dirname, "assets", "video");
 
@@ -52,7 +53,23 @@ function herschaal(bron, doel) {
   ]);
 }
 
+// Filmpjes van de familie: "Billie-Rose 2.mp4" -> fam-billie-rose-2.mp4
+function familie() {
+  if (!fs.existsSync(FAMILIE)) return;
+  fs.mkdirSync(UIT_VIDEO, { recursive: true });
+  const clips = fs.readdirSync(FAMILIE).filter((f) => f.toLowerCase().endsWith(".mp4")).sort();
+  for (const clip of clips) {
+    const slug = path.basename(clip, path.extname(clip))
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    herschaal(path.join(FAMILIE, clip), path.join(UIT_VIDEO, `fam-${slug}.mp4`));
+    console.log(`fam-${slug}.mp4`);
+  }
+}
+
 async function main() {
+  if (process.argv[2] === "familie") return familie();
+
   leeg(UIT_FOTO);
   leeg(UIT_VIDEO);
 
@@ -117,6 +134,8 @@ async function main() {
     }
     console.log(`mathias    ${clips.length} fragment(en)`);
   }
+
+  familie();
 
   fs.writeFileSync(
     path.join(__dirname, "assets", "index-fotos.json"),

@@ -343,7 +343,9 @@
       const lijst = el("div", "lijst");
       lijst.dataset.stap = 0;
       const film = document.createElement("video");
-      film.src = VIDEOPAD + s.bestand;
+      // van/tot in seconden knipt het filmpje zonder het bestand te bewerken
+      const knip = s.van != null || s.tot != null ? "#t=" + (s.van || 0) + (s.tot != null ? "," + s.tot : "") : "";
+      film.src = VIDEOPAD + s.bestand + knip;
       film.playsInline = true;
       film.controls = false;
       film.preload = "auto";
