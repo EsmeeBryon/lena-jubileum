@@ -24,6 +24,7 @@ const THEMAS = {
   "Selfies": "selfies",
   "Stem-gezicht van AFAS": "stem",
   "Esmee": "esmee",
+  "Extra": "extra",
 };
 
 const FOTO_EXT = [".jpg", ".jpeg", ".png", ".heic", ".heif"];

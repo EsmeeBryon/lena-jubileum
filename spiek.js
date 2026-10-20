@@ -32,18 +32,27 @@ function opScherm(s) {
     case "liedje": return `Songtekst, ${s.regels.length} regels`;
     case "lijst": return `Titel &ldquo;${s.kop}&rdquo; met ${s.regels.length} zinnen`;
     case "slot": return `Slotbeeld: ${s.kop}`;
+    case "muur": return `Videomuur &ldquo;${s.kop}&rdquo; met ${s.videos.length} filmpjes zonder geluid`;
+    case "nieuws": return `Breaking news: &ldquo;${s.kop}&rdquo;, foto ${s.foto}, lopende band onderaan`;
+    case "film": return `Filmaffiche &ldquo;${s.kop}&rdquo;, foto ${s.foto}`;
     default: return s.type;
   }
 }
 
 function stappen(s) {
+  const basis = stappenZonderStempel(s);
+  if (!s.stempel) return basis;
+  return (basis || ["scherm staat er"]).concat(`KLIK: stempel &ldquo;${s.stempel}&rdquo;`);
+}
+
+function stappenZonderStempel(s) {
   if (s.type === "vraag") return s.antwoord ? ["vraag staat op het scherm", `antwoord: ${s.antwoord}`] : null;
-  if (s.type === "hoofdstuk") return [s.wacht ? "titel staat er, KLIK om het fragment te starten" : "fragment speelt vanzelf"].concat(s.grap ? [`daarna vanzelf: ${s.grap}`] : []);
-  if (s.type === "reeks") return s.items.map((x) => `${x.foto}: ${x.tekst || ""}`);
+  if (s.type === "hoofdstuk") return ["fragment speelt vanzelf"].concat(s.grap ? [`daarna vanzelf: ${s.grap}`] : s.stempel ? ["de stempel komt vanzelf na het fragment"] : []);
+  if (s.type === "reeks") return ["de foto's vallen vanzelf op de stapel"].concat(s.items.map((x) => `${x.foto}: ${x.tekst || ""}`));
   if (s.type === "verhaal") return ["foto en titel"].concat(s.tekst || [], s.clou ? [`clou: ${s.clou}`] : []);
   if (s.type === "video" && s.onder) return ["filmpje speelt", `onderschrift: ${s.onder}`];
-  if (s.type === "collage" && s.auto) return [s.auto === "klik" ? "KLIK: alle foto's verschijnen vanzelf na elkaar" : "foto's verschijnen vanzelf, niet klikken"];
-  if (s.type === "collage") return (s.items || s.fotos.map((foto) => ({ foto }))).map((x, i) => `foto ${i + 1} erbij (${x.foto})${x.tekst ? ": " + x.tekst : ""}`).concat(s.bijschrift ? "bijschrift" : []);
+  if (s.type === "collage") return [s.auto === "klik" ? "KLIK: alle foto's verschijnen vanzelf na elkaar" : "de foto's verschijnen vanzelf"].concat(s.bijschrift ? [`KLIK: ${s.bijschrift}`] : []);
+  if (s.type === "nieuws") return ["nieuwsflash staat er"].concat(s.clou ? [`KLIK: ${s.clou}`] : []);
   if (s.type === "liedje" || s.type === "lijst") return s.regels.map((r) => `regel: ${r.tekst}`);
   if (s.type === "audio") return ["fragment start"].concat((s.regels || []).map((r) => `zin erbij: ${r}`));
   if (s.type === "citaat") return ["citaat staat er", s.naklap ? `naklap: ${s.naklap}` : null].filter(Boolean);
