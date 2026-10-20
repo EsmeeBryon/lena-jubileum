@@ -31,18 +31,12 @@ const SHOW = [
     kop: "Herken je deze stem?",
     bestand: "stemmen-mix.mp3",
     spreker: "Britt",
-    script: "Niets zeggen. De stemmen starten vanzelf en duren ongeveer vijftien seconden.",
-  },
-  {
-    type: "kaart",
-    kop: "Lena, Lena, Lenaaa",
-    onder: "op Whenever, Wherever van Shakira",
-    spreker: "Britt",
     script:
-      "Beste mensen, we zijn hier vandaag om ons Lena'tje te vieren. " +
+      "Niets zeggen. De stemmen starten vanzelf en duren ongeveer vijftien seconden.\n\n" +
+      "Daarna: Beste mensen, we zijn hier vandaag om ons Lena'tje te vieren. " +
       "En als ik aan Lena denk, dan start ik meestal met een liedje.\n\n" +
-      "[ZINGEN] Lena, Lena, Lenaaa.\n\n" +
-      "Maar ook met een liedje dat we zelf gemaakt hebben.",
+      "[ZINGEN op Whenever, Wherever van Shakira] Lena, Lena, Lenaaa.\n\n" +
+      "Maar ook met een liedje dat we zelf gemaakt hebben. [KLIK]",
   },
   {
     type: "audio",
@@ -53,7 +47,6 @@ const SHOW = [
   },
   {
     type: "hoofdstuk",
-    titel: "Hè zeggen, dat doet een beleefde dame niet.",
     clip: "lena-a.mp4",
     zin: "Wat zeg je?",
     wacht: true,
@@ -78,16 +71,8 @@ const SHOW = [
 
   /* ============================================================= het begin */
   {
-    type: "citaat",
-    tekst: "Ik deed ALLES.",
-    spreker: "Britt",
-    script:
-      "Laten we deze presentatie beginnen bij het begin. Ik was natuurlijk nog niet in het bedrijf toen. " +
-      "Maar als ik haar over vroeger hoor praten, dan hoor ik maar één ding. Ik deed alles.",
-  },
-  {
     type: "collage",
-    kop: "Commercieel medewerker, 2014",
+    kop: "Ik deed ALLES",
     items: [
       { foto: "vroeger-01.jpg", tekst: "Koud bellen" },
       { foto: "vroeger-06.jpg", tekst: "Websitebeheer" },
@@ -97,28 +82,23 @@ const SHOW = [
     ],
     spreker: "Britt",
     script:
+      "Laten we deze presentatie beginnen bij het begin. Ik was natuurlijk nog niet in het bedrijf toen. " +
+      "Maar als ik haar over vroeger hoor praten, dan hoor ik maar één ding. Ik deed alles.\n\n" +
       "Ze is hier bij AFAS begonnen als commercieel medewerker in 2014. " +
       "Toen was ik vijftien jaar, om dat even in perspectief te zetten. " +
       "En toen wou dat echt nog zeggen dat ze moest koud bellen, websitebeheer doen, mailings...\n\n" +
       "Elke klik zet er een foto bij. Ze blijven allemaal staan.",
   },
   {
-    type: "kaart",
-    kop: "Eventmanager",
-    clou: "Zonder gsm. Zonder auto.",
-    spreker: "Britt",
-    script:
-      "Tot ze uiteindelijk eventmanager werd.\n\n" +
-      "[KLIK] Alé, zonder gsm en auto hé. Gewoon manager met de functie van het gewone gepeupel.",
-  },
-  {
     type: "collage",
-    kop: "In haar element",
+    kop: "Eventmanager",
     fotos: ["events-01.jpg", "events-02.jpg", "events-03.jpg", "events-09.jpg", "events-10.jpg", "events-15.jpg", "events-16.jpg", "events-18.jpg"],
     auto: "meteen",
     spreker: "Britt",
     script:
       "De foto's verschijnen vanzelf, je hoeft niet te klikken.\n\n" +
+      "Tot ze uiteindelijk eventmanager werd. Alé, zonder gsm en auto hé. " +
+      "Gewoon manager met de functie van het gewone gepeupel.\n\n" +
       "Hier zie je een paar prachtige kiekjes van onze jaarlijkse AFAS Open. Dan is ze echt in haar element.",
   },
   {
@@ -136,14 +116,13 @@ const SHOW = [
   },
   {
     type: "collage",
-    kop: "Sorry Lena",
+    kop: "Het nieuwe gezicht van AFAS",
     fotos: ["esmee-01.jpg", "esmee-02.jpg", "esmee-03.jpg"],
     auto: "klik",
-    bijschrift: "Je bent vervangen.",
     spreker: "Britt",
     script:
       "Sorry Lena, ik moet u helaas meedelen dat u vervangen bent.\n\n" +
-      "[KLIK] Het nieuwe gezicht. [KLIK] Het onderschrift.",
+      "[KLIK] De foto's verschijnen vanzelf na elkaar.",
   },
 
   /* ===================================================== da's Lena voor mij */
