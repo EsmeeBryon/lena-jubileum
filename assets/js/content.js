@@ -18,7 +18,6 @@ const SHOW = [
   /* ================================================================ welkom */
   {
     type: "titel",
-    kicker: "29 oktober 2026",
     titel: "Lena",
     jaren: "twaalf en een half jaar AFAS",
     onder: "Welkom \u00B7 Welcome \u00B7 Bienvenue \u00B7 Benvenuti",
