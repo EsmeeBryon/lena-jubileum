@@ -52,17 +52,9 @@ const SHOW = [
     kop: "Zeg eens, wat zeg je?",
     bestand: "zeg-eens-wat-zeg-je.mp3",
     spreker: "Britt",
-    script: "Het liedje start vanzelf en duurt een halve minuut. Laat het volledig uitspelen.",
-  },
-  {
-    type: "hoofdstuk",
-    clip: "lena-a.mp4",
-    zin: "Wat zeg je?",
-    spreker: "Britt",
     script:
-      "Zeg dit voor je klikt: Hè zeggen, dat doet een beleefde dame niet. " +
-      "Lena zegt altijd wat zeg je. Zoals je ze hier zelf hoort zeggen.\n\n" +
-      "[KLIK] Het fragment speelt meteen.",
+      "Het liedje start vanzelf en duurt een halve minuut. Laat het volledig uitspelen.\n\n" +
+      "Daarna: Hè zeggen, dat doet een beleefde dame niet. Lena zegt altijd wat zeg je. [KLIK]",
   },
   {
     type: "vraag",
