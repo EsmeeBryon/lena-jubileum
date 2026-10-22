@@ -117,13 +117,12 @@ const SHOW = [
   {
     type: "collage",
     kop: "Het nieuwe gezicht van AFAS",
-    fotos: ["esmee-01.jpg", "esmee-04.jpg", "esmee-05.jpg"],
+    fotos: ["esmee-01.jpg", "esmee-07.jpg", "esmee-05.jpg", "esmee-08.jpg", "esmee-06.jpg"],
     auto: "klik",
     spreker: "Esmee",
     script:
       "Sorry Lena, ik moet u helaas meedelen dat u vervangen bent.\n\n" +
       "[KLIK, de foto's komen vanzelf na elkaar]\n\n[KLIK]",
-    nazien: "De geschrokken foto achter de laptop vond ik nergens op de computer. Weet je de bestandsnaam, dan voeg ik ze toe.",
   },
 
   /* ===================================================== da's Lena voor mij */
