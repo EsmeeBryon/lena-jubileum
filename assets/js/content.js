@@ -313,10 +313,12 @@ const SHOW = [
     foto: "extra-03.jpg",
     kicker: "Vriendinnen",
     kop: "De Beffers",
+    extra: ["grappig-05.jpg", "grappig-16.jpg"],
     spreker: "Gaëlle",
     script:
       "En dan zijn er de Beffers. Zo heet haar vriendinnengroep. Echt waar.\n\n" +
-      "Komt de naam van BFF? Of van een ervaring waar wij niets van weten? We vragen het niet.\n\n[KLIK]",
+      "Komt de naam van BFF? Of van een ervaring waar wij niets van weten?\n\n" +
+      "[KLIK, twee foto's erbij] We vragen het niet. [even laten bezinken]\n\n[KLIK]",
   },
 
   /* ========================================================= echte vrienden */

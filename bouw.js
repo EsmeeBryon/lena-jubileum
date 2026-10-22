@@ -20,7 +20,7 @@ async function main() {
   /* ---- foto's: enkel de gebruikte, nog eens teruggeschaald ---- */
   const fotoMap = path.join(__dirname, "assets", "foto");
   const gebruikt = new Set(
-    SHOW.flatMap((s) => [s.foto, ...(s.fotos || []), ...(s.items || []).map((x) => x.foto)]).filter(Boolean)
+    SHOW.flatMap((s) => [s.foto, ...(s.fotos || []), ...(s.extra || []), ...(s.items || []).map((x) => x.foto)]).filter(Boolean)
   );
   const fotos = {};
   let fotoBytes = 0;

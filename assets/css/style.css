@@ -372,6 +372,11 @@ em { font-style: italic; color: var(--terra); }
 
 .verhaalkolom h2 { font-size: clamp(1.8rem, 4.2vw, 4rem); }
 
+.verhaalextra { display: flex; gap: 1.6vw; margin-top: 1vh; }
+.verhaalextra .lijst:nth-child(odd) { rotate: -3deg; }
+.verhaalextra .lijst:nth-child(even) { rotate: 2.5deg; }
+.verhaalextra .lijst img { height: 40vh; width: auto; max-width: 20vw; object-fit: cover; }
+
 .verhaaltekst {
   font-size: clamp(1rem, 1.9vw, 1.7rem);
   line-height: 1.45;
