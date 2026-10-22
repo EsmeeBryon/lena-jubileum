@@ -15,6 +15,30 @@ const alinea = (t) =>
       /^KLIK/.test(r) ? `<b class='klik'>[${r}]</b>` : `<i class='regie'>[${r}]</i>`)}</p>`)
     .join("");
 
+/* ---- tijdsinschatting: spreektempo, mediaduur en tijd voor de zaal ---- */
+const { execFileSync } = require("child_process");
+const mediaduur = (map, bestand) => {
+  const p = path.join(__dirname, "assets", map, bestand);
+  if (!fs.existsSync(p)) return 0;
+  try { return parseFloat(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", p]).toString()) || 0; }
+  catch { return 0; }
+};
+function duur(s) {
+  const gesproken = (s.script || "").replace(/\[[^\]]*\]/g, " ").split(/\s+/).filter(Boolean).length / 2.4;
+  let media = 0;
+  if (s.clip) media = mediaduur("video", s.clip);
+  if (s.type === "video") media = s.tot != null ? s.tot - (s.van || 0) : mediaduur("video", s.bestand) - (s.van || 0);
+  if (s.type === "audio") media = s.tot != null ? s.tot - (s.van || 0) : mediaduur("audio", s.bestand);
+  if (s.type === "reeks") media = s.items.length * 2.6;
+  if (s.type === "muur") media = 12;
+  const zaal = /handen|rechtstaan|laten antwoorden|roepen|applaus|lachen/i.test(s.script || "") ? 12 : 0;
+  return Math.round(gesproken + media + zaal + 3);
+}
+const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.round(t % 60)).padStart(2, "0")}`;
+const duren = SHOW.map(duur);
+const lopend = duren.map((_, i) => duren.slice(0, i + 1).reduce((a, b) => a + b, 0));
+const totaal = lopend[lopend.length - 1];
+
 // Korte omschrijving van wat de zaal op dat moment ziet
 function opScherm(s) {
   switch (s.type) {
@@ -67,6 +91,7 @@ const kaarten = SHOW.map((s, i) => {
       <span class="nr">${String(i + 1).padStart(2, "0")}</span>
       <span class="wie">${ontsnap(s.spreker || "—")}</span>
       <span class="type">${ontsnap(s.type)}</span>
+      <span class="tijd">± ${mmss(duren[i])} &middot; tot ${mmss(lopend[i])}</span>
     </header>
     <p class="scherm"><b>Op het scherm</b> ${opScherm(s)}</p>
     <div class="script">${alinea(s.script || "")}</div>
@@ -99,6 +124,9 @@ const html = `<!DOCTYPE html>
   .kaart { break-inside: avoid; border-top: 1px solid #e3d9cb; padding: 4mm 0 5mm; }
   .kaart header { display: flex; align-items: baseline; gap: 4mm; margin-bottom: 2mm; }
   .nr { font-size: 16pt; font-weight: 700; color: #c4613c; }
+  .tijd { margin-left: auto; font-size: 9pt; color: #9c8b79; }
+  .totaal { font-weight: 700; }
+  .te-lang { color: #c8102e; }
   .wie { font-weight: 600; }
   .type { font-size: 8.5pt; text-transform: uppercase; letter-spacing: .12em; color: #9c8b79; }
   .scherm { margin: 0 0 2mm; color: #6b5f52; }
@@ -116,7 +144,8 @@ const html = `<!DOCTYPE html>
 <body>
 
 <h1>Spiekbriefje</h1>
-<p class="lead">Jubileumshow voor Lena &middot; ${SHOW.length} schermen &middot; sprekers: ${sprekers.join(", ")}</p>
+<p class="lead">Jubileumshow voor Lena &middot; ${SHOW.length} schermen &middot; sprekers: ${sprekers.join(", ")}<br>
+<span class="totaal ${totaal > 900 ? "te-lang" : ""}">Geschatte duur: ${mmss(totaal)} (maximum 15:00)</span> &middot; ruwe schatting, klok het bij de repetitie met T</p>
 
 <div class="uitleg">
   <h2>Besturing van de presentatie</h2>

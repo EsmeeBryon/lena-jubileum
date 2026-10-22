@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Filmpjes kiezen</title>
+<style>
+  body { font: 15px/1.5 "Segoe UI", system-ui, sans-serif; background: #f4ebdf; color: #2a2520; margin: 0; padding: 32px; }
+  h1 { margin: 0 0 6px; }
+  p.uitleg { margin: 0 0 24px; color: #6b5f52; max-width: 70ch; }
+  .raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .clip { background: #fffdf9; border-radius: 10px; padding: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+  .clip h2 { font-size: 16px; margin: 0 0 8px; }
+  video, audio { width: 100%; max-height: 360px; background: #000; border-radius: 6px; }
+  audio { background: none; }
+  .knoppen { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  button { font: inherit; padding: 6px 12px; border-radius: 999px; border: 1px solid #c4613c; background: #fff; color: #c4613c; cursor: pointer; }
+  button.vol { background: #c4613c; color: #fff; }
+  .keuze { margin-top: 8px; font-weight: 600; min-height: 1.5em; }
+  .clip.gekozen { outline: 3px solid #7e8f6e; }
+  #samenvatting { position: sticky; bottom: 0; margin-top: 28px; background: #2a2520; color: #fbf6ef; padding: 16px 20px; border-radius: 10px; }
+  #samenvatting textarea { width: 100%; height: 120px; font: 14px/1.5 Consolas, monospace; border-radius: 6px; border: 0; padding: 8px; }
+</style>
+</head>
+<body>
+<h1>Filmpjes kiezen</h1>
+<p class="uitleg">
+  Speel een filmpje af. Klik op <b>Begin hier</b> waar het goede stuk start en op <b>Einde hier</b> waar het stopt.
+  Wil je het volledige filmpje, klik dan op <b>Helemaal</b>. Onderaan verschijnt je keuze: kopieer die tekst en plak ze in de chat.
+</p>
+<div class="raster" id="raster"></div>
+<div id="samenvatting">
+  <b>Jouw keuze</b> (kopieer en plak dit in de chat)
+  <textarea id="tekst" readonly></textarea>
+</div>
+<script>
+const CLIPS = [
+  ["Christophe 1", "assets/video/fam-christophe-1.mp4"],
+  ["Christophe 2", "assets/video/fam-christophe-2.mp4"],
+  ["Christophe 3", "assets/video/fam-christophe-3.mp4"],
+  ["Christophe 4", "assets/video/fam-christophe-4.mp4"],
+  ["Chloé 1", "assets/video/fam-chloe-1.mp4"],
+  ["Chloé 2", "assets/video/fam-chloe-2.mp4"],
+  ["Chloé 3", "assets/video/fam-chloe-3.mp4"],
+  ["Billie-Rose 1", "assets/video/fam-billie-rose-1.mp4"],
+  ["Billie-Rose 2", "assets/video/fam-billie-rose-2.mp4"],
+  ["Billie-Rose 3", "assets/video/fam-billie-rose-3.mp4"],
+  ["Billie-Rose 4", "assets/video/fam-billie-rose-4.mp4"],
+  ["Billie-Rose 5", "assets/video/fam-billie-rose-5.mp4"],
+  ["Marijke 1", "assets/video/col-marijke-1.mp4"],
+  ["Marijke 2", "assets/video/col-marijke-2.mp4"],
+  ["Marijke 3", "assets/video/col-marijke-3.mp4"],
+  ["Parodie Thinking Out Loud", "assets/audio/parodie.mp3"],
+];
+const keuzes = {};
+const tijd = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
+
+function toon() {
+  const regels = CLIPS.filter(([n]) => keuzes[n]).map(([n]) => {
+    const k = keuzes[n];
+    if (k.heel) return `${n}: helemaal`;
+    return `${n}: van ${tijd(k.van ?? 0)} tot ${k.tot != null ? tijd(k.tot) : "het einde"}`;
+  });
+  document.getElementById("tekst").value = regels.join("\n") || "(nog niets gekozen)";
+}
+
+for (const [naam, bron] of CLIPS) {
+  const kaart = document.createElement("div");
+  kaart.className = "clip";
+  const media = document.createElement(bron.endsWith(".mp3") ? "audio" : "video");
+  media.src = bron;
+  media.controls = true;
+  media.preload = "metadata";
+  const keuze = document.createElement("div");
+  keuze.className = "keuze";
+  const knop = (label, actie, vol) => {
+    const b = document.createElement("button");
+    b.textContent = label;
+    if (vol) b.className = "vol";
+    b.onclick = () => { actie(); kaart.classList.toggle("gekozen", !!keuzes[naam]); schrijf(); toon(); };
+    return b;
+  };
+  const schrijf = () => {
+    const k = keuzes[naam];
+    keuze.textContent = !k ? "" : k.heel ? "Helemaal" : `Van ${tijd(k.van ?? 0)} tot ${k.tot != null ? tijd(k.tot) : "het einde"}`;
+  };
+  const knoppen = document.createElement("div");
+  knoppen.className = "knoppen";
+  knoppen.append(
+    knop("Begin hier", () => { keuzes[naam] = { ...(keuzes[naam] || {}), heel: false, van: media.currentTime }; }),
+    knop("Einde hier", () => { keuzes[naam] = { ...(keuzes[naam] || {}), heel: false, tot: media.currentTime }; }),
+    knop("Helemaal", () => { keuzes[naam] = { heel: true }; }, true),
+    knop("Niet gebruiken", () => { delete keuzes[naam]; }),
+  );
+  const titel = document.createElement("h2");
+  titel.textContent = naam;
+  kaart.append(titel, media, knoppen, keuze);
+  document.getElementById("raster").appendChild(kaart);
+}
+toon();
+</script>
+</body>
+</html>
