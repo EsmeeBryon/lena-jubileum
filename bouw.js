@@ -37,7 +37,7 @@ async function main() {
   /* ---- audio: korte fragmenten ingebakken, lange (de parodie) als los bestand ---- */
   const audioMap = path.join(__dirname, "assets", "audio");
   const audios = {};
-  const gebruikteAudio = new Set(SHOW.filter((s) => s.type === "audio" || s.type === "karaoke").map((s) => s.bestand));
+  const gebruikteAudio = new Set(SHOW.flatMap((s) => [(s.type === "audio" || s.type === "karaoke") && s.bestand, s.muziek]).filter(Boolean));
   if (fs.existsSync(audioMap)) {
     for (const bestand of fs.readdirSync(audioMap)) {
       if (!gebruikteAudio.has(bestand)) continue;

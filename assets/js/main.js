@@ -252,7 +252,37 @@
       tekst.textContent = Array(6).fill(s.band.join("   +++   ")).join("   +++   ");
       band.appendChild(tekst);
       v.appendChild(band);
-      return { v };
+      if (!s.muziek) return { v };
+
+      // Opener luid, daarna zakt het muziekje weg tot zachte achtergrond onder de spreker
+      const geluid = new Audio(audioPad(s.muziek));
+      let fade = null;
+      const naar = (doel, ms) => {
+        clearInterval(fade);
+        const begin = geluid.volume;
+        const t0 = performance.now();
+        fade = setInterval(() => {
+          const x = Math.min(1, (performance.now() - t0) / ms);
+          geluid.volume = begin + (doel - begin) * x;
+          if (x === 1) { clearInterval(fade); if (doel === 0) geluid.pause(); }
+        }, 40);
+      };
+      let gestart = false;
+      return {
+        v,
+        bijStap() {
+          if (gestart) return;
+          gestart = true;
+          geluid.currentTime = 0;
+          geluid.volume = 0.8;
+          geluid.play().catch(() => {});
+          setTimeout(() => gestart && naar(0.18, 1500), 2500);
+        },
+        weg() {
+          gestart = false;
+          naar(0, 600);
+        },
+      };
     },
 
     // Liedje met songtekst per klik en een diavoorstelling op de achtergrond.
