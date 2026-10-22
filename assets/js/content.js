@@ -173,7 +173,10 @@ const SHOW = [
   {
     type: "collage",
     kop: "Altijd goed gekleed",
-    fotos: ["stijl-02-zoom.jpg", "stijl-06-zoom.jpg", "stijl-03-zoom.jpg", "events-08-zoom.jpg", "stijl-01-zoom.jpg", "stijl-04-zoom.jpg", "stijl-07-zoom.jpg"],
+    fotos: [
+      "stijl-02-zoom.jpg", "stijl-09.jpg", "stijl-06-zoom.jpg", "stijl-03-zoom.jpg", "stijl-11.jpg", "events-08-zoom.jpg",
+      "stijl-01-zoom.jpg", "stijl-10.jpg", "stijl-04-zoom.jpg", "stijl-08.jpg", "stijl-07-zoom.jpg",
+    ],
     stempel: "Ook dat is Lena",
     spreker: "Esmee",
     script:
