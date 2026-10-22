@@ -159,12 +159,12 @@ const SHOW = [
   {
     type: "collage",
     kop: "Lena en eten",
-    fotos: ["eten-01.jpg", "eten-02.jpg", "eten-03.jpg", "eten-04.jpg", "eten-05.jpg", "eten-06.jpg"],
+    fotos: ["eten-01.jpg", "eten-02.jpg", "eten-04.jpg", "events-06.jpg", "eten-05.jpg", "eten-06.jpg", "events-12.jpg"],
     stempel: "Da's Lena voor mij",
     spreker: "Esmee",
     script:
       "[De foto's komen vanzelf.]\n\n" +
-      "En eten. Sushi rollen, aan tafel met een chef of gewoon op een terras: Lena en eten, dat is liefde.\n\n" +
+      "En eten. Sushi rollen, aan tafel bij een inspiratiediner of gewoon op een terras: Lena en eten, dat is liefde.\n\n" +
       "[KLIK, stempel] Da's Lena voor mij.\n\n[KLIK]",
   },
   {
@@ -178,13 +178,6 @@ const SHOW = [
       "Lena is altijd mooi en altijd goed gekleed. " +
       "Mede mogelijk gemaakt door de koerier. Die heeft intussen een vaste parkeerplaats.\n\n" +
       "[KLIK, stempel] Ook dat is Lena.\n\n[KLIK]",
-  },
-  {
-    type: "hoofdstuk",
-    clip: "lena-c.mp4",
-    zin: "Ik had dat toch al gezegd?",
-    spreker: "Esmee",
-    script: "[Het fragment speelt meteen.]\n\nJa Lena. Alleen niet tegen ons.\n\n[KLIK]",
   },
   {
     type: "vraag",
@@ -216,9 +209,9 @@ const SHOW = [
     type: "verhaal",
     foto: "extra-02.jpg",
     kicker: "Bewijsstuk",
-    kop: "Op weg naar Gent",
+    kop: "Net terug van Gent",
     spreker: "Esmee",
-    script: "En ja. Dat ben ik. In dat busje. Op weg naar Gent.\n\n[KLIK]",
+    script: "En ja. Dat ben ik. In dat busje. Net terug van Gent.\n\n[KLIK]",
   },
   {
     type: "hoofdstuk",
