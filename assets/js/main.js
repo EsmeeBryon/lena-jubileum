@@ -458,9 +458,9 @@
       const v = el("section", "scherm s-foto");
       if (s.kop) v.appendChild(stapEl("h2", null, s.kop, 0));
       const items = s.items || s.fotos.map((foto) => ({ foto }));
-      const aantalRijen = items.length > 3 ? 2 : 1;
+      const aantalRijen = items.length > 3 && !s.breed ? 2 : 1;
       const perRij = Math.ceil(items.length / aantalRijen);
-      const muur = el("div", "collage" + (s.items ? " met-tekst" : ""));
+      const muur = el("div", "collage" + (s.items ? " met-tekst" : "") + (s.breed ? " breed" : ""));
       muur.style.setProperty("--per-rij", perRij);
       const h = aantalRijen === 1 ? 50 : perRij >= 4 ? 27 : 29;
       muur.style.setProperty("--h", (s.items ? h - 5 : h) + "vh");

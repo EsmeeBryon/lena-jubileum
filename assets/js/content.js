@@ -74,11 +74,12 @@ const SHOW = [
     kop: "Ik deed ALLES",
     items: [
       { foto: "vroeger-01.jpg", tekst: "Koud bellen" },
-      { foto: "vroeger-06.jpg", tekst: "Websitebeheer" },
+      { foto: "vroeger-05.jpg", tekst: "Websitebeheer" },
       { foto: "vroeger-04.jpg", tekst: "Mailings" },
-      { foto: "vroeger-12.jpg", tekst: "Events" },
+      { foto: "vroeger-11.jpg", tekst: "Events" },
       { foto: "vroeger-17.jpg", tekst: "En al de rest" },
     ],
+    breed: true,
     auto: "klik",
     spreker: "Esmee",
     script:
