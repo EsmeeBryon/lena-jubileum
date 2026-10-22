@@ -51,7 +51,7 @@ function opScherm(s) {
     case "reeks": return `Fotostapel${s.kop ? ` &ldquo;${s.kop}&rdquo;` : ""}, ${s.items.length} foto's`;
     case "verhaal": return `${s.video ? `Gifje ${s.video}` : `Foto ${s.foto}`} met het verhaal &ldquo;${s.kop}&rdquo;`;
     case "foto": return `Foto ${s.foto}` + (s.kop ? ` met de tekst &ldquo;${s.kop}&rdquo;` : "");
-    case "collage": return `Collage van ${(s.items || s.fotos).length} foto's`;
+    case "collage": return (s.youtube ? `Eerst een stukje YouTube (${s.youtube.id}, enkel online), daarna c` : "C") + `ollage van ${(s.items || s.fotos).length} foto's`;
     case "audio": return `Audiofragment ${s.bestand}` + (s.regels ? `, met ${s.regels.length} uitspraken` : "");
     case "video": return `Filmpje ${s.bestand}`;
     case "liedje": return `Songtekst, ${s.regels.length} regels`;

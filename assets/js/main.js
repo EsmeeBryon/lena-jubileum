@@ -470,7 +470,7 @@
       muur.style.setProperty("--per-rij", perRij);
       const h = aantalRijen === 1 ? 50 : perRij >= 4 ? 27 : 29;
       muur.style.setProperty("--h", (s.items ? h - 5 : h) + "vh");
-      const autoStap = s.auto === "klik" ? 1 : 0;
+      const autoStap = s.auto === "klik" || s.youtube ? 1 : 0;
       const tussen = s.items ? 0.9 : 0.45;
       let rij = null;
       items.forEach((item, i) => {
@@ -484,7 +484,25 @@
       });
       v.appendChild(muur);
       if (s.bijschrift) v.appendChild(stapEl("p", "bijschrift", s.bijschrift, autoStap + 1));
-      return { v };
+      if (!s.youtube) return { v };
+
+      // Eerst een stukje van YouTube (werkt enkel online), na een klik komen de foto's
+      const vak = stapEl("div", "ytvak", null, 0);
+      vak.dataset.alleen = "";
+      const speler = document.createElement("iframe");
+      Object.assign(speler, { allow: "autoplay; encrypted-media", referrerPolicy: "strict-origin-when-cross-origin", title: "YouTube" });
+      vak.appendChild(speler);
+      v.appendChild(vak);
+      const { id, van = 0, tot } = s.youtube;
+      const url = `https://www.youtube.com/embed/${id}?autoplay=1&controls=0&rel=0&playsinline=1&start=${van}` + (tot ? `&end=${tot}` : "");
+      return {
+        v,
+        bijStap(n) {
+          const doel = n === 0 ? url : "about:blank";
+          if (speler.src !== doel) speler.src = doel;
+        },
+        weg() { speler.src = "about:blank"; },
+      };
     },
 
     audio(s) {

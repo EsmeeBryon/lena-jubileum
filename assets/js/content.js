@@ -105,14 +105,16 @@ const SHOW = [
   {
     type: "collage",
     kop: "The voice and the face",
+    youtube: { id: "bfOka5lL48k", van: 0, tot: 15 },
     fotos: ["stem-01.jpg", "stem-02.jpg"],
     spreker: "Esmee",
     script:
-      "[De foto's komen vanzelf.]\n\n" +
-      "Over de jaren heen is ze niet alleen de stem van AFAS geweest. " +
+      "[Een stukje van de tv-spot speelt vanzelf. Dat is de stem van Lena. Werkt enkel in de online versie.]\n\n" +
+      "Over de jaren heen is ze de stem van AFAS geweest. " +
       "Voor de mensen die dit niet weten: zij spreekt ook ons antwoordapparaat in. Maar ook the face.\n\n" +
+      "[KLIK, de foto's komen vanzelf]\n\n" +
       "Op deze foto weet ik niet zeker van welke sector ze komt, maar ze staat bij den dokteur Thibault.\n\n[KLIK]",
-    nazien: "Staat de foto met dokter Thibault hierbij? Anders die foto nog bezorgen.",
+    nazien: "Het YouTube-stukje speelt de eerste 15 seconden van de tv-spot. Hoor je Lena daar niet goed, zeg dan van welke seconde tot welke seconde. Staat de foto met dokter Thibault hierbij?",
   },
   {
     type: "collage",
