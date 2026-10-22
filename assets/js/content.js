@@ -270,6 +270,7 @@ const SHOW = [
     type: "nieuws",
     foto: "grappig-20.jpg",
     kop: "Lena stopt met roken",
+    muziek: "nieuws.mp3",
     clou: "Deze foto is van haar laatste sigaret. Die van gisteren.",
     band: ["Lena stopt met roken", "Ook deze week", "Bron: Lena zelf", "Meer nieuws na de rookpauze"],
     spreker: "Gaëlle",
@@ -395,13 +396,6 @@ const SHOW = [
 
   /* ================================================================= toast */
   {
-    type: "video",
-    bestand: "fam-christophe-aparte-boodschap.mp4",
-    kop: "Nog één boodschap",
-    spreker: "Britt",
-    script: "[Niets aankondigen. De boodschap van Christophe speelt vanzelf. Laat ze volledig uitspelen. Daarna even stilte.]\n\n[KLIK]",
-  },
-  {
     type: "foto",
     foto: "stijl-05.jpg",
     vol: true,
@@ -413,7 +407,14 @@ const SHOW = [
       "doorgeschoven administratie en hardop nadenken opzij zetten, blijft er maar één ding over. " +
       "Wij kunnen niet meer zonder jou.\n\n" +
       "Onder al die Engelse en Franse woorden en spontane selfies zit een collega met een hart van goud. " +
-      "Je bent er altijd als iemand een luisterend oor nodig heeft. En je zorgt ervoor dat elk AFAS-event klopt.",
+      "Je bent er altijd als iemand een luisterend oor nodig heeft. En je zorgt ervoor dat elk AFAS-event klopt.\n\n[KLIK]",
+  },
+  {
+    type: "video",
+    bestand: "fam-christophe-aparte-boodschap.mp4",
+    kop: "Nog één boodschap",
+    spreker: "Britt",
+    script: "[Niets aankondigen. De boodschap van Christophe speelt vanzelf. Laat ze volledig uitspelen. Daarna even stilte.]\n\n[KLIK]",
   },
   {
     type: "slot",
