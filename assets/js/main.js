@@ -254,7 +254,7 @@
       v.appendChild(band);
       if (!s.muziek) return { v };
 
-      // Opener luid, daarna zakt het muziekje weg tot zachte achtergrond onder de spreker
+      // Zacht achtergrondmuziekje onder de spreker
       const geluid = new Audio(audioPad(s.muziek));
       let fade = null;
       const naar = (doel, ms) => {
@@ -274,9 +274,9 @@
           if (gestart) return;
           gestart = true;
           geluid.currentTime = 0;
-          geluid.volume = 0.8;
+          geluid.volume = 0;
           geluid.play().catch(() => {});
-          setTimeout(() => gestart && naar(0.18, 1500), 2500);
+          naar(0.15, 1500);
         },
         weg() {
           gestart = false;
@@ -410,7 +410,14 @@
     // Foto links, verhaal rechts.
     verhaal(s) {
       const v = el("section", "scherm s-verhaal");
-      const f = fotolijst(s.foto);
+      let f;
+      if (s.video) {
+        // Gifje: zonder geluid, blijft lopen
+        f = el("div", "lijst");
+        const film = document.createElement("video");
+        Object.assign(film, { src: VIDEOPAD + s.video, muted: true, loop: true, autoplay: true, playsInline: true });
+        f.appendChild(film);
+      } else f = fotolijst(s.foto);
       f.dataset.stap = 0;
       v.appendChild(f);
       const kolom = el("div", "verhaalkolom");
