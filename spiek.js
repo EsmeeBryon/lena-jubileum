@@ -11,7 +11,8 @@ const ontsnap = (t) =>
 const alinea = (t) =>
   ontsnap(t)
     .split("\n\n")
-    .map((s) => `<p>${s.replace(/\n/g, "<br>").replace(/\[KLIK\]/g, "<b class='klik'>[KLIK]</b>")}</p>`)
+    .map((s) => `<p>${s.replace(/\n/g, "<br>").replace(/\[([^\]]+)\]/g, (_, r) =>
+      /^KLIK/.test(r) ? `<b class='klik'>[${r}]</b>` : `<i class='regie'>[${r}]</i>`)}</p>`)
     .join("");
 
 // Korte omschrijving van wat de zaal op dat moment ziet
@@ -60,7 +61,6 @@ function stappenZonderStempel(s) {
 }
 
 const kaarten = SHOW.map((s, i) => {
-  const lijst = stappen(s);
   return `
   <article class="kaart">
     <header>
@@ -69,7 +69,6 @@ const kaarten = SHOW.map((s, i) => {
       <span class="type">${ontsnap(s.type)}</span>
     </header>
     <p class="scherm"><b>Op het scherm</b> ${opScherm(s)}</p>
-    ${lijst ? `<ol class="klikken">${lijst.map((x) => `<li>${ontsnap(x)}</li>`).join("")}</ol>` : ""}
     <div class="script">${alinea(s.script || "")}</div>
     ${s.nazien ? `<p class="nazien"><b>Nog te doen</b> ${ontsnap(s.nazien)}</p>` : ""}
   </article>`;
@@ -108,6 +107,8 @@ const html = `<!DOCTYPE html>
   .script p { margin: 0 0 2mm; }
   .script { border-left: 3px solid #7e8f6e; padding-left: 4mm; }
   .klik { color: #c4613c; }
+  .regie { color: #9c8b79; }
+  .script { font-size: 11.5pt; line-height: 1.6; }
   .nazien { margin: 3mm 0 0; background: #fdf1e6; border-radius: 2mm; padding: 2mm 3mm; font-size: 9.5pt; }
   @media print { body { padding: 0; } }
 </style>
