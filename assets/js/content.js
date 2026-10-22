@@ -157,6 +157,7 @@ const SHOW = [
       "selfies-01.jpg", "selfies-06.jpg", "selfies-02.jpg", "selfies-09.jpg", "selfies-03.jpg", "events-14.jpg", "selfies-07.jpg",
       "vroeger-02.jpg", "selfies-04.jpg", "selfies-08.jpg", "selfies-10.jpg", "grappig-01.jpg", "vroeger-16.jpg",
     ],
+    tempo: 0.9,
     stempel: "ZO Lena",
     spreker: "Esmee",
     script: "[De selfies komen vanzelf.]\n\n[KLIK, stempel] Die selfies zijn ZO Lena.\n\n[KLIK]",
@@ -165,6 +166,7 @@ const SHOW = [
     type: "collage",
     kop: "Lena en eten",
     fotos: ["eten-01.jpg", "eten-02.jpg", "eten-04.jpg", "familie-05.jpg", "eten-05.jpg", "eten-06.jpg", "familie-13.jpg"],
+    tempo: 1.1,
     stempel: "Da's Lena voor mij",
     spreker: "Esmee",
     script:
@@ -179,6 +181,7 @@ const SHOW = [
       "stijl-02-zoom.jpg", "stijl-09.jpg", "stijl-06-zoom.jpg", "stijl-03-zoom.jpg", "stijl-11.jpg", "events-08-zoom.jpg",
       "stijl-01-zoom.jpg", "stijl-10.jpg", "stijl-04-zoom.jpg", "stijl-08.jpg", "stijl-07-zoom.jpg",
     ],
+    tempo: 0.9,
     stempel: "Ook dat is Lena",
     spreker: "Esmee",
     script:
@@ -273,6 +276,7 @@ const SHOW = [
   {
     type: "collage",
     fotos: ["mommy-03.jpg", "mommy-04.jpg", "mommy-08.jpg", "mommy-05.jpg", "mommy-07.jpg", "mommy-09.jpg", "mommy-11.jpg", "mommy-02.jpg"],
+    tempo: 1.1,
     spreker: "Gaëlle",
     script: "[De foto's komen vanzelf.]\n\nWie Lena alleen van overdag kent, kent maar de helft.\n\n[KLIK]",
   },
