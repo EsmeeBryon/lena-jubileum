@@ -129,24 +129,24 @@ const SHOW = [
   {
     type: "hoofdstuk",
     clip: "lena-b.mp4",
+    titel: "Da's Lena voor mij",
     zin: "Ik denk gewoon hardop na hé",
-    stempel: "Da's Lena voor mij",
     spreker: "Esmee",
     script:
-      "[Het fragment speelt meteen. Daarna valt de stempel vanzelf.]\n\n" +
+      "[Het fragment speelt meteen.]\n\n" +
       "Da's Lena voor mij.\n\n[KLIK]",
   },
   {
     type: "vraag",
     kicker: "Handen omhoog",
-    vraag: "Wie kreeg ooit een voice-message van Lena van meer dan vijf minuten?",
-    antwoord: "En wie heeft hem helemaal uitgeluisterd?",
+    vraag: "Wie heeft er al eens een voicebericht van Lena ontvangen?",
+    antwoord: "Wie heeft die op 1,5x of 2x geluisterd?",
     stempel: "Da's ook echt Lena",
     spreker: "Esmee",
     script:
-      "Wie kreeg ooit een voice-message van Lena van meer dan vijf minuten? [handen laten opsteken]\n\n" +
-      "[KLIK] En wie heeft hem helemaal uitgeluisterd? [de meeste handen zakken]\n\n" +
-      "[KLIK, stempel] Die voice-messages, da's ook echt Lena.\n\n[KLIK]",
+      "Wie heeft er al eens een voicebericht van Lena ontvangen? [handen laten opsteken]\n\n" +
+      "[KLIK] Wie heeft die op 1,5x of 2x geluisterd? [lachen]\n\n" +
+      "[KLIK, stempel] Die voiceberichten, da's ook echt Lena.\n\n[KLIK]",
   },
   {
     type: "collage",
@@ -159,12 +159,12 @@ const SHOW = [
   {
     type: "collage",
     kop: "Lena en eten",
-    fotos: ["eten-01.jpg", "eten-02.jpg", "eten-04.jpg", "events-06.jpg", "eten-05.jpg", "eten-06.jpg", "events-12.jpg"],
+    fotos: ["eten-01.jpg", "eten-02.jpg", "eten-04.jpg", "familie-05.jpg", "eten-05.jpg", "eten-06.jpg", "familie-13.jpg"],
     stempel: "Da's Lena voor mij",
     spreker: "Esmee",
     script:
       "[De foto's komen vanzelf.]\n\n" +
-      "En eten. Sushi rollen, aan tafel bij een inspiratiediner of gewoon op een terras: Lena en eten, dat is liefde.\n\n" +
+      "En eten. Sushi rollen, een volle tafel met vrienden of gewoon op een terras: Lena en eten, dat is liefde.\n\n" +
       "[KLIK, stempel] Da's Lena voor mij.\n\n[KLIK]",
   },
   {
@@ -181,12 +181,12 @@ const SHOW = [
   },
   {
     type: "vraag",
-    vraag: "Lena plant een meeting met jou. Wat checkt ze eerst?",
-    antwoord: "Haar eigen agenda. Die van jou? Nooit.",
+    vraag: "Lena plant een meeting met jou. Wat checkt ze niet?",
+    antwoord: "Jouw agenda. Enkel die van haar wel.",
     spreker: "Esmee",
     script:
-      "Net zoals met de meeting inplannen. Lena plant een meeting met jou. Wat checkt ze eerst? [zaal laten roepen]\n\n" +
-      "[KLIK] Haar eigen agenda. Die van jou? Nooit.\n\n[KLIK]",
+      "Lena plant een meeting met jou. Wat checkt ze niet? [zaal laten roepen]\n\n" +
+      "[KLIK] Jouw agenda. Enkel die van haar wel.\n\n[KLIK]",
   },
   {
     type: "lijst",
@@ -214,11 +214,21 @@ const SHOW = [
     script: "En ja. Dat ben ik. In dat busje. Net terug van Gent.\n\n[KLIK]",
   },
   {
+    type: "vraag",
+    kicker: "Allemaal rechtstaan",
+    vraag: "Wie heeft ooit iets voor Lena ingestuurd, opgestuurd of opgehaald?",
+    antwoord: "Dit applaus is voor jullie.",
+    spreker: "Esmee",
+    script:
+      "Wie heeft ooit iets voor Lena ingestuurd, opgestuurd of opgehaald? Ga maar eens rechtstaan. [wachten tot iedereen staat]\n\n" +
+      "[KLIK] Blijf even staan. Dit applaus is voor jullie. [applaus]\n\n[KLIK]",
+  },
+  {
     type: "hoofdstuk",
-    clip: "lena-e.mp4",
+    clip: "lena-f.mp4",
     zin: "Ik heb daar geen headspace voor",
     spreker: "Esmee",
-    script: "En als er dan echt administratie moet gebeuren?\n\n[Het fragment speelt meteen.]\n\n[KLIK]",
+    script: "En als er dan echt administratie moet gebeuren?\n\n[Het fragment speelt meteen, met haar lach erbij.]\n\n[KLIK]",
   },
   {
     type: "reeks",
@@ -230,19 +240,10 @@ const SHOW = [
       { foto: "grappig-21.jpg", tekst: "Plan C. Achter een groot scherm." },
       { foto: "grappig-18.jpg", tekst: "Plan D. Onherkenbaar." },
     ],
-    spreker: "Esmee",
-    script: "[De foto's vallen vanzelf op de stapel. Laat de zaal lachen.]\n\n[KLIK]",
-  },
-  {
-    type: "vraag",
-    kicker: "Allemaal rechtstaan",
-    vraag: "Wie heeft ooit iets voor Lena ingestuurd, opgestuurd of opgehaald?",
-    antwoord: "Dit applaus is voor jullie.",
     stempel: "Da's allemaal Lena voor mij",
     spreker: "Esmee",
     script:
-      "Wie heeft ooit iets voor Lena ingestuurd, opgestuurd of opgehaald? Ga maar eens rechtstaan. [wachten tot iedereen staat]\n\n" +
-      "[KLIK] Blijf even staan. Dit applaus is voor jullie. [applaus]\n\n" +
+      "[De foto's vallen vanzelf op de stapel. Laat de zaal lachen.]\n\n" +
       "De meeting inplannen, de postduif, de administratie doorschuiven. [KLIK, stempel] Da's allemaal Lena voor mij.\n\n" +
       "[KLIK, Gaëlle neemt over]",
   },
