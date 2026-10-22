@@ -306,14 +306,13 @@ const SHOW = [
   },
   {
     type: "verhaal",
-    foto: "mommy-10.jpg",
+    foto: "extra-03.jpg",
     kicker: "Vriendinnen",
     kop: "De Beffers",
     spreker: "Gaëlle",
     script:
       "En dan zijn er de Beffers. Zo heet haar vriendinnengroep. Echt waar.\n\n" +
       "Komt de naam van BFF? Of van een ervaring waar wij niets van weten? We vragen het niet.\n\n[KLIK]",
-    nazien: "Staan de Beffers op deze foto? Anders een andere foto kiezen.",
   },
 
   /* ========================================================= echte vrienden */
