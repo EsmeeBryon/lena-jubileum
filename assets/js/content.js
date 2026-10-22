@@ -352,13 +352,13 @@ const SHOW = [
   ...filmpjes("Marijke", [{ bestand: "col-marijke-1.mp4", van: 0.8 }]),
   ...filmpjes("Christophe", [{ bestand: "fam-christophe-3.mp4", van: 1.3 }]),
   ...filmpjes("Chloé", [{ bestand: "fam-chloe-3.mp4", van: 0.9 }]),
-  ...filmpjes("Billie-Rose", [{ bestand: "fam-billie-rose-3.mp4", van: 0.4, tot: 14.2 }]),
+  ...filmpjes("Marijke", [{ bestand: "col-marijke-3.mp4", van: 1.3, tot: 16.1 }]),
   {
     type: "video",
-    bestand: "col-marijke-3.mp4",
-    van: 1.3,
-    tot: 16.1,
-    kop: "Marijke",
+    bestand: "fam-billie-rose-3.mp4",
+    van: 0.4,
+    tot: 14.2,
+    kop: "Billie-Rose",
     spreker: "Gaëlle",
     script:
       "[Laatste filmpje.]\n\n" +
@@ -369,16 +369,30 @@ const SHOW = [
 
   /* ================================================================ liedje */
   {
-    type: "audio",
-    kop: "Thinking Out Loud",
-    onder: "De Lena-versie",
+    type: "karaoke",
+    kop: "Thinking Out Loud \u00B7 de Lena-versie",
     bestand: "parodie.mp3",
     tot: 90,
+    // Foto's die nog nergens anders in de show zitten
+    fotos: [
+      "vroeger-07.jpg", "events-07.jpg", "vroeger-10.jpg", "mommy-06.jpg", "events-11.jpg", "vroeger-14.jpg",
+      "familie-06.jpg", "events-19.jpg", "grappig-14.jpg", "vroeger-19.jpg", "events-21.jpg", "mommy-10.jpg",
+      "familie-09.jpg", "vroeger-08.jpg", "events-25.jpg", "grappig-15.jpg",
+    ],
+    regels: [
+      "When your legs don't work\nlike they used to before",
+      "En je stuurt weer een voice-note\nvan tien minuten door",
+      "Je bent een mommy on the loose\nmet een sigaret in de hand",
+      "Maar qua evenementen\nben jij de queen van het land",
+      "So honey now\nvergeet je agenda maar gauw",
+      "Ik denk gewoon hardop na\noh baby, ik vergeet het weer",
+    ],
     spreker: "Britt",
     script:
       "En omdat Lena altijd hardop nadenkt, kon dit liedje niet ontbreken.\n\n" +
-      "[De parodie start vanzelf en stopt na anderhalve minuut met een fade-out.]\n\n[KLIK]",
-    nazien: "De parodie duurt 4:34. Kies welk stuk erin moet (max. 1,5 minuut). Nu speelt de eerste 1,5 minuut.",
+      "[De muziek en de foto's starten vanzelf. KLIK telkens wanneer de volgende regel gezongen wordt. " +
+      "Na anderhalve minuut zakt de muziek weg.]\n\n[KLIK]",
+    nazien: "De songtekst hier is de eerste versie van Britt. Bezorg de tekst zoals hij in de opname gezongen wordt, dan zet ik die op het scherm. Zeg ook welk stuk van de 4:34 erin moet (max. 1,5 minuut).",
   },
 
   /* ================================================================= toast */

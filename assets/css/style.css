@@ -651,6 +651,48 @@ em { font-style: italic; color: var(--terra); }
   padding-top: 2vh;
 }
 
+/* ---------- liedje met diavoorstelling ---------- */
+
+.s-karaoke { padding: 0; background: #14100c; color: var(--papier-licht); }
+
+.diashow { position: absolute; inset: 0; overflow: hidden; }
+
+.dia {
+  position: absolute;
+  inset: -3%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 1.4s ease, transform 6s linear;
+}
+
+.dia.aan { opacity: 1; transform: scale(1.06); }
+
+.karaokesluier {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(20, 16, 12, 0.55), rgba(20, 16, 12, 0.8));
+}
+
+.karaokekop { position: absolute; top: 6vh; color: var(--oker); }
+
+.karaoketekst { position: relative; width: 84vw; height: 40vh; }
+
+.karaokeregel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4.6vw, 4.4rem);
+  line-height: 1.15;
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 0.4vh 3vh rgba(0, 0, 0, 0.7);
+}
+
 /* ---------- schil ---------- */
 
 .voortgang {
