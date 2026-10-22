@@ -116,7 +116,7 @@ const SHOW = [
   {
     type: "collage",
     kop: "Het nieuwe gezicht van AFAS",
-    fotos: ["esmee-01.jpg", "esmee-02.jpg", "esmee-03.jpg", "esmee-04.jpg", "esmee-05.jpg"],
+    fotos: ["esmee-01.jpg", "esmee-04.jpg", "esmee-05.jpg"],
     auto: "klik",
     spreker: "Esmee",
     script:
