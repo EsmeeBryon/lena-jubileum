@@ -381,8 +381,9 @@
         p.dataset.stap = i + 1;
         p.style.setProperty("--draai", draai[i % draai.length] + "deg");
         p.style.setProperty("--schuif", (i % 2 ? 1 : -1) * Math.min(i, 3) * 1.2 + "vw");
-        const img = el("img");
-        img.src = fotoPad(item.foto);
+        const img = item.video ? document.createElement("video") : el("img");
+        if (item.video) Object.assign(img, { src: VIDEOPAD + item.video, playsInline: true, preload: "auto" });
+        else img.src = fotoPad(item.foto);
         img.alt = "";
         p.appendChild(img);
         stapel.appendChild(p);
@@ -391,7 +392,7 @@
           t.dataset.stap = i + 1;
           t.dataset.alleen = "";
           onder.appendChild(t);
-        }
+        } else if (onder.lastChild) onder.lastChild.dataset.tot = i + 1;
       });
       v.appendChild(stapel);
       v.appendChild(onder);
@@ -401,9 +402,13 @@
         v,
         bijStap(n) {
           clearTimeout(wekker);
-          if (n < s.items.length) wekker = setTimeout(() => naarStap(v, n + 1), n === 0 ? 700 : 2600);
+          const film = n > 0 && stapel.children[n - 1].querySelector("video");
+          if (film) { film.currentTime = 0; film.play().catch(() => {}); }
+          // Een filmpje eerst laten uitspelen voor de volgende foto valt
+          const wacht = film ? Math.max(2600, (film.duration || 3) * 1000 + 800) : n === 0 ? 700 : 2600;
+          if (n < s.items.length) wekker = setTimeout(() => naarStap(v, n + 1), wacht);
         },
-        weg() { clearTimeout(wekker); },
+        weg() { clearTimeout(wekker); stapel.querySelectorAll("video").forEach((f) => f.pause()); },
       };
     },
 
@@ -428,6 +433,7 @@
       if (s.extra) {
         const rij = el("div", "verhaalextra");
         rij.dataset.stap = (s.tekst || []).length + (s.clou ? 1 : 0) + 1;
+        rij.style.setProperty("--n", s.extra.length);
         s.extra.forEach((b) => rij.appendChild(fotolijst(b)));
         kolom.appendChild(rij);
       }
@@ -665,7 +671,7 @@
   function pasStapToe() {
     huidig.v.querySelectorAll("[data-stap]").forEach((n) => {
       const nr = Number(n.dataset.stap);
-      const aan = n.dataset.alleen != null ? nr === stap : nr <= stap;
+      const aan = n.dataset.alleen != null ? nr <= stap && stap <= Number(n.dataset.tot || nr) : nr <= stap;
       n.classList.toggle("zichtbaar", aan);
     });
     if (huidig.bijStap) huidig.bijStap(stap);

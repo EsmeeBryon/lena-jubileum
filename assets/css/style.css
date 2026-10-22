@@ -341,7 +341,7 @@ em { font-style: italic; color: var(--terra); }
   rotate: var(--draai, 0deg);
 }
 
-.polaroid img { display: block; max-height: 52vh; max-width: 54vw; }
+.polaroid img, .polaroid video { display: block; max-height: 52vh; max-width: 54vw; }
 
 .polaroid[data-stap] { transform: translateY(-6vh) scale(1.08); }
 .polaroid[data-stap].zichtbaar { transform: none; }
@@ -378,7 +378,7 @@ em { font-style: italic; color: var(--terra); }
 .verhaalextra { display: flex; gap: 1.6vw; margin-top: 1vh; }
 .verhaalextra .lijst:nth-child(odd) { rotate: -3deg; }
 .verhaalextra .lijst:nth-child(even) { rotate: 2.5deg; }
-.verhaalextra .lijst img { height: 40vh; width: auto; max-width: 20vw; object-fit: cover; }
+.verhaalextra .lijst img { height: 40vh; width: auto; max-width: calc(42vw / var(--n, 2) - 1.6vw); object-fit: cover; }
 
 .verhaaltekst {
   font-size: clamp(1rem, 1.9vw, 1.7rem);
