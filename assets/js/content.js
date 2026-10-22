@@ -79,14 +79,17 @@ const SHOW = [
       { foto: "vroeger-12.jpg", tekst: "Events" },
       { foto: "vroeger-17.jpg", tekst: "En al de rest" },
     ],
+    auto: "klik",
     spreker: "Esmee",
     script:
-      "De foto's verschijnen vanzelf na elkaar.\n\n" +
+      "Eerst staat enkel de titel er.\n\n" +
       "Laten we deze presentatie beginnen bij het begin. Ik was natuurlijk nog niet in het bedrijf toen. " +
       "Maar als ik haar over vroeger hoor praten, dan hoor ik maar één ding. Ik deed alles.\n\n" +
       "Ze is hier bij AFAS begonnen als commercieel medewerker in 2014. " +
       "Toen was ik vijftien jaar, om dat even in perspectief te zetten. " +
-      "En toen wou dat echt nog zeggen dat ze moest koud bellen, websitebeheer doen, mailings...",
+      "En toen wou dat echt nog zeggen dat ze moest\n\n" +
+      "[KLIK] De foto's verschijnen vanzelf na elkaar, elk met hun woord. " +
+      "Koud bellen, websitebeheer doen, mailings...",
   },
   {
     type: "collage",
