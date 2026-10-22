@@ -334,7 +334,7 @@
         // De gezongen regel kleurt mee tot net voor de volgende begint
         if (i >= 0) {
           const begin = s.regels[i].t;
-          const eind = (s.regels[i + 1] ? s.regels[i + 1].t : begin + 4) - 0.3;
+          const eind = s.regels[i].e || (s.regels[i + 1] ? s.regels[i + 1].t : begin + 4) - 0.3;
           regelEls[i].style.setProperty("--vul", Math.min(100, Math.max(0, ((nu - begin) / (eind - begin)) * 100)) + "%");
         }
         const rest = s.regels[0].t - nu;
