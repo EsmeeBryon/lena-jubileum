@@ -255,6 +255,9 @@ em { font-style: italic; color: var(--terra); }
 
 .collage ~ .bijschrift { max-width: 52ch; }
 
+.collage.breed { max-width: 96vw; }
+.collage.breed .lijst img { width: calc(94vw / var(--per-rij) - 1.6vw); max-width: none; }
+
 /* ---------- vraag aan de zaal ---------- */
 
 .s-vraag { gap: 5vw; flex-direction: row; }
