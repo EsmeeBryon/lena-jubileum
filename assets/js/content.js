@@ -151,7 +151,10 @@ const SHOW = [
   {
     type: "collage",
     kop: "Selfies",
-    fotos: ["selfies-01.jpg", "selfies-02.jpg", "selfies-03.jpg", "selfies-04.jpg", "events-14.jpg", "vroeger-02.jpg", "vroeger-16.jpg", "grappig-01.jpg"],
+    fotos: [
+      "selfies-01.jpg", "selfies-06.jpg", "selfies-02.jpg", "selfies-09.jpg", "selfies-03.jpg", "events-14.jpg", "selfies-07.jpg",
+      "vroeger-02.jpg", "selfies-04.jpg", "selfies-08.jpg", "selfies-10.jpg", "grappig-01.jpg", "vroeger-16.jpg",
+    ],
     stempel: "ZO Lena",
     spreker: "Esmee",
     script: "[De selfies komen vanzelf.]\n\n[KLIK, stempel] Die selfies zijn ZO Lena.\n\n[KLIK]",
