@@ -368,6 +368,12 @@
       if (s.kop) kolom.appendChild(stapEl("h2", null, s.kop, 0));
       (s.tekst || []).forEach((t, i) => kolom.appendChild(stapEl("p", "verhaaltekst", t, i + 1)));
       if (s.clou) kolom.appendChild(stapEl("p", "antwoord", s.clou, (s.tekst || []).length + 1));
+      if (s.extra) {
+        const rij = el("div", "verhaalextra");
+        rij.dataset.stap = (s.tekst || []).length + (s.clou ? 1 : 0) + 1;
+        s.extra.forEach((b) => rij.appendChild(fotolijst(b)));
+        kolom.appendChild(rij);
+      }
       v.appendChild(kolom);
       return { v };
     },
