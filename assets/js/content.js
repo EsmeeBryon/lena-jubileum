@@ -330,16 +330,14 @@ const SHOW = [
     kicker: "Thuis en op het werk",
     vraag: "Is Lena overal dezelfde?",
     spreker: "Gaëlle",
-    script: "Is Lena overal dezelfde? We vroegen het aan wie haar het best kent.\n\n[KLIK, het filmpje speelt vanzelf. Wacht tot het gedaan is.]",
+    script:
+      "Is Lena overal dezelfde? We vroegen het aan wie haar het best kent. Eerst thuis, dan op het werk.\n\n" +
+      "[KLIK, vanaf hier speelt elk filmpje vanzelf. Wacht telkens tot het gedaan is en klik dan verder.]",
   },
-  {
-    type: "video",
-    bestand: "interviews.mp4",
-    kop: "En op het werk?",
-    spreker: "Gaëlle",
-    script: "[Filmpje van collega's, vriendinnen en ex-collega's. Wacht tot het gedaan is.]\n\n[KLIK]",
-    nazien: "Komen de interviewfilmpjes van de collega's nog? Opslaan als assets/video/interviews.mp4. Anders dit scherm schrappen.",
-  },
+  ...filmpjes("Christophe", ["fam-christophe-1.mp4"]),
+  ...filmpjes("Chloé", ["fam-chloe-3.mp4"]),
+  ...filmpjes("Billie-Rose", ["fam-billie-rose-4.mp4"]),
+  ...filmpjes("Marijke", ["col-marijke-1.mp4", "col-marijke-2.mp4", "col-marijke-3.mp4"]),
   {
     type: "vraag",
     vraag: "Welke eigenschap van Lena zou iedereen hier wat meer mogen hebben?",
@@ -352,30 +350,16 @@ const SHOW = [
 
   /* ================================================================ liedje */
   {
-    type: "liedje",
+    type: "audio",
     kop: "Thinking Out Loud",
-    onder: "naar Ed Sheeran, met excuses",
-    regels: [
-      { tekst: "When your legs don't work like they used to before" },
-      { tekst: "En je stuurt weer een voice-note van tien minuten door" },
-      { tekst: "Je bent een mommy on the loose met een sigaret in de hand" },
-      { tekst: "Maar qua evenementen ben jij de queen van het land" },
-    ],
-    spreker: "Britt + Matthias Raes",
-    script: "[Matthias zingt het couplet. KLIK op het ritme van de zang, telkens een regel.]",
-    nazien: "Matthias Raes nog vragen. En samen de tekst op de melodie leggen.",
-  },
-  {
-    type: "liedje",
-    kop: "Allemaal mee",
-    regels: [
-      { tekst: "So honey now", refrein: true },
-      { tekst: "Vergeet je agenda maar gauw", refrein: true },
-      { tekst: "Ik denk gewoon hardop na", refrein: true },
-      { tekst: "Oh baby, ik vergeet het weer, pa-ra-ta-ta", refrein: true },
-    ],
-    spreker: "Britt + Matthias Raes",
-    script: "Allemaal mee! [nodig de zaal uit om mee te zingen, KLIK per regel]\n\n[KLIK]",
+    onder: "De Lena-versie",
+    bestand: "parodie.mp3",
+    tot: 90,
+    spreker: "Britt",
+    script:
+      "En omdat Lena altijd hardop nadenkt, kon dit liedje niet ontbreken.\n\n" +
+      "[De parodie start vanzelf en stopt na anderhalve minuut met een fade-out.]\n\n[KLIK]",
+    nazien: "De parodie duurt 4:34. Kies welk stuk erin moet (max. 1,5 minuut). Nu speelt de eerste 1,5 minuut.",
   },
 
   /* ================================================================= toast */

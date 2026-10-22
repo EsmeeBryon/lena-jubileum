@@ -34,14 +34,21 @@ async function main() {
     fotoBytes += buffer.length;
   }
 
-  /* ---- audio ---- */
+  /* ---- audio: korte fragmenten ingebakken, lange (de parodie) als los bestand ---- */
   const audioMap = path.join(__dirname, "assets", "audio");
   const audios = {};
+  const gebruikteAudio = new Set(SHOW.filter((s) => s.type === "audio").map((s) => s.bestand));
   if (fs.existsSync(audioMap)) {
     for (const bestand of fs.readdirSync(audioMap)) {
-      if (!/\.(mp3|m4a|wav|ogg)$/i.test(bestand)) continue;
+      if (!gebruikteAudio.has(bestand)) continue;
+      const bron = path.join(audioMap, bestand);
+      if (fs.statSync(bron).size > 2 * 1024 * 1024) {
+        fs.copyFileSync(bron, path.join(MEDIA, bestand));
+        audios[bestand] = "media/" + bestand;
+        continue;
+      }
       const mime = bestand.toLowerCase().endsWith(".wav") ? "audio/wav" : "audio/mpeg";
-      audios[bestand] = base64(path.join(audioMap, bestand), mime);
+      audios[bestand] = base64(bron, mime);
     }
   }
 

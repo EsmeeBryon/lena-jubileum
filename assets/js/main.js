@@ -415,11 +415,22 @@
 
       geluid.addEventListener("ended", () => danst(false));
 
+      // van/tot in seconden; de laatste drie seconden zakt het volume weg
+      if (s.tot != null) {
+        geluid.addEventListener("timeupdate", () => {
+          const rest = s.tot - geluid.currentTime;
+          geluid.volume = Math.max(0, Math.min(1, rest / 3));
+          if (rest <= 0) { geluid.pause(); danst(false); }
+        });
+      }
+
       return {
         v,
         bijStap(n) {
           if (n === 0) {
-            geluid.play().then(() => danst(true)).catch(() => (waarschuwing.hidden = false));
+            if (s.van) geluid.currentTime = s.van;
+            geluid.volume = 1;
+            geluid.play().then(() => danst(true)).catch(() => {});
           }
         },
         weg() {

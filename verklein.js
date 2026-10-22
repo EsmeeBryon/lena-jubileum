@@ -55,17 +55,19 @@ function herschaal(bron, doel) {
   ]);
 }
 
-// Filmpjes van de familie: "Billie-Rose 2.mp4" -> fam-billie-rose-2.mp4
+// "Billie-Rose 2.mp4" -> fam-billie-rose-2.mp4, collega's krijgen "col-"
 function familie() {
-  if (!fs.existsSync(FAMILIE)) return;
   fs.mkdirSync(UIT_VIDEO, { recursive: true });
-  const clips = fs.readdirSync(FAMILIE).filter((f) => f.toLowerCase().endsWith(".mp4")).sort();
-  for (const clip of clips) {
-    const slug = path.basename(clip, path.extname(clip))
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-    herschaal(path.join(FAMILIE, clip), path.join(UIT_VIDEO, `fam-${slug}.mp4`));
-    console.log(`fam-${slug}.mp4`);
+  for (const [map, voor] of [[FAMILIE, "fam"], [path.join(__dirname, "_bron", "collegas"), "col"]]) {
+    if (!fs.existsSync(map)) continue;
+    const clips = fs.readdirSync(map).filter((f) => /\.(mp4|mov)$/i.test(f)).sort();
+    for (const clip of clips) {
+      const slug = path.basename(clip, path.extname(clip))
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      herschaal(path.join(map, clip), path.join(UIT_VIDEO, `${voor}-${slug}.mp4`));
+      console.log(`${voor}-${slug}.mp4`);
+    }
   }
 }
 
