@@ -9,7 +9,7 @@ function filmpjes(naam, lijst) {
     ...(typeof x === "string" ? { bestand: x } : x),
     kop: naam,
     spreker: "Gaëlle",
-    script: i === 0 ? `${naam}. Het filmpje start vanzelf.` : "Volgend filmpje.",
+    script: `[${naam}. Het filmpje speelt vanzelf. Wacht tot het gedaan is.]\n\n[KLIK]`,
   }));
 }
 
@@ -122,7 +122,7 @@ const SHOW = [
     script:
       "Sorry Lena, ik moet u helaas meedelen dat u vervangen bent.\n\n" +
       "[KLIK, de foto's komen vanzelf na elkaar]\n\n[KLIK]",
-    nazien: "De AFAS Direct-campagnebeelden van Esmee in Downloads zetten, dan komen ze er ook bij.",
+    nazien: "De geschrokken foto achter de laptop en de banner 'Laat je ERP-software vliegen' staan niet op de computer. In Downloads zetten, dan komen ze erbij.",
   },
 
   /* ===================================================== da's Lena voor mij */
@@ -158,15 +158,26 @@ const SHOW = [
   },
   {
     type: "collage",
+    kop: "Lena en eten",
+    fotos: ["eten-01.jpg", "eten-02.jpg", "eten-03.jpg", "eten-04.jpg", "eten-05.jpg", "eten-06.jpg"],
+    stempel: "Da's Lena voor mij",
+    spreker: "Esmee",
+    script:
+      "[De foto's komen vanzelf.]\n\n" +
+      "En eten. Sushi rollen, aan tafel met een chef of gewoon op een terras: Lena en eten, dat is liefde.\n\n" +
+      "[KLIK, stempel] Da's Lena voor mij.\n\n[KLIK]",
+  },
+  {
+    type: "collage",
     kop: "Altijd goed gekleed",
     fotos: ["stijl-01.jpg", "stijl-02.jpg", "stijl-03.jpg", "stijl-04.jpg", "stijl-06.jpg", "stijl-07.jpg"],
-    stempel: "Da's Lena voor mij",
+    stempel: "Ook dat is Lena",
     spreker: "Esmee",
     script:
       "[De foto's komen vanzelf.]\n\n" +
       "Lena is altijd mooi en altijd goed gekleed. " +
       "Mede mogelijk gemaakt door de koerier. Die heeft intussen een vaste parkeerplaats.\n\n" +
-      "[KLIK, stempel] Da's Lena voor mij.\n\n[KLIK]",
+      "[KLIK, stempel] Ook dat is Lena.\n\n[KLIK]",
   },
   {
     type: "hoofdstuk",
@@ -334,18 +345,26 @@ const SHOW = [
       "Is Lena overal dezelfde? We vroegen het aan wie haar het best kent. Eerst thuis, dan op het werk.\n\n" +
       "[KLIK, vanaf hier speelt elk filmpje vanzelf. Wacht telkens tot het gedaan is en klik dan verder.]",
   },
-  ...filmpjes("Christophe", ["fam-christophe-1.mp4"]),
-  ...filmpjes("Chloé", ["fam-chloe-3.mp4"]),
-  ...filmpjes("Billie-Rose", ["fam-billie-rose-4.mp4"]),
-  ...filmpjes("Marijke", ["col-marijke-1.mp4", "col-marijke-2.mp4", "col-marijke-3.mp4"]),
+  // Eerst wat hen meteen aan Lena doet denken, dan wat iedereen van haar mag leren. Geknipt op een natuurlijke pauze.
+  ...filmpjes("Christophe", [{ bestand: "fam-christophe-1.mp4", van: 0.6 }]),
+  ...filmpjes("Chloé", [{ bestand: "fam-chloe-1.mp4", van: 2.3, tot: 12.9 }]),
+  ...filmpjes("Billie-Rose", [{ bestand: "fam-billie-rose-1.mp4", van: 0.7, tot: 15.1 }]),
+  ...filmpjes("Marijke", [{ bestand: "col-marijke-1.mp4", van: 0.8 }]),
+  ...filmpjes("Christophe", [{ bestand: "fam-christophe-3.mp4", van: 1.3 }]),
+  ...filmpjes("Chloé", [{ bestand: "fam-chloe-3.mp4", van: 0.9 }]),
+  ...filmpjes("Billie-Rose", [{ bestand: "fam-billie-rose-3.mp4", van: 0.4, tot: 14.2 }]),
   {
-    type: "vraag",
-    vraag: "Welke eigenschap van Lena zou iedereen hier wat meer mogen hebben?",
+    type: "video",
+    bestand: "col-marijke-3.mp4",
+    van: 1.3,
+    tot: 16.1,
+    kop: "Marijke",
     spreker: "Gaëlle",
     script:
-      "Welke eigenschap van Lena zou iedereen hier wat meer mogen hebben? [twee of drie mensen laten antwoorden]\n\n" +
+      "[Laatste filmpje.]\n\n" +
       "Lena staat altijd klaar. Voor een babbel of een confidence boost. En ze blijft altijd eerlijk. " +
       "Dat appreciëren we allemaal.\n\n[KLIK, Britt neemt over]",
+    nazien: "Ik koos per persoon filmpje 1 en 3 en knipte op een pauze, zonder ze te kunnen beluisteren. Kijk na of dit de leukste stukken zijn (kiezen.html).",
   },
 
   /* ================================================================ liedje */
