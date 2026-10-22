@@ -305,18 +305,24 @@
       const regelEls = s.regels.map((r, i) => {
         const p = auto ? el("p", "karaokeregel") : stapEl("p", "karaokeregel", null, i + 1);
         if (!auto) p.dataset.alleen = "";
-        (r.tekst || r).split("\n").forEach((deel, j) => { if (j) p.appendChild(el("br")); p.appendChild(document.createTextNode(deel)); });
+        if (auto) {
+          p.style.setProperty("--len", Math.max(20, r.tekst.length));
+          p.appendChild(el("span", "zin", r.tekst));
+        } else (r.tekst || r).split("\n").forEach((deel, j) => { if (j) p.appendChild(el("br")); p.appendChild(document.createTextNode(deel)); });
         tekst.appendChild(p);
         return p;
       });
+      const aftel = el("p", "aftellen");
+      if (auto) tekst.appendChild(aftel);
       v.appendChild(tekst);
 
       const geluid = new Audio(audioPad(s.bestand));
       let actief = null;
       let frame = null;
       const volg = () => {
+        const nu = geluid.currentTime;
         let i = -1;
-        s.regels.forEach((r, k) => { if (r.t <= geluid.currentTime) i = k; });
+        s.regels.forEach((r, k) => { if (r.t <= nu) i = k; });
         if (i !== actief) {
           actief = i;
           regelEls.forEach((p, k) => {
@@ -325,6 +331,14 @@
             p.classList.toggle("straks", k === i + 1);
           });
         }
+        // De gezongen regel kleurt mee tot net voor de volgende begint
+        if (i >= 0) {
+          const begin = s.regels[i].t;
+          const eind = (s.regels[i + 1] ? s.regels[i + 1].t : begin + 4) - 0.3;
+          regelEls[i].style.setProperty("--vul", Math.min(100, Math.max(0, ((nu - begin) / (eind - begin)) * 100)) + "%");
+        }
+        const rest = s.regels[0].t - nu;
+        aftel.textContent = i === -1 && rest > 0 && rest <= 3 ? "● ".repeat(Math.ceil(rest)).trim() : "";
         if (!geluid.paused) frame = requestAnimationFrame(volg);
       };
       if (auto) geluid.addEventListener("play", volg);
