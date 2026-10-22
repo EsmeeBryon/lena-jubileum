@@ -28,7 +28,7 @@ function duur(s) {
   let media = 0;
   if (s.clip) media = mediaduur("video", s.clip);
   if (s.type === "video") media = s.tot != null ? s.tot - (s.van || 0) : mediaduur("video", s.bestand) - (s.van || 0);
-  if (s.type === "audio") media = s.tot != null ? s.tot - (s.van || 0) : mediaduur("audio", s.bestand);
+  if (s.type === "audio" || s.type === "karaoke") media = s.tot != null ? s.tot - (s.van || 0) : mediaduur("audio", s.bestand);
   if (s.type === "reeks") media = s.items.length * 2.6;
   if (s.type === "muur") media = 12;
   const zaal = /handen|rechtstaan|laten antwoorden|roepen|applaus|lachen/i.test(s.script || "") ? 12 : 0;
@@ -58,6 +58,7 @@ function opScherm(s) {
     case "lijst": return `Titel &ldquo;${s.kop}&rdquo; met ${s.regels.length} zinnen`;
     case "slot": return `Slotbeeld: ${s.kop}`;
     case "muur": return `Videomuur &ldquo;${s.kop}&rdquo; met ${s.videos.length} filmpjes zonder geluid`;
+    case "karaoke": return `Liedje met songtekst (${s.regels.length} blokken) en een diavoorstelling van ${s.fotos.length} foto's`;
     case "nieuws": return `Breaking news: &ldquo;${s.kop}&rdquo;, foto ${s.foto}, lopende band onderaan`;
     case "film": return `Filmaffiche &ldquo;${s.kop}&rdquo;, foto ${s.foto}`;
     default: return s.type;

@@ -255,6 +255,56 @@
       return { v };
     },
 
+    // Liedje met songtekst per klik en een diavoorstelling op de achtergrond.
+    karaoke(s) {
+      const v = el("section", "scherm s-karaoke");
+      const show = el("div", "diashow");
+      const dias = s.fotos.map((b) => {
+        const d = el("div", "dia");
+        d.style.backgroundImage = "url('" + fotoPad(b) + "')";
+        show.appendChild(d);
+        return d;
+      });
+      v.appendChild(show);
+      v.appendChild(el("div", "karaokesluier"));
+      v.appendChild(stapEl("p", "kicker karaokekop", s.kop, 0));
+      const tekst = el("div", "karaoketekst");
+      s.regels.forEach((r, i) => {
+        const p = stapEl("p", "karaokeregel", null, i + 1);
+        p.dataset.alleen = "";
+        r.split("\n").forEach((deel, j) => { if (j) p.appendChild(el("br")); p.appendChild(document.createTextNode(deel)); });
+        tekst.appendChild(p);
+      });
+      v.appendChild(tekst);
+
+      const geluid = new Audio(audioPad(s.bestand));
+      if (s.tot != null) {
+        geluid.addEventListener("timeupdate", () => {
+          const rest = s.tot - geluid.currentTime;
+          geluid.volume = Math.max(0, Math.min(1, rest / 3));
+          if (rest <= 0) geluid.pause();
+        });
+      }
+      let wissel = null;
+      let nu = 0;
+      return {
+        v,
+        bijStap() {
+          if (wissel) return;
+          if (s.van) geluid.currentTime = s.van;
+          geluid.volume = 1;
+          geluid.play().catch(() => {});
+          dias[0].classList.add("aan");
+          wissel = setInterval(() => {
+            dias[nu].classList.remove("aan");
+            nu = (nu + 1) % dias.length;
+            dias[nu].classList.add("aan");
+          }, 4500);
+        },
+        weg() { geluid.pause(); clearInterval(wissel); wissel = null; },
+      };
+    },
+
     // Filmaffiche, voor een waargebeurd verhaal.
     film(s) {
       const v = el("section", "scherm s-film");
@@ -540,7 +590,7 @@
 
     index = nieuwIndex;
     stap = beginStap === "eind" ? huidig.max : 0;
-    document.body.classList.toggle("donker", ["hoofdstuk", "muur", "film"].includes(s.type) || (s.type === "foto" && !!s.vol));
+    document.body.classList.toggle("donker", ["hoofdstuk", "muur", "film", "karaoke"].includes(s.type) || (s.type === "foto" && !!s.vol));
 
     requestAnimationFrame(() => {
       huidig.v.classList.add("op");
