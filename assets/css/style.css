@@ -716,12 +716,30 @@ em { font-style: italic; color: var(--terra); }
 
 .karaoketekst.auto .karaokeregel {
   opacity: 0;
-  transform: translateY(30vh) scale(0.55);
-  transition: transform 0.6s ease, opacity 0.6s ease, color 0.3s;
+  white-space: nowrap;
+  font-size: min(4.4vw, calc(170vw / var(--len, 30)));
+  text-shadow: none;
+  filter: drop-shadow(0 0.3vh 0.8vh rgba(0, 0, 0, 0.85));
+  transform: translateY(30vh) scale(0.6);
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
-.karaoketekst.auto .karaokeregel.straks { opacity: 0.45; transform: translateY(17vh) scale(0.55); }
-.karaoketekst.auto .karaokeregel.nu { opacity: 1; transform: none; color: #fff; }
-.karaoketekst.auto .karaokeregel.voorbij { opacity: 0; transform: translateY(-16vh) scale(0.55); }
+.karaoketekst.auto .karaokeregel.straks { opacity: 0.9; transform: translateY(13vh) scale(0.6); }
+.karaoketekst.auto .karaokeregel.nu { opacity: 1; transform: none; }
+.karaoketekst.auto .karaokeregel.voorbij { opacity: 0; transform: translateY(-16vh) scale(0.6); }
+.karaoketekst.auto .karaokeregel.nu .zin {
+  background: linear-gradient(90deg, var(--oker) var(--vul, 0%), #fff var(--vul, 0%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.aftellen {
+  position: absolute;
+  inset: auto 0 calc(50% + 6vh);
+  text-align: center;
+  font-size: 3vw;
+  letter-spacing: 1vw;
+  color: var(--oker);
+}
 
 /* ---------- schil ---------- */
 
