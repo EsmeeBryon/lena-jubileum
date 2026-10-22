@@ -485,7 +485,7 @@
       const h = aantalRijen === 1 ? 50 : perRij >= 4 ? 27 : 29;
       muur.style.setProperty("--h", (s.items ? h - 5 : h) + "vh");
       const autoStap = s.auto === "klik" || s.youtube ? 1 : 0;
-      const tussen = s.items ? 0.9 : 0.45;
+      const tussen = s.tempo || (s.items ? 0.9 : 0.45);
       let rij = null;
       items.forEach((item, i) => {
         if (i % perRij === 0) rij = muur.appendChild(el("div", "rij"));
