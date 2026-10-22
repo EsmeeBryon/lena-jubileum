@@ -58,7 +58,7 @@ function opScherm(s) {
     case "lijst": return `Titel &ldquo;${s.kop}&rdquo; met ${s.regels.length} zinnen`;
     case "slot": return `Slotbeeld: ${s.kop}`;
     case "muur": return `Videomuur &ldquo;${s.kop}&rdquo; met ${s.videos.length} filmpjes zonder geluid`;
-    case "karaoke": return `Liedje met songtekst (${s.regels.length} blokken) en een diavoorstelling van ${s.fotos.length} foto's`;
+    case "karaoke": return `Liedje met songtekst (${s.regels.length} regels) en een diavoorstelling van ${s.fotos.length} foto's`;
     case "nieuws": return `Breaking news: &ldquo;${s.kop}&rdquo;, foto ${s.foto}, lopende band onderaan` + (s.muziek ? ", nieuwsmuziekje zachtjes eronder" : "");
     case "film": return `Filmaffiche &ldquo;${s.kop}&rdquo;, foto ${s.foto}`;
     default: return s.type;

@@ -378,20 +378,31 @@ const SHOW = [
       "familie-06.jpg", "events-19.jpg", "grappig-14.jpg", "vroeger-19.jpg", "events-21.jpg", "mommy-10.jpg",
       "familie-09.jpg", "vroeger-08.jpg", "events-25.jpg", "grappig-15.jpg",
     ],
+    // Zodra elke regel een tijd `t` (seconden in het liedje) heeft, loopt de tekst vanzelf mee
     regels: [
-      "When your legs don't work\nlike they used to before",
-      "En je stuurt weer een voice-note\nvan tien minuten door",
-      "Je bent een mommy on the loose\nmet een sigaret in de hand",
-      "Maar qua evenementen\nben jij de queen van het land",
-      "So honey now\nvergeet je agenda maar gauw",
-      "Ik denk gewoon hardop na\noh baby, ik vergeet het weer",
+      { tekst: "Jij vergeet alweer dat de meeting begint" },
+      { tekst: "Ook de admin schuif jij naar ons door" },
+      { tekst: "Plots verschijnt er een voice note die eindeloos duurt" },
+      { tekst: "Maar de draad zijn wij alweer kwijt" },
+      { tekst: "Maar Lena, wij zijn al twaalf en een half jaar blij met jou" },
+      { tekst: "En elke zin klinkt half Engels, want dat is typisch jij" },
+      { tekst: "Je denkt gewoon hardop" },
+      { tekst: "Dan vertel je plots een heel ander verhaal" },
+      { tekst: "\u201CDat had ik toch al eens gezegd?\u201D" },
+      { tekst: "Maar met jou aan het roer komt elk feest helemaal goed" },
+      { tekst: "Dan staat heel de zaal weer op z\u2019n kop" },
+      { tekst: "Dus Lena, kom" },
+      { tekst: "Laat het regelen maar aan ons" },
+      { tekst: "Hef je glas, want dit feest is vandaag voor jou" },
+      { tekst: "Lach maar mee met je hele team" },
+      { tekst: "Wij staan voor je klaar" },
+      { tekst: "Lena, wat zijn wij toch blij met jou" },
     ],
     spreker: "Britt",
     script:
       "En omdat Lena altijd hardop nadenkt, kon dit liedje niet ontbreken.\n\n" +
-      "[De muziek en de foto's starten vanzelf. KLIK telkens wanneer de volgende regel gezongen wordt. " +
-      "Na anderhalve minuut zakt de muziek weg.]\n\n[KLIK]",
-    nazien: "De songtekst hier is de eerste versie van Britt. Bezorg de tekst zoals hij in de opname gezongen wordt, dan zet ik die op het scherm. Zeg ook welk stuk van de 4:34 erin moet (max. 1,5 minuut).",
+      "[De muziek, de foto's en de songtekst lopen vanzelf. Na anderhalve minuut zakt de muziek weg.]\n\n[KLIK]",
+    nazien: "Tik de tijden van de songtekst in via tikken.html (online: /tikken.html) en plak het resultaat in de chat. Tot dan komt elke regel nog per klik.",
   },
 
   /* ================================================================= toast */

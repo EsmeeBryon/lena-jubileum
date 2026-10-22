@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Meetikken met de parodie</title>
+<style>
+  body { font: 16px/1.5 "Segoe UI", system-ui, sans-serif; background: #f4ebdf; color: #2a2520; margin: 0; padding: 32px; max-width: 900px; }
+  h1 { margin: 0 0 6px; }
+  .uitleg { color: #6b5f52; max-width: 70ch; }
+  audio { width: 100%; margin: 12px 0; }
+  .knoppen { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  button { font: inherit; padding: 8px 16px; border-radius: 999px; border: 1px solid #c4613c; background: #fff; color: #c4613c; cursor: pointer; }
+  button.vol { background: #c4613c; color: #fff; }
+  #volgende { background: #2a2520; color: #fbf6ef; border-radius: 12px; padding: 20px 24px; font-size: 28px; font-weight: 700; min-height: 1.5em; }
+  #volgende small { display: block; font-size: 14px; font-weight: 400; color: #d9a441; }
+  ol { padding-left: 0; list-style: none; }
+  li { padding: 3px 10px; border-radius: 6px; }
+  li.kop { font-weight: 700; color: #7e8f6e; margin-top: 10px; }
+  li.klaar { color: #6b5f52; }
+  li.nu { background: #d9a441; color: #2a2520; font-weight: 700; }
+  li .tijd { display: inline-block; width: 4.5em; font-family: Consolas, monospace; color: #c4613c; }
+  #uitvoer { width: 100%; height: 140px; font: 13px/1.4 Consolas, monospace; border-radius: 6px; border: 1px solid #ccc; padding: 8px; }
+</style>
+</head>
+<body>
+<h1>Meetikken met de parodie</h1>
+<p class="uitleg">
+  Zo weet de presentatie wanneer elke zin op het scherm moet komen.<br>
+  1. Klik op <b>Start</b>. Het liedje begint.<br>
+  2. Druk op de <b>spatiebalk</b> telkens als er een nieuwe zin begint te zingen. Bovenaan zie je welke zin er nu komt.<br>
+  3. Foutje? Druk op <b>Backspace</b>. De laatste tik verdwijnt en het liedje springt een stukje terug.<br>
+  4. Klaar? Klik op <b>Kopieer</b> en plak de tekst in de chat.
+</p>
+
+<div id="volgende"></div>
+<audio id="liedje" controls preload="auto"></audio>
+<div class="knoppen">
+  <button class="vol" id="start">Start</button>
+  <button id="nakijken">Nakijken</button>
+  <button id="opnieuw">Alles opnieuw</button>
+  <button id="kopieer">Kopieer</button>
+</div>
+<ol id="lijst"></ol>
+<textarea id="uitvoer" readonly></textarea>
+
+<script>
+const TEKST = `Couplet 1
+Jij vergeet alweer dat de meeting begint
+Ook de admin schuif jij naar ons door
+Plots verschijnt er een voice note die eindeloos duurt
+Maar de draad zijn wij alweer kwijt
+Aanloop naar het refrein
+Maar Lena, wij zijn al twaalf en een half jaar blij met jou
+En elke zin klinkt half Engels, want dat is typisch jij
+Je denkt gewoon hardop
+Dan vertel je plots een heel ander verhaal
+“Dat had ik toch al eens gezegd?”
+Maar met jou aan het roer komt elk feest helemaal goed
+Dan staat heel de zaal weer op z’n kop
+Refrein
+Dus Lena, kom
+Laat het regelen maar aan ons
+Hef je glas, want dit feest is vandaag voor jou
+Lach maar mee met je hele team
+Wij staan voor je klaar
+Lena, wat zijn wij toch blij met jou
+Couplet 2
+Als je zegt dat je weer eens geen headspace meer hebt
+Maak je toch even tijd voor ons vrij
+“Wat zeg je?” horen wij hier keer op keer
+Maar jouw stem horen wij overal
+Aanloop naar het refrein
+Want Lena, jouw kast zit vol kleding, maar jij shopt weer door
+Jij laat je niet doen, maar voor ons staat je deur altijd open
+Wij denken hardop
+“Wij zijn hier toch niet om vrienden te maken”
+Maar kijk eens hoe dat is gegaan
+Als het moeilijk wordt, dan sta jij voor ons klaar
+Daarom zingen wij voor jou
+Refrein
+Dus Lena, kom
+Laat het regelen maar aan ons
+Hef je glas, want dit feest is vandaag voor jou
+Lach maar mee met je hele team
+Wij staan voor je klaar
+Ja, Lena, wat zijn wij toch blij met jou
+Gitaarsolo (tik hier een keer als de solo begint)
+Einde solo
+Laatste refrein
+Dus Lena, kom
+Laat het regelen maar aan ons
+Hef je glas, want dit feest is vandaag voor jou
+Oh Lena, lach maar mee met je hele team
+Wij staan voor je klaar
+Ja, Lena, wat zijn wij toch blij met jou
+Oh Lena, wat zijn wij toch blij met jou
+Wat zijn wij hier toch blij met jou
+Einde (tik als het liedje stopt)`;
+
+const KOPPEN = /^(Couplet|Aanloop|Refrein|Laatste refrein)/;
+const items = TEKST.split("\n").map((t) => ({ tekst: t.replace(" (tik hier een keer als de solo begint)", "").replace(" (tik als het liedje stopt)", ""), uitleg: t, kop: KOPPEN.test(t) }));
+const zinnen = items.filter((i) => !i.kop);
+const OPSLAG = "lena-parodie-tikken";
+let tijden = JSON.parse(localStorage.getItem(OPSLAG) || "[]");
+let modus = "tikken";
+
+const liedje = document.getElementById("liedje");
+liedje.src = "media/parodie.mp3";
+liedje.addEventListener("error", () => { if (!liedje.src.includes("assets")) liedje.src = "assets/audio/parodie.mp3"; }, { once: true });
+
+const lijst = document.getElementById("lijst");
+const fmt = (t) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, "0")}`;
+
+function toon() {
+  localStorage.setItem(OPSLAG, JSON.stringify(tijden));
+  lijst.innerHTML = "";
+  let z = 0;
+  let speelt = -1;
+  if (modus === "nakijken") tijden.forEach((t, i) => { if (t <= liedje.currentTime) speelt = i; });
+  for (const it of items) {
+    const li = document.createElement("li");
+    if (it.kop) { li.className = "kop"; li.textContent = it.tekst; lijst.appendChild(li); continue; }
+    const t = tijden[z];
+    const tijd = document.createElement("span");
+    tijd.className = "tijd";
+    tijd.textContent = t != null ? fmt(t) : "";
+    li.append(tijd, it.tekst);
+    if (modus === "tikken" ? z === tijden.length : z === speelt) li.className = "nu";
+    else if (t != null) li.className = "klaar";
+    lijst.appendChild(li);
+    z++;
+  }
+  const v = document.getElementById("volgende");
+  if (modus === "nakijken") v.innerHTML = `<small>Zo komt het op het scherm</small>${speelt >= 0 ? zinnen[speelt].tekst : "..."}`;
+  else v.innerHTML = tijden.length < zinnen.length
+    ? `<small>Druk op spatie als deze zin begint</small>${zinnen[tijden.length].uitleg}`
+    : "<small>Klaar</small>Klik op Kopieer en plak de tekst in de chat.";
+  document.getElementById("uitvoer").value = "PARODIE-TIJDEN\n" + zinnen.map((zin, i) => `${tijden[i] != null ? tijden[i].toFixed(1) : "?"} | ${zin.tekst}`).join("\n");
+  lijst.querySelector(".nu")?.scrollIntoView({ block: "center", behavior: "smooth" });
+}
+
+document.getElementById("start").onclick = () => {
+  modus = "tikken";
+  liedje.currentTime = tijden.length ? Math.max(0, tijden[tijden.length - 1] - 1) : 0;
+  liedje.play();
+  toon();
+};
+document.getElementById("nakijken").onclick = () => { modus = "nakijken"; liedje.currentTime = Math.max(0, (tijden[0] || 0) - 3); liedje.play(); toon(); };
+document.getElementById("opnieuw").onclick = () => { if (confirm("Alle tikken wissen?")) { tijden = []; modus = "tikken"; liedje.pause(); liedje.currentTime = 0; toon(); } };
+document.getElementById("kopieer").onclick = async () => {
+  const u = document.getElementById("uitvoer");
+  u.select();
+  try { await navigator.clipboard.writeText(u.value); } catch { document.execCommand("copy"); }
+  document.getElementById("kopieer").textContent = "Gekopieerd!";
+};
+liedje.addEventListener("timeupdate", () => { if (modus === "nakijken") toon(); });
+
+document.addEventListener("keydown", (e) => {
+  if (e.code === "Space") {
+    e.preventDefault();
+    if (modus !== "tikken" || liedje.paused || tijden.length >= zinnen.length) return;
+    tijden.push(Math.max(0, liedje.currentTime - 0.15));
+    toon();
+  } else if (e.code === "Backspace") {
+    e.preventDefault();
+    if (modus !== "tikken" || !tijden.length) return;
+    tijden.pop();
+    liedje.currentTime = Math.max(0, (tijden[tijden.length - 1] ?? 0) + 0.5);
+    toon();
+  }
+});
+
+toon();
+</script>
+</body>
+</html>
