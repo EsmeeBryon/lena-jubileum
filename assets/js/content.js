@@ -224,13 +224,6 @@ const SHOW = [
       "[KLIK] Blijf even staan. Dit applaus is voor jullie. [applaus]\n\n[KLIK]",
   },
   {
-    type: "hoofdstuk",
-    clip: "lena-f.mp4",
-    zin: "Ik heb daar geen headspace voor",
-    spreker: "Esmee",
-    script: "En als er dan echt administratie moet gebeuren?\n\n[Het fragment speelt meteen, met haar lach erbij.]\n\n[KLIK]",
-  },
-  {
     type: "reeks",
     kop: "Er moet administratie gebeuren",
     items: [
@@ -240,11 +233,20 @@ const SHOW = [
       { foto: "grappig-21.jpg", tekst: "Plan C. Achter een groot scherm." },
       { foto: "grappig-18.jpg", tekst: "Plan D. Onherkenbaar." },
     ],
+    spreker: "Esmee",
+    script:
+      "En als er dan echt administratie moet gebeuren?\n\n" +
+      "[De foto's vallen vanzelf op de stapel. Laat de zaal lachen.]\n\n[KLIK]",
+  },
+  {
+    type: "hoofdstuk",
+    clip: "lena-f.mp4",
+    zin: "Ik heb daar geen headspace voor",
     stempel: "Da's allemaal Lena voor mij",
     spreker: "Esmee",
     script:
-      "[De foto's vallen vanzelf op de stapel. Laat de zaal lachen.]\n\n" +
-      "De meeting inplannen, de postduif, de administratie doorschuiven. [KLIK, stempel] Da's allemaal Lena voor mij.\n\n" +
+      "[Het fragment speelt meteen, met haar lach erbij. Daarna valt de stempel vanzelf.]\n\n" +
+      "De meeting inplannen, de postduif, de administratie doorschuiven. Da's allemaal Lena voor mij.\n\n" +
       "[KLIK, Gaëlle neemt over]",
   },
 
