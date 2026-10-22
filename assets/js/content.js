@@ -93,7 +93,7 @@ const SHOW = [
   {
     type: "collage",
     kop: "Eventmanager",
-    fotos: ["events-01.jpg", "events-02.jpg", "events-03.jpg", "events-09.jpg", "events-10.jpg", "events-15.jpg", "events-16.jpg", "events-18.jpg"],
+    fotos: ["events-01.jpg", "events-02.jpg", "events-17.jpg", "events-10.jpg", "events-07.jpg", "events-15.jpg", "events-16.jpg", "events-23.jpg", "events-18.jpg"],
     spreker: "Esmee",
     script:
       "[De foto's komen vanzelf.]\n\n" +
@@ -329,7 +329,7 @@ const SHOW = [
   {
     type: "collage",
     kop: "Echte vrienden",
-    fotos: ["familie-15.jpg", "familie-03.jpg", "familie-12.jpg", "events-17.jpg", "events-20.jpg", "familie-01.jpg", "events-05.jpg", "familie-04.jpg"],
+    fotos: ["familie-15.jpg", "familie-03.jpg", "familie-12.jpg", "events-20.jpg", "familie-01.jpg", "events-05.jpg", "familie-04.jpg"],
     spreker: "Gaëlle",
     script:
       "[De toon verandert hier. Rustiger praten. De foto's komen vanzelf.]\n\n" +
@@ -374,7 +374,7 @@ const SHOW = [
     tot: 90,
     // Foto's die nog nergens anders in de show zitten
     fotos: [
-      "vroeger-07.jpg", "events-07.jpg", "vroeger-10.jpg", "mommy-06.jpg", "events-11.jpg", "vroeger-14.jpg",
+      "vroeger-07.jpg", "events-09.jpg", "vroeger-10.jpg", "mommy-06.jpg", "events-11.jpg", "vroeger-14.jpg",
       "familie-06.jpg", "events-19.jpg", "grappig-14.jpg", "vroeger-19.jpg", "events-21.jpg", "mommy-10.jpg",
       "familie-09.jpg", "vroeger-08.jpg", "events-25.jpg", "grappig-15.jpg",
     ],
