@@ -20,7 +20,7 @@ const meetVeilig = (f) => {
 const bestanden = [
   ...fs.readdirSync("assets/audio").filter((f) => f.endsWith(".mp3")).map((f) => path.join("assets/audio", f)),
   // Filmpjes met geluid dat je hoort (de videomuur speelt zonder geluid)
-  ...fs.readdirSync("assets/video").filter((f) => /^(lena|fam|col|stem)-.*\.mp4$/.test(f)).map((f) => path.join("assets/video", f)),
+  ...fs.readdirSync("assets/video").filter((f) => /^(lena|fam|col|stem)-.*\.mp4$|^administratie\.mp4$/.test(f)).map((f) => path.join("assets/video", f)),
 ];
 
 for (const f of bestanden) {

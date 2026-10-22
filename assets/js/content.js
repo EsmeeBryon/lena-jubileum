@@ -233,11 +233,13 @@ const SHOW = [
     type: "reeks",
     kop: "Er moet administratie gebeuren",
     items: [
-      { foto: "grappig-17.jpg", tekst: "Lena hoort het woord administratie." },
+      { video: "administratie.mp4", tekst: "Lena hoort het woord administratie." },
       { foto: "grappig-11.jpg", tekst: "Plan A. Onder de kickertafel." },
       { foto: "grappig-13.jpg", tekst: "Plan B. Achter de plant." },
       { foto: "grappig-21.jpg", tekst: "Plan C. Achter een groot scherm." },
       { foto: "grappig-18.jpg", tekst: "Plan D. Onherkenbaar." },
+      { foto: "grappig-06.jpg" },
+      { foto: "grappig-07.jpg" },
     ],
     spreker: "Esmee",
     script:
@@ -323,12 +325,12 @@ const SHOW = [
     foto: "extra-03.jpg",
     kicker: "Vriendinnen",
     kop: "De Beffers",
-    extra: ["grappig-05.jpg", "grappig-16.jpg"],
+    extra: ["grappig-04.jpg", "grappig-05.jpg", "grappig-16.jpg"],
     spreker: "Gaëlle",
     script:
       "En dan zijn er de Beffers. Zo heet haar vriendinnengroep. Echt waar.\n\n" +
       "Komt de naam van BFF? Of van een ervaring waar wij niets van weten?\n\n" +
-      "[KLIK, twee foto's erbij] We vragen het niet. [even laten bezinken]\n\n[KLIK]",
+      "[KLIK, drie foto's erbij] We vragen het niet. [even laten bezinken]\n\n[KLIK]",
   },
 
   /* ========================================================= echte vrienden */
