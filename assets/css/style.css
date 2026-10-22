@@ -698,6 +698,15 @@ em { font-style: italic; color: var(--terra); }
   text-shadow: 0 0.4vh 3vh rgba(0, 0, 0, 0.7);
 }
 
+.karaoketekst.auto .karaokeregel {
+  opacity: 0;
+  transform: translateY(30vh) scale(0.55);
+  transition: transform 0.6s ease, opacity 0.6s ease, color 0.3s;
+}
+.karaoketekst.auto .karaokeregel.straks { opacity: 0.45; transform: translateY(17vh) scale(0.55); }
+.karaoketekst.auto .karaokeregel.nu { opacity: 1; transform: none; color: #fff; }
+.karaoketekst.auto .karaokeregel.voorbij { opacity: 0; transform: translateY(-16vh) scale(0.55); }
+
 /* ---------- schil ---------- */
 
 .voortgang {

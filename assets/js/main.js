@@ -299,15 +299,35 @@
       v.appendChild(el("div", "karaokesluier"));
       v.appendChild(stapEl("p", "kicker karaokekop", s.kop, 0));
       const tekst = el("div", "karaoketekst");
-      s.regels.forEach((r, i) => {
-        const p = stapEl("p", "karaokeregel", null, i + 1);
-        p.dataset.alleen = "";
-        r.split("\n").forEach((deel, j) => { if (j) p.appendChild(el("br")); p.appendChild(document.createTextNode(deel)); });
+      // Met een tijd per regel loopt de tekst vanzelf mee; zonder tijden komt elke regel per klik
+      const auto = s.regels.every((r) => r.t != null);
+      if (auto) tekst.classList.add("auto");
+      const regelEls = s.regels.map((r, i) => {
+        const p = auto ? el("p", "karaokeregel") : stapEl("p", "karaokeregel", null, i + 1);
+        if (!auto) p.dataset.alleen = "";
+        (r.tekst || r).split("\n").forEach((deel, j) => { if (j) p.appendChild(el("br")); p.appendChild(document.createTextNode(deel)); });
         tekst.appendChild(p);
+        return p;
       });
       v.appendChild(tekst);
 
       const geluid = new Audio(audioPad(s.bestand));
+      let actief = null;
+      let frame = null;
+      const volg = () => {
+        let i = -1;
+        s.regels.forEach((r, k) => { if (r.t <= geluid.currentTime) i = k; });
+        if (i !== actief) {
+          actief = i;
+          regelEls.forEach((p, k) => {
+            p.classList.toggle("voorbij", k < i);
+            p.classList.toggle("nu", k === i);
+            p.classList.toggle("straks", k === i + 1);
+          });
+        }
+        if (!geluid.paused) frame = requestAnimationFrame(volg);
+      };
+      if (auto) geluid.addEventListener("play", volg);
       if (s.tot != null) {
         geluid.addEventListener("timeupdate", () => {
           const rest = s.tot - geluid.currentTime;
@@ -331,7 +351,7 @@
             dias[nu].classList.add("aan");
           }, 4500);
         },
-        weg() { geluid.pause(); clearInterval(wissel); wissel = null; },
+        weg() { geluid.pause(); cancelAnimationFrame(frame); clearInterval(wissel); wissel = null; },
       };
     },
 

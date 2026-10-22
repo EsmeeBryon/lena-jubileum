@@ -37,6 +37,7 @@ jobs:
           node spiek.js
           cp Lena-show/Lena-show.html Lena-show/index.html
           cp Spiekbriefje.html Lena-show/spiekbriefje.html
+          cp tikken.html Lena-show/tikken.html
           printf "User-agent: *\nDisallow: /\n" > Lena-show/robots.txt
 
       - uses: actions/configure-pages@v5
