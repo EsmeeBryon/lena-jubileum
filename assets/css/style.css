@@ -520,8 +520,8 @@ em { font-style: italic; color: var(--terra); }
 
 .stempel {
   position: absolute;
-  right: 6vw;
-  top: 7vh;
+  right: 4vw;
+  bottom: 9vh;
   z-index: 5;
   padding: 0.5em 1em;
   border: 0.22em solid var(--terra);
