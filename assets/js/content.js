@@ -207,7 +207,7 @@ const SHOW = [
   },
   {
     type: "verhaal",
-    foto: "extra-02.jpg",
+    video: "taxi-gent.mp4",
     kicker: "Bewijsstuk",
     kop: "Net terug van Gent",
     spreker: "Esmee",

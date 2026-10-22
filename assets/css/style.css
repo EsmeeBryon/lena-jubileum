@@ -359,7 +359,7 @@ em { font-style: italic; color: var(--terra); }
 
 .s-verhaal { flex-direction: row; gap: 5vw; text-align: left; }
 .s-verhaal .lijst { flex: 0 1 auto; max-height: 76vh; max-width: 44vw; rotate: 1.2deg; }
-.s-verhaal .lijst img { max-height: 76vh; }
+.s-verhaal .lijst img, .s-verhaal .lijst video { max-height: 76vh; }
 
 .verhaalkolom {
   flex: 1 1 0;

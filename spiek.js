@@ -49,7 +49,7 @@ function opScherm(s) {
     case "hoofdstuk": return `Fragment ${s.clip} (&ldquo;${s.zin}&rdquo;)` + (s.titel ? `, titel &ldquo;${s.titel}&rdquo;` : "") + (s.grap ? `, daarna &ldquo;${s.grap}&rdquo;` : "");
     case "kaart": return `Grote tekst: &ldquo;${s.kop}&rdquo;` + (s.clou ? ` &rarr; ${s.clou}` : "");
     case "reeks": return `Fotostapel${s.kop ? ` &ldquo;${s.kop}&rdquo;` : ""}, ${s.items.length} foto's`;
-    case "verhaal": return `Foto ${s.foto} met het verhaal &ldquo;${s.kop}&rdquo;`;
+    case "verhaal": return `${s.video ? `Gifje ${s.video}` : `Foto ${s.foto}`} met het verhaal &ldquo;${s.kop}&rdquo;`;
     case "foto": return `Foto ${s.foto}` + (s.kop ? ` met de tekst &ldquo;${s.kop}&rdquo;` : "");
     case "collage": return `Collage van ${(s.items || s.fotos).length} foto's`;
     case "audio": return `Audiofragment ${s.bestand}` + (s.regels ? `, met ${s.regels.length} uitspraken` : "");
