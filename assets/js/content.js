@@ -366,6 +366,7 @@ const SHOW = [
   ...filmpjes("Christophe", [{ bestand: "fam-christophe-3.mp4", van: 1.3 }]),
   ...filmpjes("Chloé", [{ bestand: "fam-chloe-3.mp4", van: 0.9 }]),
   ...filmpjes("Marijke", [{ bestand: "col-marijke-3.mp4", van: 1.3, tot: 16.1 }]),
+  ...filmpjes("Lynn", [{ bestand: "col-lynn-1.mp4" }]),
   {
     type: "video",
     bestand: "fam-billie-rose-3.mp4",
