@@ -105,16 +105,16 @@ const SHOW = [
   {
     type: "collage",
     kop: "The voice and the face",
-    youtube: { id: "bfOka5lL48k", van: 0, tot: 15 },
+    youtube: { id: "bfOka5lL48k", stil: 20 },
     fotos: ["stem-01.jpg", "stem-02.jpg"],
     spreker: "Esmee",
     script:
-      "[Een stukje van de tv-spot speelt vanzelf. Dat is de stem van Lena. Werkt enkel in de online versie.]\n\n" +
+      "[De tv-spot speelt vanzelf. Dat is de stem van Lena. Werkt enkel in de online versie.]\n\n" +
       "Over de jaren heen is ze de stem van AFAS geweest. " +
       "Voor de mensen die dit niet weten: zij spreekt ook ons antwoordapparaat in. Maar ook the face.\n\n" +
-      "[KLIK, de foto's komen vanzelf]\n\n" +
+      "[KLIK, de foto's komen vanzelf. De spot speelt zachtjes verder op de achtergrond.]\n\n" +
       "Op deze foto weet ik niet zeker van welke sector ze komt, maar ze staat bij den dokteur Thibault.\n\n[KLIK]",
-    nazien: "Het YouTube-stukje speelt de eerste 15 seconden van de tv-spot. Hoor je Lena daar niet goed, zeg dan van welke seconde tot welke seconde. Staat de foto met dokter Thibault hierbij?",
+    nazien: "Staat de foto met dokter Thibault hierbij?",
   },
   {
     type: "collage",
@@ -238,7 +238,7 @@ const SHOW = [
     type: "reeks",
     kop: "Er moet administratie gebeuren",
     items: [
-      { video: "administratie.mp4", tekst: "Lena hoort het woord administratie." },
+      { foto: "administratie.jpg", tekst: "Lena hoort het woord administratie." },
       { foto: "grappig-11.jpg", tekst: "Plan A. Onder de kickertafel." },
       { foto: "grappig-13.jpg", tekst: "Plan B. Achter de plant." },
       { foto: "grappig-21.jpg", tekst: "Plan C. Achter een groot scherm." },
@@ -246,10 +246,12 @@ const SHOW = [
       { foto: "grappig-06.jpg" },
       { foto: "grappig-07.jpg" },
     ],
+    wachtNa: 1,
     spreker: "Esmee",
     script:
       "En als er dan echt administratie moet gebeuren?\n\n" +
-      "[De foto's vallen vanzelf op de stapel. Laat de zaal lachen.]\n\n[KLIK]",
+      "[De eerste foto komt vanzelf: Lena hoort het woord administratie. Laat de zaal even lachen.]\n\n" +
+      "[KLIK, de andere foto's vallen vanzelf op de stapel]\n\n[KLIK]",
   },
   {
     type: "hoofdstuk",

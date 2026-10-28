@@ -420,7 +420,8 @@
           if (film) { film.currentTime = 0; film.play().catch(() => {}); }
           // Een filmpje eerst laten uitspelen voor de volgende foto valt
           const wacht = film ? Math.max(2600, (film.duration || 3) * 1000 + 800) : n === 0 ? 700 : 2600;
-          if (n < s.items.length) wekker = setTimeout(() => naarStap(v, n + 1), wacht);
+          // Bij `wachtNa` blijft de stapel staan tot de spreker klikt
+          if (n < s.items.length && n !== s.wachtNa) wekker = setTimeout(() => naarStap(v, n + 1), wacht);
         },
         weg() { clearTimeout(wekker); stapel.querySelectorAll("video").forEach((f) => f.pause()); },
       };
@@ -500,20 +501,22 @@
       if (s.bijschrift) v.appendChild(stapEl("p", "bijschrift", s.bijschrift, autoStap + 1));
       if (!s.youtube) return { v };
 
-      // Eerst een stukje van YouTube (werkt enkel online), na een klik komen de foto's
+      // Eerst de spot groot (werkt enkel online); na een klik speelt ze stil verder als achtergrond achter de foto's
       const vak = stapEl("div", "ytvak", null, 0);
-      vak.dataset.alleen = "";
       const speler = document.createElement("iframe");
       Object.assign(speler, { allow: "autoplay; encrypted-media", referrerPolicy: "strict-origin-when-cross-origin", title: "YouTube" });
       vak.appendChild(speler);
       v.appendChild(vak);
-      const { id, van = 0, tot } = s.youtube;
-      const url = `https://www.youtube.com/embed/${id}?autoplay=1&controls=0&rel=0&playsinline=1&start=${van}` + (tot ? `&end=${tot}` : "");
+      const { id, van = 0, tot, stil = 20 } = s.youtube;
+      const url = `https://www.youtube.com/embed/${id}?autoplay=1&controls=0&rel=0&playsinline=1&enablejsapi=1&start=${van}` +
+        (tot ? `&end=${tot}` : `&loop=1&playlist=${id}`);
+      const volume = (x) => speler.contentWindow && speler.contentWindow.postMessage(JSON.stringify({ event: "command", func: "setVolume", args: [x] }), "*");
       return {
         v,
         bijStap(n) {
-          const doel = n === 0 ? url : "about:blank";
-          if (speler.src !== doel) speler.src = doel;
+          if (!speler.src.startsWith("https")) speler.src = url;
+          vak.classList.toggle("achter", n > 0);
+          volume(n === 0 ? 100 : stil);
         },
         weg() { speler.src = "about:blank"; },
       };
