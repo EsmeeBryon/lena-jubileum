@@ -362,7 +362,7 @@ const SHOW = [
   },
   // Eerst wat hen meteen aan Lena doet denken, dan wat iedereen van haar mag leren. Geknipt op een natuurlijke pauze.
   ...filmpjes("Christophe", [{ bestand: "fam-christophe-1.mp4", van: 0.6 }]),
-  ...filmpjes("Chloé", [{ bestand: "fam-chloe-1.mp4", van: 2.3, tot: 12.9 }]),
+  ...filmpjes("Chloé", [{ bestand: "fam-chloe-1.mp4", van: 6.1, tot: 12.9 }]),
   ...filmpjes("Billie-Rose", [{ bestand: "fam-billie-rose-1.mp4", van: 0.7, tot: 15.1 }]),
   ...filmpjes("Marijke", [{ bestand: "col-marijke-1.mp4", van: 0.8 }]),
   ...filmpjes("Christophe", [{ bestand: "fam-christophe-3.mp4", van: 1.3 }]),
