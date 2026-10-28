@@ -499,7 +499,9 @@
       });
       v.appendChild(muur);
       if (s.bijschrift) v.appendChild(stapEl("p", "bijschrift", s.bijschrift, autoStap + 1));
-      if (!s.youtube) return { v };
+      // Onthoudt wanneer de laatste foto er staat, zodat de stempel daar niet voor valt
+      const klaar = (n) => { if (n === autoStap) v.dataset.klaarOp = performance.now() + ((items.length - 1) * tussen + 0.5) * 1000; };
+      if (!s.youtube) return { v, bijStap: klaar };
 
       // Eerst de spot groot (werkt enkel online); na een klik speelt ze stil verder als achtergrond achter de foto's
       const vak = stapEl("div", "ytvak", null, 0);
@@ -514,6 +516,7 @@
       return {
         v,
         bijStap(n) {
+          klaar(n);
           if (!speler.src.startsWith("https")) speler.src = url;
           vak.classList.toggle("achter", n > 0);
           volume(n === 0 ? 100 : stil);
@@ -719,6 +722,10 @@
     huidig.v.querySelectorAll("[data-stap]").forEach((n) => {
       const nr = Number(n.dataset.stap);
       const aan = n.dataset.alleen != null ? nr <= stap && stap <= Number(n.dataset.tot || nr) : nr <= stap;
+      if (n.classList.contains("stempel")) {
+        const rest = aan && huidig.v.dataset.klaarOp ? huidig.v.dataset.klaarOp - performance.now() : 0;
+        n.style.transitionDelay = Math.max(0, rest) + "ms";
+      }
       n.classList.toggle("zichtbaar", aan);
     });
     if (huidig.bijStap) huidig.bijStap(stap);
