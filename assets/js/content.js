@@ -360,27 +360,26 @@ const SHOW = [
       "Is Lena overal dezelfde? We vroegen het aan wie haar het best kent. Eerst thuis, dan op het werk.\n\n" +
       "[KLIK, vanaf hier speelt elk filmpje vanzelf. Wacht telkens tot het gedaan is en klik dan verder.]",
   },
-  // Eerst wat hen meteen aan Lena doet denken, dan wat iedereen van haar mag leren. Geknipt op een natuurlijke pauze.
+  // Eerst wat hen meteen aan Lena doet denken, dan wat iedereen van haar mag leren. Enkel het antwoord (antwoord.js).
   ...filmpjes("Christophe", [{ bestand: "fam-christophe-1.mp4", van: 0.6 }]),
   ...filmpjes("Chloé", [{ bestand: "fam-chloe-1.mp4", van: 6.1, tot: 12.9 }]),
-  ...filmpjes("Billie-Rose", [{ bestand: "fam-billie-rose-1.mp4", van: 0.7, tot: 15.1 }]),
-  ...filmpjes("Marijke", [{ bestand: "col-marijke-1.mp4", van: 0.8 }]),
+  ...filmpjes("Billie-Rose", ["fam-billie-rose-1-antwoord.mp4"]),
+  ...filmpjes("Marijke", ["col-marijke-1-antwoord.mp4"]),
   ...filmpjes("Christophe", [{ bestand: "fam-christophe-3.mp4", van: 1.3 }]),
   ...filmpjes("Chloé", [{ bestand: "fam-chloe-3.mp4", van: 0.9 }]),
-  ...filmpjes("Marijke", [{ bestand: "col-marijke-3.mp4", van: 1.3, tot: 16.1 }]),
-  ...filmpjes("Lynn", [{ bestand: "col-lynn-1.mp4" }]),
+  ...filmpjes("Lynn", ["col-lynn-1-antwoord.mp4"]),
+  ...filmpjes("Marijke", ["col-marijke-3-antwoord.mp4"]),
   {
     type: "video",
-    bestand: "fam-billie-rose-3.mp4",
-    van: 0.4,
-    tot: 14.2,
+    bestand: "fam-billie-rose-3-antwoord.mp4",
+    pauze: 3.0,
     kop: "Billie-Rose",
     spreker: "Gaëlle",
     script:
-      "[Laatste filmpje.]\n\n" +
+      "[Laatste filmpje. Na 'koken en meer zout op hebben' pauzeert het vanzelf. Laat de zaal even lachen.]\n\n" +
+      "[KLIK, ze legt het verhaal over het zout verder uit. Wacht tot het gedaan is.]\n\n" +
       "Lena staat altijd klaar. Voor een babbel of een confidence boost. En ze blijft altijd eerlijk. " +
       "Dat appreciëren we allemaal.\n\n[KLIK, Britt neemt over]",
-    nazien: "Ik koos per persoon filmpje 1 en 3 en knipte op een pauze, zonder ze te kunnen beluisteren. Kijk na of dit de leukste stukken zijn (kiezen.html).",
   },
 
   /* ================================================================ liedje */
@@ -437,13 +436,6 @@ const SHOW = [
       "Wij kunnen niet meer zonder jou.\n\n" +
       "Onder al die Engelse en Franse woorden en spontane selfies zit een collega met een hart van goud. " +
       "Je bent er altijd als iemand een luisterend oor nodig heeft. En je zorgt ervoor dat elk AFAS-event klopt.\n\n[KLIK]",
-  },
-  {
-    type: "video",
-    bestand: "fam-christophe-aparte-boodschap.mp4",
-    kop: "Nog één boodschap",
-    spreker: "Britt",
-    script: "[Niets aankondigen. De boodschap van Christophe speelt vanzelf. Laat ze volledig uitspelen. Daarna even stilte.]\n\n[KLIK]",
   },
   {
     type: "slot",
