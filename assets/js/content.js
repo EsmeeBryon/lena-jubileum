@@ -109,10 +109,9 @@ const SHOW = [
     fotos: ["stem-01.jpg", "stem-02.jpg"],
     spreker: "Esmee",
     script:
-      "[De tv-spot speelt vanzelf. Dat is de stem van Lena. Werkt enkel in de online versie.]\n\n" +
+      "[De foto's komen vanzelf en de tv-spot met de stem van Lena speelt zachtjes op de achtergrond. Werkt enkel in de online versie.]\n\n" +
       "Over de jaren heen is ze de stem van AFAS geweest. " +
       "Voor de mensen die dit niet weten: zij spreekt ook ons antwoordapparaat in. Maar ook the face.\n\n" +
-      "[KLIK, de foto's komen vanzelf. De spot speelt zachtjes verder op de achtergrond.]\n\n" +
       "Op deze foto weet ik niet zeker van welke sector ze komt, maar ze staat bij den dokteur Thibault.\n\n[KLIK]",
     nazien: "Staat de foto met dokter Thibault hierbij?",
   },

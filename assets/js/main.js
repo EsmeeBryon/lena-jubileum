@@ -485,7 +485,7 @@
       muur.style.setProperty("--per-rij", perRij);
       const h = aantalRijen === 1 ? 50 : perRij >= 4 ? 27 : 29;
       muur.style.setProperty("--h", (s.items ? h - 5 : h) + "vh");
-      const autoStap = s.auto === "klik" || s.youtube ? 1 : 0;
+      const autoStap = s.auto === "klik" ? 1 : 0;
       const tussen = s.tempo || (s.items ? 0.9 : 0.45);
       let rij = null;
       items.forEach((item, i) => {
@@ -503,23 +503,26 @@
       const klaar = (n) => { if (n === autoStap) v.dataset.klaarOp = performance.now() + ((items.length - 1) * tussen + 0.5) * 1000; };
       if (!s.youtube) return { v, bijStap: klaar };
 
-      // Eerst de spot groot (werkt enkel online); na een klik speelt ze stil verder als achtergrond achter de foto's
-      const vak = stapEl("div", "ytvak", null, 0);
+      // YouTube-spot zacht als achtergrond achter de foto's (werkt enkel online)
+      const vak = stapEl("div", "ytvak achter", null, 0);
       const speler = document.createElement("iframe");
       Object.assign(speler, { allow: "autoplay; encrypted-media", referrerPolicy: "strict-origin-when-cross-origin", title: "YouTube" });
       vak.appendChild(speler);
       v.appendChild(vak);
       const { id, van = 0, tot, stil = 20 } = s.youtube;
-      const url = `https://www.youtube.com/embed/${id}?autoplay=1&controls=0&rel=0&playsinline=1&enablejsapi=1&start=${van}` +
+      // Start gedempt (autoplay lukt dan altijd) en zet daarna het zachte volume, zodra de speler klaar is
+      const url = `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&enablejsapi=1&start=${van}` +
         (tot ? `&end=${tot}` : `&loop=1&playlist=${id}`);
-      const volume = (x) => speler.contentWindow && speler.contentWindow.postMessage(JSON.stringify({ event: "command", func: "setVolume", args: [x] }), "*");
+      const zeg = (func, args = []) => speler.contentWindow && speler.contentWindow.postMessage(JSON.stringify({ event: "command", func, args }), "*");
+      speler.addEventListener("load", () => {
+        if (!speler.src.startsWith("https")) return;
+        [400, 1200, 2500].forEach((ms) => setTimeout(() => { zeg("setVolume", [stil]); zeg("unMute"); }, ms));
+      });
       return {
         v,
         bijStap(n) {
           klaar(n);
           if (!speler.src.startsWith("https")) speler.src = url;
-          vak.classList.toggle("achter", n > 0);
-          volume(n === 0 ? 100 : stil);
         },
         weg() { speler.src = "about:blank"; },
       };
