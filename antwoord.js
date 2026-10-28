@@ -7,9 +7,9 @@ const { execFileSync, spawnSync } = require("child_process");
 const ANTWOORDEN = {
   "fam-billie-rose-1": [7.8, 15.1],
   "col-marijke-1": [4.6, 8.9],
-  "col-marijke-3": [5.6, 20.2],
+  "col-marijke-3": [5.6, 21.96],
   "col-lynn-1": [4.85, 23.75],
-  "fam-billie-rose-3": [5.8, 42.6],
+  "fam-billie-rose-3": [5.8, 50.15],
 };
 const DOEL = -16;
 
