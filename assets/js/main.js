@@ -618,9 +618,21 @@
         lijst.hidden = true;
       });
 
+      // Bij `pauze` (seconden) stopt het filmpje tot de spreker klikt
+      let hervat = false;
+      if (s.pauze != null) {
+        const wacht = el("span");
+        wacht.dataset.stap = s.onder ? 2 : 1;
+        v.appendChild(wacht);
+        film.addEventListener("timeupdate", () => { if (!hervat && film.currentTime >= s.pauze) film.pause(); });
+      }
+
       return {
         v,
-        bijStap(n) { if (n === 0) film.play().catch(() => {}); },
+        bijStap(n) {
+          if (n === 0) { hervat = false; film.currentTime = s.van || 0; film.play().catch(() => {}); }
+          else if (s.pauze != null && !hervat) { hervat = true; film.play().catch(() => {}); }
+        },
         weg() { film.pause(); },
       };
     },
