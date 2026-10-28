@@ -141,12 +141,12 @@ const SHOW = [
     type: "vraag",
     kicker: "Handen omhoog",
     vraag: "Wie heeft er al eens een voicebericht van Lena ontvangen?",
-    antwoord: "Wie heeft die op 1,5x of 2x geluisterd?",
+    antwoord: "En die luisteren we allemaal op 1,5x of 2x.",
     stempel: "Da's ook echt Lena",
     spreker: "Esmee",
     script:
       "Wie heeft er al eens een voicebericht van Lena ontvangen? [handen laten opsteken]\n\n" +
-      "[KLIK] Wie heeft die op 1,5x of 2x geluisterd? [lachen]\n\n" +
+      "[KLIK] En die luisteren we allemaal op 1,5x of 2x. [lachen]\n\n" +
       "[KLIK, stempel] Die voiceberichten, da's ook echt Lena.\n\n[KLIK]",
   },
   {
@@ -220,18 +220,11 @@ const SHOW = [
     video: "taxi-gent.mp4",
     kicker: "Bewijsstuk",
     kop: "Net terug van Gent",
-    spreker: "Esmee",
-    script: "En ja. Dat ben ik. In dat busje. Net terug van Gent.\n\n[KLIK]",
-  },
-  {
-    type: "vraag",
-    kicker: "Allemaal rechtstaan",
-    vraag: "Wie heeft ooit iets voor Lena ingestuurd, opgestuurd of opgehaald?",
-    antwoord: "Dit applaus is voor jullie.",
+    clou: "Applaus voor iedereen die al iets voor Lena heeft moeten doen!",
     spreker: "Esmee",
     script:
-      "Wie heeft ooit iets voor Lena ingestuurd, opgestuurd of opgehaald? Ga maar eens rechtstaan. [wachten tot iedereen staat]\n\n" +
-      "[KLIK] Blijf even staan. Dit applaus is voor jullie. [applaus]\n\n[KLIK]",
+      "En ja. Dat ben ik. In dat busje. Net terug van Gent.\n\n" +
+      "[KLIK] Applaus voor iedereen die al iets voor Lena heeft moeten doen! [applaus]\n\n[KLIK]",
   },
   {
     type: "reeks",
