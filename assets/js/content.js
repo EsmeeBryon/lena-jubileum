@@ -374,46 +374,6 @@ const SHOW = [
       "Dat appreciëren we allemaal.\n\n[KLIK, Britt neemt over]",
   },
 
-  /* ================================================================ liedje */
-  {
-    type: "karaoke",
-    kop: "Thinking Out Loud \u00B7 de Lena-versie",
-    bestand: "parodie.mp3",
-    tot: 102,
-    // Foto's die nog nergens anders in de show zitten
-    fotos: [
-      "vroeger-07.jpg", "events-09.jpg", "vroeger-10.jpg", "mommy-06.jpg", "events-11.jpg", "vroeger-14.jpg",
-      "familie-06.jpg", "events-19.jpg", "grappig-14.jpg", "vroeger-19.jpg", "events-21.jpg", "mommy-10.jpg",
-      "familie-09.jpg", "vroeger-08.jpg", "events-25.jpg", "grappig-15.jpg",
-    ],
-    // t = seconde waarop de zin begint, e = waarop ze eindigt (bepaald met spraakherkenning, Whisper)
-    regels: [
-      { t: 1.0, e: 5.5, tekst: "Jij vergeet alweer dat de meeting begint" },
-      { t: 7.0, tekst: "Ook de admin schuif jij naar ons door" },
-      { t: 11.8, e: 17, tekst: "Plots verschijnt er een voice note die eindeloos duurt" },
-      { t: 18.3, tekst: "Maar de draad zijn wij alweer kwijt" },
-      { t: 23.6, e: 28.5, tekst: "Maar Lena, wij zijn al twaalf en een half jaar blij met jou" },
-      { t: 35.4, e: 40, tekst: "En elke zin klinkt half Engels, want dat is typisch jij" },
-      { t: 45.8, tekst: "Je denkt gewoon hardop" },
-      { t: 48.7, tekst: "Dan vertel je plots een heel ander verhaal" },
-      { t: 53.8, tekst: "\u201CDat had ik toch al eens gezegd?\u201D" },
-      { t: 60.2, tekst: "Maar met jou aan het roer komt elk feest helemaal goed" },
-      { t: 66.8, tekst: "Dan staat heel de zaal weer op z\u2019n kop" },
-      { t: 71.8, tekst: "Dus Lena, kom" },
-      { t: 76.9, tekst: "Laat het regelen maar aan ons" },
-      { t: 80.8, e: 86.7, tekst: "Hef je glas, want dit feest is vandaag voor jou" },
-      { t: 89.6, tekst: "Lach maar mee met je hele team" },
-      { t: 93.7, tekst: "Wij staan voor je klaar" },
-      { t: 96.4, e: 99.6, tekst: "Lena, wat zijn wij toch blij met jou" },
-    ],
-    spreker: "Britt",
-    script:
-      "En omdat Lena altijd hardop nadenkt, kon dit liedje niet ontbreken.\n\n" +
-      "[De muziek, de foto's en de songtekst lopen vanzelf: couplet, aanloop en het eerste refrein. " +
-      "Daarna zakt de muziek weg. Iedereen mag meezingen.]\n\n[KLIK]",
-    nazien: "De tijden van de songtekst heb ik met spraakherkenning bepaald. Loopt een zin te vroeg of te laat, zeg dan welke.",
-  },
-
   /* ================================================================= toast */
   {
     type: "foto",
