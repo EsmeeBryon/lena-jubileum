@@ -360,16 +360,13 @@ const SHOW = [
   ...filmpjes("Christophe", [{ bestand: "fam-christophe-3.mp4", van: 1.3 }]),
   ...filmpjes("Chloé", [{ bestand: "fam-chloe-3.mp4", van: 0.9 }]),
   ...filmpjes("Lynn", ["col-lynn-1-antwoord.mp4"]),
-  ...filmpjes("Marijke", ["col-marijke-3-antwoord.mp4"]),
   {
     type: "video",
-    bestand: "fam-billie-rose-3-antwoord.mp4",
-    pauze: 3.0,
-    kop: "Billie-Rose",
+    bestand: "col-marijke-3-antwoord.mp4",
+    kop: "Marijke",
     spreker: "Gaëlle",
     script:
-      "[Laatste filmpje. Na 'koken en meer zout op hebben' pauzeert het vanzelf. Laat de zaal even lachen.]\n\n" +
-      "[KLIK, ze legt het verhaal over het zout verder uit. Wacht tot het gedaan is.]\n\n" +
+      "[Laatste filmpje. Het speelt vanzelf. Wacht tot het gedaan is.]\n\n" +
       "Lena staat altijd klaar. Voor een babbel of een confidence boost. En ze blijft altijd eerlijk. " +
       "Dat appreciëren we allemaal.\n\n[KLIK, Britt neemt over]",
   },
